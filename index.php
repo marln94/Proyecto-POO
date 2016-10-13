@@ -165,24 +165,7 @@
     <!-- JS -->
     <script>
       $(document).ready(function() {
-        /*Slider para imágenes en las categorías*/
-        /*var imgArray = [
-          "images/book1.jpg",
-          "images/book2.png",
-          "images/book3.jpg"];
-        indice = 0;
-        duracion = 4000;
-        animarImagenes = function(){
-          $('#slider').toggleClass("fadeOut");
-          setTimeout(function(){
-            $('#slider').attr('src',imgArray[indice]);
-            $('#slider').toggleClass("fadeOut");
-          },1000);
-          indice++;
-          if(indice == imgArray.length){ indice = 0; }
-          setTimeout(animarImagenes, duracion);
-        }
-        animarImagenes();*/
+        
       });
     </script>
     <!-- /JS -->
