@@ -166,7 +166,7 @@
     <script>
       $(document).ready(function() {
         /*Slider para imágenes en las categorías*/
-        /*var imgArray = [
+        var imgArray = [
           "images/book1.jpg",
           "images/book2.png",
           "images/book3.jpg"];
@@ -182,7 +182,7 @@
           if(indice == imgArray.length){ indice = 0; }
           setTimeout(animarImagenes, duracion);
         }
-        animarImagenes();*/
+        animarImagenes();
       });
     </script>
     <!-- /JS -->
