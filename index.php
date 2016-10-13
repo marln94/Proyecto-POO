@@ -177,7 +177,7 @@
           setTimeout(function(){
             $('#slider').attr('src',imgArray[indice]);
             $('#slider').toggleClass("fadeOut");
-          },1000);
+          },1500);
           indice++;
           if(indice == imgArray.length){ indice = 0; }
           setTimeout(animarImagenes, duracion);
