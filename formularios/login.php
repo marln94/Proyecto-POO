@@ -24,7 +24,6 @@
 
   <body class="login">
     <div>
-      <a class="hiddenanchor" id="signup"></a>
       <a class="hiddenanchor" id="signin"></a>
 
       <div class="login_wrapper">
@@ -33,64 +32,18 @@
             <div class="forma">
               <h1>Iniciar sesión</h1>
               <div>
-                <input type="text" class="form-control" placeholder="Nombre de usuario"/>
+                <input type="text" class="form-control" placeholder="Correo electrónico" id="txt-email">
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Contraseña"/>
+                <input type="password" class="form-control" placeholder="Contraseña" id="txt-contraseña">
               </div>
               <div>
-                <a class="btn btn-default submit" href="#">Iniciar</a>
+                <a class="btn btn-default submit" id="btn-iniciar" >Iniciar</a>
               </div>
 
               <div class="clearfix"></div>
 
               <div class="separator">
-                <p class="change_link">¿Usuario nuevo?
-                  <a href="#signup" class="to_register"> Crear cuenta </a>
-                </p>
-
-                <div class="clearfix"></div>
-                <br />
-
-                <div>
-                  <h1><i class="fa fa-book"></i> Bibliotec</h1>
-                  <p>©2016 All Rights Reserved.</p>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
-
-        <div id="register" class="animate form registration_form">
-          <section class="login_content">
-            <div class="forma">
-              <h1>Crear cuenta</h1>
-              <div>
-                <input type="text" class="form-control" placeholder="Nombre" name="txt-nombre" id="txt-nombre">
-              </div>
-              <div>
-                <input type="text" class="form-control" placeholder="Apellido" name="txt-apellido" id="txt-apellido">
-              </div>
-              <div>
-                <input type="text" class="form-control" placeholder="Nombre de usuario" name="txt-nombre-usuario" id="txt-nombre-usuario">
-              </div>
-              <div>
-                <input type="email" class="form-control" placeholder="Correo electrónico" name="txt-correo-usuario" id="txt-correo-usuario">
-              </div>
-              <div>
-                <input type="password" class="form-control" placeholder="Contraseña" name="txt-contraseña" id="txt-contraseña">
-              </div>
-              <div>
-                <button class="btn btn-default submit" id="btn-crear-cuenta"> Crear</button>
-              </div>
-
-              <div class="clearfix"></div>
-
-              <div class="separator">
-                <p class="change_link"> ¿Ya registrado?
-                  <a href="#signin" class="to_register"> Iniciar sesión </a>
-                </p>
-
                 <div class="clearfix"></div>
                 <br />
 
@@ -106,6 +59,7 @@
     </div>
 
     <script src="../vendors/jquery/dist/jquery.min.js"></script>
-    <script src="../js/funciones.js"></script>
+    <script src="../js/login.js"></script>
+
   </body>
 </html>

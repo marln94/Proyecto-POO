@@ -10,20 +10,20 @@
     <title>Bibliotec</title>
 
     <!-- Bootstrap -->
-    <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
-    <link href="vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
-    <link href="vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
     <!-- bootstrap-progressbar -->
-    <link href="vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
-    <link href="vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <link href="../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
 
     <!-- Custom Theme Style -->
-    <link href="css/custom.css" rel="stylesheet">
+    <link href="../css/custom.css" rel="stylesheet">
 
   </head>
 
@@ -50,8 +50,6 @@
                 <ul class="nav side-menu">
                   <li><a style="font-size: 26px;" href="formularios/login.php"> Inicie sesión </a>
                   </li>
-                  <li><a style="font-size: 20px;" href="formularios/crear_cuenta.php"> Crear cuenta </a>
-                  </li>
                 </ul>
               </div>
             </div>
@@ -77,7 +75,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h3>Categorías</h3>
+                    <h3>Libro</h3>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
@@ -104,27 +102,27 @@
     </div>
 
     <!-- jQuery -->
-    <script src="vendors/jquery/dist/jquery.min.js"></script>
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
-    <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
-    <script src="vendors/fastclick/lib/fastclick.js"></script>
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
     <!-- bootstrap-progressbar -->
-    <script src="vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
     <!-- iCheck -->
-    <script src="vendors/iCheck/icheck.min.js"></script>
+    <script src="../vendors/iCheck/icheck.min.js"></script>
     <!-- Custom Theme Scripts -->
-    <script src="js/custom.min.js"></script>
+    <script src="../js/custom.min.js"></script>
 
     <!-- JS -->
     <script>
       $(document).ready(function() {
-        $('#contenedor-categorias').html('<p style="text-align: center;"><img src="images/loading.gif"> </p>');
+        $('#contenedor-categorias').html('<p style="text-align: center;"><img src="../images/loading.gif"> </p>');
         $.ajax({
           type: 'POST',
-          url: 'php/carga.php?opcion=categorias',
+          url: 'php/.php',
           success: function(respuesta){
-            $('#contenedor-categorias').html(respuesta);
+            
           }
         });
       });

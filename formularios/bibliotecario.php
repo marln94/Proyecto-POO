@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Bibliotec - usuario_1</title>
+    <title>Bibliotec</title>
 
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -33,7 +33,7 @@
         <div class="col-sm-3 col-md-3 left_col menu_fixed">
           <div class="left_col scroll-view">
             <div class="navbar nav_title color-vino" style="border: 0;">
-              <a href="registrado.php" class="site_title color-vino letra-logo"><i class="fa fa-book"></i> <span>Bibliotec </span></a>
+              <a href="bibliotecario.php" class="site_title color-vino letra-logo"><i class="fa fa-book"></i> <span>Bibliotec </span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -56,7 +56,30 @@
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <ul class="nav side-menu">
-                  
+                  <li><a href="prestamo_libro.php"><i class="fa fa-arrow-circle-right"></i> Préstamo libro </span></a>
+                  </li>
+                  <li><a href="recepcion_libro.php"><i class="fa fa-arrow-circle-down"></i> Recepción libro </span></a>
+                  </li>
+                </ul>
+              </div>
+              <div class="menu_section">
+                <ul class="nav side-menu">
+                  <li><a><i class="fa fa-plus-circle"></i> Ingresar libro </span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="ingreso_libro.php">Libro físico</a></li>
+                      <li><a href="ingreso_libro_digital.php">Libro digital</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="retiro_libro.php"><i class="fa fa-minus-circle"></i> Retirar libro </span></a>
+                  </li>
+                </ul>
+              </div>
+              <div class="menu_section">
+                <ul class="nav side-menu">
+                  <li><a href="administracion_editoriales.php"><i class="fa fa-circle"></i> Administrar editoriales </a>
+                  </li>
+                  <li><a href="administracion_categorias.php"><i class="fa fa-circle"></i> Administrar categorías </a>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -137,8 +160,10 @@
           url: '../php/carga.php?opcion=usuario',
           success: function(respuesta){
             var arr = respuesta.split(',');
+            document.title = 'Bibliotec - '+arr[1];
             $('#imagen-usuario').attr('src',arr[0])
             $('#nombre-usuario').html(arr[1]);
+
           }
         });
         $.ajax({
