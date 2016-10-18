@@ -66,11 +66,7 @@
               </div>
               <div class="menu_section">
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-plus-circle"></i> Ingresar libro </span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="ingreso_libro.php">Libro físico</a></li>
-                      <li><a href="ingreso_libro_digital.php">Libro digital</a></li>
-                    </ul>
+                  <li><a href="ingreso_libro.php"><i class="fa fa-plus-circle"></i> Ingresar libro </span></a>
                   </li>
                   <li><a href="retiro_libro.php"><i class="fa fa-minus-circle"></i> Retirar libro </span></a>
                   </li>
@@ -120,6 +116,22 @@
                   <div class="form-horizontal form-label-left">
                       <span class="section">Información del libro</span>
 
+
+                      <div class="form-group" id="radios">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12"> Tipo </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" id="rd-tipo-libro-fisico" name="rd-tipo-libro" value="fisico" checked> Físico
+                            </label>
+                          </div>
+                          <div class="radio">
+                            <label>
+                              <input type="radio" id="rd-tipo-libro-digital" name="rd-tipo-libro" value="digital"> Digital
+                            </label>
+                          </div>
+                        </div>
+                      </div>
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="txt-titulo"> Título<span class="required">*</span>
                         </label>
@@ -209,7 +221,7 @@
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12"> Sucursal(es) <span class="required">*</span></label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <select class="select2_multiple form-control" multiple="multiple" id="slc-sucursal">
+                          <select class="select2_multiple form-control multiple_sucursal" multiple="multiple" id="slc-sucursal">
                             <option> Sucursal 1 </option>
                             <option> Sucursal 2 </option>
                             <option> Sucursal 3 </option>
@@ -284,21 +296,5 @@
       });
     </script>
     <!-- /JS -->
-    <!-- Select2 -->
-    <script>
-      $(document).ready(function() {
-        $(".select2_single").select2({
-          placeholder: "Seleccione un elemento",
-          allowClear: true
-        });
-        $(".select2_group").select2({});
-        $(".select2_multiple").select2({
-          maximumSelectionLength: 4,
-          placeholder: "Máximo 4 categorías",
-          allowClear: true
-        });
-      });
-    </script>
-    <!-- /Select2 -->
   </body>
 </html>

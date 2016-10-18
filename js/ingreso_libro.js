@@ -1,7 +1,8 @@
 $(document).ready(function(){
 	$("#btn-ingresar-libro").click(function(){
 		if(verificar()){
-			var parametros = "txt-titulo="+$("#txt-titulo").val()+"&"+"slc-autores="+$("#slc-autores").val()+"&"+"slc-editoriales="+$("#slc-editoriales").val()+"&"+"txt-año="+$("#txt-año").val()+"&"+"slc-categorias="+$("#slc-categorias").val()+"&"+"txt-codigo-libro="+$("#txt-codigo-libro").val()+"&"+"txt-ejemplares="+$("#txt-ejemplares").val()+"&"+"txt-descripcion-fisica="+$("#txt-descripcion-fisica").val()+"&"+"txt-coleccion="+$("#txt-coleccion").val()+"&"+"txt-isbn="+$("#txt-isbn").val()+"&"+"slc-sucursal="+$("#slc-sucursal").val();
+			/*falta validar para libro fisico*/
+			var parametros = "txt-titulo="+$("#txt-titulo").val()+"&"+"slc-autores="+$("#slc-autores").val()+"&"+"slc-editoriales="+$("#slc-editoriales").val()+"&"+"txt-año="+$("#txt-año").val()+"&"+"slc-categorias="+$("#slc-categorias").val()+"&"+"txt-codigo-libro="+$("#txt-codigo-libro").val()+"&"+"txt-ejemplares="+$("#txt-ejemplares").val()+"&"+"txt-descripcion-fisica="+$("#txt-descripcion-fisica").val()+"&"+"txt-coleccion="+$("#txt-coleccion").val()+"&"+"txt-isbn="+$("#txt-isbn").val()+"&"+"slc-sucursal="+$("#slc-sucursal").val()+"rd";
 			$.ajax({
 				type: "POST",
 				url: "../php/registro.php?opcion=libro",
@@ -23,6 +24,13 @@ $(document).ready(function(){
 
 	verificar = function() {
 		var validacion = true;
+		var tipoLibro;
+		if($("#radios input[name=rd-tipo-libro]:checked").val() == 'digital'){
+			tipoLibro = false;
+		} else{
+			tipoLibro = true;
+		}
+
 		$(".bad").removeClass('bad').find('.alert').remove();
 		if( $("#txt-titulo").val() == "" ){
 			marcar($("#txt-titulo").closest(".item"),"Introduzca un título");
@@ -48,11 +56,11 @@ $(document).ready(function(){
 			marcar($("#txt-codigo-libro").closest(".item"),"Introduzca el codigo del libro");
 			validacion = validacion && false;
 		} else{desmarcar($("#txt-codigo-libro"))}
-		if( $("#txt-ejemplares").val() == "" ){
+		if( $("#txt-ejemplares").val() == "" && tipoLibro){
 			marcar($("#txt-ejemplares").closest(".item"),"Introduzca una cantidad");
 			validacion = validacion && false;
 		} else{desmarcar($("#txt-ejemplares"))}
-		if( $("#txt-descripcion-fisica").val() == "" ){
+		if( $("#txt-descripcion-fisica").val() == "" && tipoLibro){
 			marcar($("#txt-descripcion-fisica").closest(".item"),"Introduzca una descripción");
 			validacion = validacion && false;
 		} else{desmarcar($("#txt-descripcion-fisica"))}
@@ -64,7 +72,7 @@ $(document).ready(function(){
 			marcar($("#txt-isbn").closest(".item"),"Introduzca el código ISBN");
 			validacion = validacion && false;
 		} else{desmarcar($("#txt-isbn"))}
-		if( $("#slc-sucursal").val() == null ){
+		if( $("#slc-sucursal").val() == null && tipoLibro){
 			marcar($("#slc-sucursal").closest(".item"),"Seleccione una sucursal");
 			validacion = validacion && false;
 		} else{desmarcar($("#slc-sucursal"))}
@@ -82,4 +90,33 @@ $(document).ready(function(){
 	desmarcar = function(elemento){
 		elemento.closest('.item').removeClass('bad').find('.alert').remove();
 	}
+
+	$("#rd-tipo-libro-digital").click(function(){
+      $("#txt-ejemplares").attr('disabled','disabled');
+      $("#txt-descripcion-fisica").attr('disabled','disabled');
+      $("#slc-sucursal").attr('disabled','disabled');
+
+      $("#txt-ejemplares").val("");
+      $("#txt-descripcion-fisica").val("");
+      $("#slc-sucursal").val('').change();
+    });
+    $("#rd-tipo-libro-fisico").click(function(){
+      $("#txt-ejemplares").removeAttr('disabled');
+      $("#txt-descripcion-fisica").removeAttr('disabled');
+      $("#slc-sucursal").removeAttr('disabled');
+    });
+
+    /**select2**/
+    $(document).ready(function() {
+        $(".select2_single").select2({
+          placeholder: "Seleccione un elemento",
+          allowClear: true
+        });
+        
+        $(".select2_multiple").select2({
+          maximumSelectionLength: 4,
+          placeholder: "Máximo 4 elementos",
+          allowClear: true
+        });
+      });
 });

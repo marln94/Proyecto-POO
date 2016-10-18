@@ -63,23 +63,13 @@
         <div class="right_col" role="main">
           <div class="page-title">
             <div class="title_left">
-              <h3><i class="fa fa-search" style="font-size: 30px"></i> Búsqueda rápida <span style="font-size: 19px">(visitante)</span> </h3>
+              <h3>Crear cuenta</h3>
             </div>
           </div>
-          <div class="input-group" style="margin-bottom: 21px">
-            <input type="text" class="form-control form-control-1" placeholder="Buscar libro">
-            <span class="input-group-btn">
-              <button class="button_1 btn btn-default" type="button">Buscar</button>
-            </span>
-          </div>
-          <!--categorías-->
+          <!--creación de cuenta-->
           <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
-                  <div class="x_title">
-                    <h3>Crear cuenta</h3>
-                    <div class="clearfix"></div>
-                  </div>
                   <div class="form-horizontal form-label-left">
                       <span class="section">Información de contacto</span>
 
@@ -129,7 +119,7 @@
                 </div>
               </div>
             </div>
-          <!--/cateogrías-->
+          <!--/creación de cuenta-->
         </div>
         <!-- /page content -->
 

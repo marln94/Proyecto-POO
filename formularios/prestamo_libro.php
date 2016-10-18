@@ -64,11 +64,7 @@
               </div>
               <div class="menu_section">
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-plus-circle"></i> Ingresar libro </span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="ingreso_libro.php">Libro físico</a></li>
-                      <li><a href="ingreso_libro_digital.php">Libro digital</a></li>
-                    </ul>
+                  <li><a href="ingreso_libro.php"><i class="fa fa-plus-circle"></i> Ingresar libro </span></a>
                   </li>
                   <li><a href="retiro_libro.php"><i class="fa fa-minus-circle"></i> Retirar libro </span></a>
                   </li>
