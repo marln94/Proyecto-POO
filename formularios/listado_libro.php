@@ -109,45 +109,47 @@
               <button class="button_1 btn btn-default" type="button">Buscar</button>
             </span>
           </div>
-          <!--recepción-->
+          <!--listado-->
           <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h3><span class="fa fa-arrow-circle-o-down"></span> Recepción</h3>
+                    <h3><span class="fa fa-table"></span> Listado de libros</h3>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
                     <div class="row top_tiles">
-                      <div class="col-md-6">
-                        <div class="thumbnail">
-                          <div class="image view">
-                            <span class="fa fa-qrcode" style="font-size: 110px"></span>
-                          </div>
-                          <div class="caption view">
-                            <button class="btn"> Escanear código del libro</button>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="thumbnail">
-                          <div class="image view">
-                            <div style="margin-top: 27px; ">
-                              Escriba el código del libro
-                              <input type="text" id="txt-codigo-libro" class="form-control">
-                            </div>
-                          </div>
-                          <div class="caption view">
-                            <button class="btn"> Introducir código del libro</button>
-                          </div>
-                        </div>
-                      </div>
+                      <table class="table table-bordered">
+                        <thead> <th>Código</th>
+                                <th>Título</th>
+                                <th>Autor</th>
+                                <th>Editorial</th>
+                                <th>Año</th>
+                                <th>Categoría</th>
+                                <th>Ejemplares</th>
+                                <th>Colección</th>
+                                <th>Sucursales</th> 
+                        </thead>
+                        <tbody id="tbl-listado-libros">
+                          <tr>
+                            <td>1</td>
+                            <td>Título1</td>
+                            <td>Autor1</td>
+                            <td>Editorial1</td>
+                            <td>1999</td>
+                            <td>Categoría1</td>
+                            <td>2</td>
+                            <td>General</td>
+                            <td>Sucursal 1, Sucursal 2</td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          <!--/recepción-->
+          <!--/listado-->
         </div>
         <!-- /page content -->
 
@@ -178,6 +180,7 @@
     <!-- JS -->
     <script>
       $(document).ready(function() {
+        //$('#contenedor-categorias').html('<p style="text-align: center;"><img src="../images/loading.gif"> </p>');
         $.ajax({
           type: 'POST',
           url: '../php/carga.php?opcion=usuario',
@@ -186,6 +189,13 @@
             document.title = 'Bibliotec - '+arr[1];
             $('#imagen-usuario').attr('src',arr[0])
             $('#nombre-usuario').html(arr[1]);
+          }
+        });
+        $.ajax({
+          type: 'POST',
+          url: '../php/carga.php?opcion=tabla-libros',
+          success: function(){
+
           }
         });
       });

@@ -64,9 +64,15 @@
               </div>
               <div class="menu_section">
                 <ul class="nav side-menu">
-                  <li><a href="ingreso_libro.php"><i class="fa fa-plus-circle"></i> Ingresar libro </span></a>
-                  </li>
-                  <li><a href="retiro_libro.php"><i class="fa fa-minus-circle"></i> Retirar libro </span></a>
+                  <li><a><i class="fa fa-circle"></i> Administrar libros </a>
+                    <ul class="nav child_menu">
+                      <li><a href="listado_libro.php"><i class="fa fa-table"></i> Listado </span></a>
+                      </li>
+                      <li><a href="registro_libro.php"><i class="fa fa-plus-circle"></i> Registrar libro </span></a>
+                      </li>
+                      <li><a href="retiro_libro.php"><i class="fa fa-minus-circle"></i> Retirar libro </span></a>
+                      </li>
+                    </ul>
                   </li>
                 </ul>
               </div>

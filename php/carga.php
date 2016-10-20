@@ -19,6 +19,18 @@
 			  </div>';
 			}
 			break;
+
+		case 'tabla-libros':
+			
+
+			break;
+		
+
+		case 'tabla-libros':
+			
+
+			break;
+
 			
 		default:
 			# code...

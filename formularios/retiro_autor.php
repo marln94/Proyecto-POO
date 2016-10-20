@@ -74,13 +74,39 @@
                       </li>
                     </ul>
                   </li>
+                  <li><a><i class="fa fa-circle"></i> Administrar autores </a>
+                    <ul class="nav child_menu">
+                      <li><a href="listado_autor.php"><i class="fa fa-table"></i> Listado </span></a>
+                      </li>
+                      <li><a href="registro_autor.php"><i class="fa fa-plus-circle"></i> Registrar autor </span></a>
+                      </li>
+                      <li><a href="retiro_autor.php"><i class="fa fa-minus-circle"></i> Retirar autor </span></a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-circle"></i> Administrar editoriales </a>
+                    <ul class="nav child_menu">
+                      <li><a href="listado_editorial.php"><i class="fa fa-table"></i> Listado </span></a>
+                      </li>
+                      <li><a href="registro_editorial.php"><i class="fa fa-plus-circle"></i> Registrar editorial </span></a>
+                      </li>
+                      <li><a href="retiro_editorial.php"><i class="fa fa-minus-circle"></i> Retirar editorial </span></a>
+                      </li>
+                    </ul>
+                  </li>
                 </ul>
               </div>
               <div class="menu_section">
                 <ul class="nav side-menu">
-                  <li><a href="administracion_editoriales.php"><i class="fa fa-circle"></i> Administrar editoriales </a>
-                  </li>
-                  <li><a href="administracion_categorias.php"><i class="fa fa-circle"></i> Administrar categorías </a>
+                  <li><a><i class="fa fa-circle"></i> Administrar categorías </a>
+                    <ul class="nav child_menu">
+                      <li><a href="listado_categoria.php"><i class="fa fa-table"></i> Listado </span></a>
+                      </li>
+                      <li><a href="registro_categoria.php"><i class="fa fa-plus-circle"></i> Registrar categoria </span></a>
+                      </li>
+                      <li><a href="retiro_categoria.php"><i class="fa fa-minus-circle"></i> Retirar categoria </span></a>
+                      </li>
+                    </ul>
                   </li>
                 </ul>
               </div>
@@ -109,45 +135,29 @@
               <button class="button_1 btn btn-default" type="button">Buscar</button>
             </span>
           </div>
-          <!--recepción-->
+          <!--retirar autor-->
           <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h3><span class="fa fa-arrow-circle-o-down"></span> Recepción</h3>
+                    <h3><span class="fa fa-minus-circle"></span> Retirar autor del sistema </h3>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
                     <div class="row top_tiles">
-                      <div class="col-md-6">
-                        <div class="thumbnail">
-                          <div class="image view">
-                            <span class="fa fa-qrcode" style="font-size: 110px"></span>
-                          </div>
-                          <div class="caption view">
-                            <button class="btn"> Escanear código del libro</button>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="thumbnail">
-                          <div class="image view">
-                            <div style="margin-top: 27px; ">
-                              Escriba el código del libro
-                              <input type="text" id="txt-codigo-libro" class="form-control">
-                            </div>
-                          </div>
-                          <div class="caption view">
-                            <button class="btn"> Introducir código del libro</button>
-                          </div>
-                        </div>
+                    <label>Introduzca el código de autor que se retirará</label>
+                      <div class="input-group" style="margin-bottom: 21px">
+                        <input type="text" class="form-control form-control" placeholder="código de autor">
+                        <span class="input-group-btn">
+                          <button class=" btn btn-default" type="button">Buscar</button>
+                        </span>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          <!--/recepción-->
+          <!--/retirar autor-->
         </div>
         <!-- /page content -->
 

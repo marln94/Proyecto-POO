@@ -64,17 +64,49 @@
               </div>
               <div class="menu_section">
                 <ul class="nav side-menu">
-                  <li><a href="ingreso_libro.php"><i class="fa fa-plus-circle"></i> Ingresar libro </span></a>
+                  <li><a><i class="fa fa-circle"></i> Administrar libros </a>
+                    <ul class="nav child_menu">
+                      <li><a href="listado_libro.php"><i class="fa fa-table"></i> Listado </span></a>
+                      </li>
+                      <li><a href="registro_libro.php"><i class="fa fa-plus-circle"></i> Registrar libro </span></a>
+                      </li>
+                      <li><a href="retiro_libro.php"><i class="fa fa-minus-circle"></i> Retirar libro </span></a>
+                      </li>
+                    </ul>
                   </li>
-                  <li><a href="retiro_libro.php"><i class="fa fa-minus-circle"></i> Retirar libro </span></a>
+                  <li><a><i class="fa fa-circle"></i> Administrar autores </a>
+                    <ul class="nav child_menu">
+                      <li><a href="listado_autor.php"><i class="fa fa-table"></i> Listado </span></a>
+                      </li>
+                      <li><a href="registro_autor.php"><i class="fa fa-plus-circle"></i> Registrar autor </span></a>
+                      </li>
+                      <li><a href="retiro_autor.php"><i class="fa fa-minus-circle"></i> Retirar autor </span></a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-circle"></i> Administrar editoriales </a>
+                    <ul class="nav child_menu">
+                      <li><a href="listado_editorial.php"><i class="fa fa-table"></i> Listado </span></a>
+                      </li>
+                      <li><a href="registro_editorial.php"><i class="fa fa-plus-circle"></i> Registrar editorial </span></a>
+                      </li>
+                      <li><a href="retiro_editorial.php"><i class="fa fa-minus-circle"></i> Retirar editorial </span></a>
+                      </li>
+                    </ul>
                   </li>
                 </ul>
               </div>
               <div class="menu_section">
                 <ul class="nav side-menu">
-                  <li><a href="administracion_editoriales.php"><i class="fa fa-circle"></i> Administrar editoriales </a>
-                  </li>
-                  <li><a href="administracion_categorias.php"><i class="fa fa-circle"></i> Administrar categorías </a>
+                  <li><a><i class="fa fa-circle"></i> Administrar categorías </a>
+                    <ul class="nav child_menu">
+                      <li><a href="listado_categoria.php"><i class="fa fa-table"></i> Listado </span></a>
+                      </li>
+                      <li><a href="registro_categoria.php"><i class="fa fa-plus-circle"></i> Registrar categoria </span></a>
+                      </li>
+                      <li><a href="retiro_categoria.php"><i class="fa fa-minus-circle"></i> Retirar categoria </span></a>
+                      </li>
+                    </ul>
                   </li>
                 </ul>
               </div>

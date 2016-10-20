@@ -109,45 +109,23 @@
               <button class="button_1 btn btn-default" type="button">Buscar</button>
             </span>
           </div>
-          <!--recepción-->
+          <!--categorías-->
           <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h3><span class="fa fa-arrow-circle-o-down"></span> Recepción</h3>
+                    <h3>Editoriales</h3>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
                     <div class="row top_tiles">
-                      <div class="col-md-6">
-                        <div class="thumbnail">
-                          <div class="image view">
-                            <span class="fa fa-qrcode" style="font-size: 110px"></span>
-                          </div>
-                          <div class="caption view">
-                            <button class="btn"> Escanear código del libro</button>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="thumbnail">
-                          <div class="image view">
-                            <div style="margin-top: 27px; ">
-                              Escriba el código del libro
-                              <input type="text" id="txt-codigo-libro" class="form-control">
-                            </div>
-                          </div>
-                          <div class="caption view">
-                            <button class="btn"> Introducir código del libro</button>
-                          </div>
-                        </div>
-                      </div>
+                      
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          <!--/recepción-->
+          <!--/cateogrías-->
         </div>
         <!-- /page content -->
 

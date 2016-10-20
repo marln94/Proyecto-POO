@@ -21,6 +21,8 @@
     <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
     <link href="../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <!-- Select2 -->
+    <link href="../vendors/select2/dist/css/select2.min.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
     <link href="../css/custom.css" rel="stylesheet">
@@ -74,13 +76,39 @@
                       </li>
                     </ul>
                   </li>
+                  <li><a><i class="fa fa-circle"></i> Administrar autores </a>
+                    <ul class="nav child_menu">
+                      <li><a href="listado_autor.php"><i class="fa fa-table"></i> Listado </span></a>
+                      </li>
+                      <li><a href="registro_autor.php"><i class="fa fa-plus-circle"></i> Registrar autor </span></a>
+                      </li>
+                      <li><a href="retiro_autor.php"><i class="fa fa-minus-circle"></i> Retirar autor </span></a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-circle"></i> Administrar editoriales </a>
+                    <ul class="nav child_menu">
+                      <li><a href="listado_editorial.php"><i class="fa fa-table"></i> Listado </span></a>
+                      </li>
+                      <li><a href="registro_editorial.php"><i class="fa fa-plus-circle"></i> Registrar editorial </span></a>
+                      </li>
+                      <li><a href="retiro_editorial.php"><i class="fa fa-minus-circle"></i> Retirar editorial </span></a>
+                      </li>
+                    </ul>
+                  </li>
                 </ul>
               </div>
               <div class="menu_section">
                 <ul class="nav side-menu">
-                  <li><a href="administracion_editoriales.php"><i class="fa fa-circle"></i> Administrar editoriales </a>
-                  </li>
-                  <li><a href="administracion_categorias.php"><i class="fa fa-circle"></i> Administrar categorías </a>
+                  <li><a><i class="fa fa-circle"></i> Administrar categorías </a>
+                    <ul class="nav child_menu">
+                      <li><a href="listado_categoria.php"><i class="fa fa-table"></i> Listado </span></a>
+                      </li>
+                      <li><a href="registro_categoria.php"><i class="fa fa-plus-circle"></i> Registrar categoria </span></a>
+                      </li>
+                      <li><a href="retiro_categoria.php"><i class="fa fa-minus-circle"></i> Retirar categoria </span></a>
+                      </li>
+                    </ul>
                   </li>
                 </ul>
               </div>
@@ -109,37 +137,64 @@
               <button class="button_1 btn btn-default" type="button">Buscar</button>
             </span>
           </div>
-          <!--recepción-->
+          <!--préstamo-->
           <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h3><span class="fa fa-arrow-circle-o-down"></span> Recepción</h3>
+                    <h3><span class="fa fa-plus-circle"></span> Registrar autor en el sistema</h3>
                     <div class="clearfix"></div>
                   </div>
-                  <div class="x_content">
-                    <div class="row top_tiles">
-                      <div class="col-md-6">
-                        <div class="thumbnail">
-                          <div class="image view">
-                            <span class="fa fa-qrcode" style="font-size: 110px"></span>
-                          </div>
-                          <div class="caption view">
-                            <button class="btn"> Escanear código del libro</button>
-                          </div>
+                  <div class="form-horizontal form-label-left">
+                      <span class="section">Información del autor</span>
+
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="txt-nombre-autor"> Nombre y apellido<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="txt-nombre-autor" class="form-control col-md-7 col-xs-12" >
                         </div>
                       </div>
-                      <div class="col-md-6">
-                        <div class="thumbnail">
-                          <div class="image view">
-                            <div style="margin-top: 27px; ">
-                              Escriba el código del libro
-                              <input type="text" id="txt-codigo-libro" class="form-control">
-                            </div>
-                          </div>
-                          <div class="caption view">
-                            <button class="btn"> Introducir código del libro</button>
-                          </div>
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="txt-nacimiento"> Nacimiento<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="date" id="txt-nacimiento" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="txt-fallecimiento"> Fallecimiento
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="date" id="txt-fallecimiento" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="txt-nacionalidad"> Nacionalidad <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="txt-nacionalidad" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="txt-lengua-materna"> Lengua materna<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="txt-lengua-materna" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="file-imagen-perfil"> Imagen <span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="file" id="file-imagen-perfil" class="form-control col-md-7 col-xs-12" accept="image/*">
+                        </div>
+                      </div>
+                      <div id="mensaje"></div>
+                      <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                          <button id="btn-registrar-libro" class="btn btn-success"> Registrar </button>
                         </div>
                       </div>
                     </div>
@@ -147,7 +202,7 @@
                 </div>
               </div>
             </div>
-          <!--/recepción-->
+          <!--/préstamo-->
         </div>
         <!-- /page content -->
 
@@ -172,8 +227,12 @@
     <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
     <!-- iCheck -->
     <script src="../vendors/iCheck/icheck.min.js"></script>
+    <!-- Select2 -->
+    <script src="../vendors/select2/dist/js/select2.full.min.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="../js/custom.min.js"></script>
+
+    <script src="../js/registro_autor.js"></script>
 
     <!-- JS -->
     <script>

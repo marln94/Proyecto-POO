@@ -1,8 +1,11 @@
 $(document).ready(function(){
-	$("#btn-ingresar-libro").click(function(){
+	$("#btn-registrar-libro").click(function(){
 		if(verificar()){
-			/*falta validar para libro fisico*/
-			var parametros = "txt-titulo="+$("#txt-titulo").val()+"&"+"slc-autores="+$("#slc-autores").val()+"&"+"slc-editoriales="+$("#slc-editoriales").val()+"&"+"txt-año="+$("#txt-año").val()+"&"+"slc-categorias="+$("#slc-categorias").val()+"&"+"txt-codigo-libro="+$("#txt-codigo-libro").val()+"&"+"txt-ejemplares="+$("#txt-ejemplares").val()+"&"+"txt-descripcion-fisica="+$("#txt-descripcion-fisica").val()+"&"+"txt-coleccion="+$("#txt-coleccion").val()+"&"+"txt-isbn="+$("#txt-isbn").val()+"&"+"slc-sucursal="+$("#slc-sucursal").val()+"rd";
+			if($("#radios input[name=rd-tipo-libro]:checked").val() == 'fisico'){
+				var parametros = "txt-titulo="+$("#txt-titulo").val()+"&"+"slc-autores="+$("#slc-autores").val()+"&"+"slc-editoriales="+$("#slc-editoriales").val()+"&"+"txt-año="+$("#txt-año").val()+"&"+"slc-categorias="+$("#slc-categorias").val()+"&"+"txt-ejemplares="+$("#txt-ejemplares").val()+"&"+"txt-descripcion-fisica="+$("#txt-descripcion-fisica").val()+"&"+"txt-coleccion="+$("#txt-coleccion").val()+"&"+"txt-isbn="+$("#txt-isbn").val()+"&"+"slc-sucursal="+$("#slc-sucursal").val()+"&rd-tipo-libro=fisico";
+			} else{
+				var parametros = "txt-titulo="+$("#txt-titulo").val()+"&"+"slc-autores="+$("#slc-autores").val()+"&"+"slc-editoriales="+$("#slc-editoriales").val()+"&"+"txt-año="+$("#txt-año").val()+"&"+"slc-categorias="+$("#slc-categorias").val()+"&"+"txt-ejemplares="+""+"&"+"txt-descripcion-fisica="+""+"&"+"txt-coleccion="+$("#txt-coleccion").val()+"&"+"txt-isbn="+$("#txt-isbn").val()+"&"+"slc-sucursal="+""+"&rd-tipo-libro=digital";
+			}
 			$.ajax({
 				type: "POST",
 				url: "../php/registro.php?opcion=libro",
@@ -48,14 +51,10 @@ $(document).ready(function(){
 			marcar($("#txt-año").closest(".item"),"Introduzca un año");
 			validacion = validacion && false;
 		} else{desmarcar($("#txt-año"))}
-		if( $("#slc-categorias").val() == null ){
+		if( $("#slc-categorias").val() == "" ){
 			marcar($("#slc-categorias").closest(".item"),"Seleccione una categoría");
 			validacion = validacion && false;
 		} else{desmarcar($("#slc-categorias"))}
-		if( $("#txt-codigo-libro").val() == "" ){
-			marcar($("#txt-codigo-libro").closest(".item"),"Introduzca el codigo del libro");
-			validacion = validacion && false;
-		} else{desmarcar($("#txt-codigo-libro"))}
 		if( $("#txt-ejemplares").val() == "" && tipoLibro){
 			marcar($("#txt-ejemplares").closest(".item"),"Introduzca una cantidad");
 			validacion = validacion && false;
@@ -68,10 +67,10 @@ $(document).ready(function(){
 			marcar($("#txt-coleccion").closest(".item"),"Introduzca una colección");
 			validacion = validacion && false;
 		} else{desmarcar($("#txt-coleccion"))}
-		if( $("#txt-isbn").val() == "" ){
+		/*if( $("#txt-isbn").val() == "" ){
 			marcar($("#txt-isbn").closest(".item"),"Introduzca el código ISBN");
 			validacion = validacion && false;
-		} else{desmarcar($("#txt-isbn"))}
+		} else{desmarcar($("#txt-isbn"))}*/
 		if( $("#slc-sucursal").val() == null && tipoLibro){
 			marcar($("#slc-sucursal").closest(".item"),"Seleccione una sucursal");
 			validacion = validacion && false;

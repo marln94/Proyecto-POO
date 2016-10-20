@@ -66,9 +66,15 @@
               </div>
               <div class="menu_section">
                 <ul class="nav side-menu">
-                  <li><a href="ingreso_libro.php"><i class="fa fa-plus-circle"></i> Ingresar libro </span></a>
-                  </li>
-                  <li><a href="retiro_libro.php"><i class="fa fa-minus-circle"></i> Retirar libro </span></a>
+                  <li><a><i class="fa fa-circle"></i> Administrar libros </a>
+                    <ul class="nav child_menu">
+                      <li><a href="listado_libro.php"><i class="fa fa-table"></i> Listado </span></a>
+                      </li>
+                      <li><a href="registro_libro.php"><i class="fa fa-plus-circle"></i> Registrar libro </span></a>
+                      </li>
+                      <li><a href="retiro_libro.php"><i class="fa fa-minus-circle"></i> Retirar libro </span></a>
+                      </li>
+                    </ul>
                   </li>
                 </ul>
               </div>
@@ -110,7 +116,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h3><span class="fa fa-plus-circle"></span> Ingresar libro al sistema</h3>
+                    <h3><span class="fa fa-plus-circle"></span> Registrar libro en el sistema</h3>
                     <div class="clearfix"></div>
                   </div>
                   <div class="form-horizontal form-label-left">
@@ -173,21 +179,15 @@
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12"> Categoría <span class="required">*</span></label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <select class="select2_multiple form-control" multiple="multiple" id="slc-categorias">
-                            <option> Categoría 1 </option>
-                            <option> Categoría 2 </option>
-                            <option> Categoría 3 </option>
-                            <option> Categoría 4 </option>
-                            <option> Categoría 5 </option>
-                            <option> Categoría 6 </option>
+                          <select class="select2_single form-control" tabindex="-1" id="slc-categorias">
+                            <option></option>
+                            <option value="Categoría 1"> Categoría 1 </option>
+                            <option value="Categoría 2"> Categoría 2 </option>
+                            <option value="Categoría 3"> Categoría 3 </option>
+                            <option value="Categoría 4"> Categoría 4 </option>
+                            <option value="Categoría 5"> Categoría 5 </option>
+                            <option value="Categoría 6"> Categoría 6 </option>
                           </select>
-                        </div>
-                      </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="txt-codigo-libro"> Código del libro <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="txt-codigo-libro" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
                       <div class="item form-group">
@@ -212,7 +212,7 @@
                         </div>
                       </div>
                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="txt-isbn"> ISBN <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="txt-isbn"> ISBN
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input type="text" id="txt-isbn" class="form-control col-md-7 col-xs-12">
@@ -240,7 +240,7 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <button id="btn-ingresar-libro" class="btn btn-success">Crear</button>
+                          <button id="btn-registrar-libro" class="btn btn-success"> Registrar </button>
                         </div>
                       </div>
                     </div>
@@ -278,7 +278,7 @@
     <!-- Custom Theme Scripts -->
     <script src="../js/custom.min.js"></script>
 
-    <script src="../js/ingreso_libro.js"></script>
+    <script src="../js/registro_libro.js"></script>
 
     <!-- JS -->
     <script>
