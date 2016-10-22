@@ -13,8 +13,6 @@
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- Select2 -->
-    <link href="../vendors/select2/dist/css/select2.min.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
     <link href="../css/custom.css" rel="stylesheet">
@@ -139,72 +137,35 @@
               <button class="button_1 btn btn-default" type="button">Buscar</button>
             </span>
           </div>
-          <!--formulario registro autor-->
+          <!--listado-->
           <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h3><span class="fa fa-plus-circle"></span> Registrar autor en el sistema</h3>
+                    <h3><span class="fa fa-table"></span> Listado de Colecciones</h3>
                     <div class="clearfix"></div>
                   </div>
-                  <div class="form-horizontal form-label-left">
-                      <span class="section">Información del autor</span>
-
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="txt-nombre-autor"> Nombre y apellido<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="txt-nombre-autor" class="form-control col-md-7 col-xs-12" >
-                        </div>
-                      </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="txt-nacimiento"> Nacimiento<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="date" id="txt-nacimiento" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="txt-fallecimiento"> Fallecimiento
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="date" id="txt-fallecimiento" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="txt-nacionalidad"> Nacionalidad <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="txt-nacionalidad" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="txt-lengua-materna"> Lengua materna<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="txt-lengua-materna" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="file-imagen-perfil"> Imagen <span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="file" id="file-imagen-perfil" class="form-control col-md-7 col-xs-12" accept="image/*">
-                        </div>
-                      </div>
-                      <div id="mensaje"></div>
-                      <div class="ln_solid"></div>
-                      <div class="form-group">
-                        <div class="col-md-6 col-md-offset-3">
-                          <button id="btn-registrar-libro" class="btn btn-success"> Registrar </button>
-                        </div>
-                      </div>
+                  <div class="x_content">
+                    <div class="row top_tiles">
+                      <table class="table table-bordered">
+                        <thead> <th>Código</th>
+                                <th>Nombre</th>
+                                <th>Cantidad de libros</th>
+                        </thead>
+                        <tbody id="tbl-listado-colecciones">
+                          <tr>
+                            <td>1</td>
+                            <td>Colección1</td>
+                            <td>5</td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          <!--/formulario registro autor-->
+          <!--/listado-->
         </div>
         <!-- /page content -->
 
@@ -225,16 +186,13 @@
     <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
     <script src="../vendors/fastclick/lib/fastclick.js"></script>
-    <!-- Select2 -->
-    <script src="../vendors/select2/dist/js/select2.full.min.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="../js/custom.min.js"></script>
-
-    <script src="../js/registro_autor.js"></script>
 
     <!-- JS -->
     <script>
       $(document).ready(function() {
+        //$('#contenedor-categorias').html('<p style="text-align: center;"><img src="../images/loading.gif"> </p>');
         $.ajax({
           type: 'POST',
           url: '../php/carga.php?opcion=usuario',
@@ -243,6 +201,13 @@
             document.title = 'Bibliotec - '+arr[1];
             $('#imagen-usuario').attr('src',arr[0])
             $('#nombre-usuario').html(arr[1]);
+          }
+        });
+        $.ajax({
+          type: 'POST',
+          url: '../php/carga.php?opcion=tabla-categorias',
+          success: function(){
+
           }
         });
       });

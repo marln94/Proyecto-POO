@@ -139,64 +139,30 @@
               <button class="button_1 btn btn-default" type="button">Buscar</button>
             </span>
           </div>
-          <!--formulario registro autor-->
+          <!--formulario registro coleccion-->
           <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h3><span class="fa fa-plus-circle"></span> Registrar autor en el sistema</h3>
+                    <h3><span class="fa fa-plus-circle"></span> Registrar colección en el sistema</h3>
                     <div class="clearfix"></div>
                   </div>
                   <div class="form-horizontal form-label-left">
-                      <span class="section">Información del autor</span>
+                      <span class="section">Información de la colección</span>
 
                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="txt-nombre-autor"> Nombre y apellido<span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="txt-nombre-coleccion"> Nombre<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="txt-nombre-autor" class="form-control col-md-7 col-xs-12" >
+                          <input type="text" id="txt-nombre-coleccion" class="form-control col-md-7 col-xs-12" >
                         </div>
                       </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="txt-nacimiento"> Nacimiento<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="date" id="txt-nacimiento" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="txt-fallecimiento"> Fallecimiento
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="date" id="txt-fallecimiento" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="txt-nacionalidad"> Nacionalidad <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="txt-nacionalidad" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="txt-lengua-materna"> Lengua materna<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="txt-lengua-materna" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="file-imagen-perfil"> Imagen <span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="file" id="file-imagen-perfil" class="form-control col-md-7 col-xs-12" accept="image/*">
-                        </div>
                       </div>
                       <div id="mensaje"></div>
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <button id="btn-registrar-libro" class="btn btn-success"> Registrar </button>
+                          <button id="btn-registrar-coleccion" class="btn btn-success"> Registrar </button>
                         </div>
                       </div>
                     </div>
@@ -204,7 +170,7 @@
                 </div>
               </div>
             </div>
-          <!--/formulario registro autor-->
+          <!--/formulario registro coleccion-->
         </div>
         <!-- /page content -->
 
@@ -230,7 +196,7 @@
     <!-- Custom Theme Scripts -->
     <script src="../js/custom.min.js"></script>
 
-    <script src="../js/registro_autor.js"></script>
+    <script src="../js/registro_coleccion.js"></script>
 
     <!-- JS -->
     <script>

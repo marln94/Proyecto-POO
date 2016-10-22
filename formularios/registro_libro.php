@@ -13,14 +13,8 @@
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
-    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-    <!-- bootstrap-progressbar -->
-    <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
-    <!-- JQVMap -->
-    <link href="../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <link href="../vendors/iCheck/skins/square/square.css" rel="stylesheet">
     <!-- Select2 -->
     <link href="../vendors/select2/dist/css/select2.min.css" rel="stylesheet">
 
@@ -76,13 +70,49 @@
                       </li>
                     </ul>
                   </li>
+                  <li><a><i class="fa fa-circle"></i> Administrar autores </a>
+                    <ul class="nav child_menu">
+                      <li><a href="listado_autor.php"><i class="fa fa-table"></i> Listado </span></a>
+                      </li>
+                      <li><a href="registro_autor.php"><i class="fa fa-plus-circle"></i> Registrar autor </span></a>
+                      </li>
+                      <li><a href="retiro_autor.php"><i class="fa fa-minus-circle"></i> Retirar autor </span></a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-circle"></i> Administrar editoriales </a>
+                    <ul class="nav child_menu">
+                      <li><a href="listado_editorial.php"><i class="fa fa-table"></i> Listado </span></a>
+                      </li>
+                      <li><a href="registro_editorial.php"><i class="fa fa-plus-circle"></i> Registrar editorial </span></a>
+                      </li>
+                      <li><a href="retiro_editorial.php"><i class="fa fa-minus-circle"></i> Retirar editorial </span></a>
+                      </li>
+                    </ul>
+                  </li>
                 </ul>
               </div>
               <div class="menu_section">
                 <ul class="nav side-menu">
-                  <li><a href="administracion_editoriales.php"><i class="fa fa-circle"></i> Administrar editoriales </a>
+                  <li><a><i class="fa fa-circle"></i> Administrar categorías </a>
+                    <ul class="nav child_menu">
+                      <li><a href="listado_categoria.php"><i class="fa fa-table"></i> Listado </span></a>
+                      </li>
+                      <li><a href="registro_categoria.php"><i class="fa fa-plus-circle"></i> Registrar categoria </span></a>
+                      </li>
+                      <li><a href="retiro_categoria.php"><i class="fa fa-minus-circle"></i> Retirar categoria </span></a>
+                      </li>
+                    </ul>
                   </li>
-                  <li><a href="administracion_categorias.php"><i class="fa fa-circle"></i> Administrar categorías </a>
+                  <li><a><i class="fa fa-circle"></i> Administrar colecciones </a>
+                    <ul class="nav child_menu">
+                      <li><a href="listado_coleccion.php"><i class="fa fa-table"></i> Listado </span></a>
+                      </li>
+                      <li><a href="registro_coleccion.php"><i class="fa fa-plus-circle"></i> Registrar colección </span></a>
+                      </li>
+                      <li><a href="retiro_coleccion.php"><i class="fa fa-minus-circle"></i> Retirar colección </span></a>
+                      </li>
+                    </ul>
                   </li>
                 </ul>
               </div>
@@ -111,7 +141,7 @@
               <button class="button_1 btn btn-default" type="button">Buscar</button>
             </span>
           </div>
-          <!--préstamo-->
+          <!--formulario registro libro-->
           <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
@@ -248,7 +278,7 @@
                 </div>
               </div>
             </div>
-          <!--/préstamo-->
+          <!--/formulario registro libro-->
         </div>
         <!-- /page content -->
 
@@ -269,8 +299,6 @@
     <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
     <script src="../vendors/fastclick/lib/fastclick.js"></script>
-    <!-- bootstrap-progressbar -->
-    <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
     <!-- iCheck -->
     <script src="../vendors/iCheck/icheck.min.js"></script>
     <!-- Select2 -->

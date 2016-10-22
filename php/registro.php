@@ -1,5 +1,5 @@
 <?php  
-	/*validar aquí también los campos del formulario*/
+
 	switch ($_GET['opcion']) {
 		case 'cuenta':
 			if($_POST["txt-nombre"] == ""){
@@ -48,17 +48,6 @@
 				if($_POST["slc-sucursal"] == ""){
 					echo "error";
 					break;}
-				/*echo $_POST["rd-tipo-libro"].
-					$_POST["txt-titulo"].
-					$_POST["slc-autores"].
-					$_POST["slc-editoriales"].
-					$_POST["txt-año"].
-					$_POST["slc-categorias"].
-					$_POST["txt-ejemplares"].
-					$_POST["txt-descripcion-fisica"].
-					$_POST["txt-coleccion"].
-					$_POST["txt-isbn"].
-					$_POST["slc-sucursal"];*/
 			}
 
 			if ($_POST["rd-tipo-libro"] == "digital") {
@@ -83,23 +72,59 @@
 				if($_POST["txt-isbn"] == ""){
 					echo "error";
 					break;}
-				/*echo $_POST["rd-tipo-libro"].
-					$_POST["txt-titulo"].
-					$_POST["slc-autores"].
-					$_POST["slc-editoriales"].
-					$_POST["txt-año"].
-					$_POST["slc-categorias"].
-					$_POST["txt-coleccion"].
-					$_POST["txt-isbn"];*/
 			}
 			break;
 
 		case 'autor':
-			echo $_POST["txt-nombre-autor"].
-			$_POST["txt-nacimiento"].
-			$_POST["txt-fallecimiento"].
-			$_POST["txt-nacionalidad"].
-			$_POST["txt-lengua-materna"];
+			if($_POST["txt-nombre-autor"] == ""){
+				echo "error";
+				break;}
+			if($_POST["txt-nacimiento"] == ""){
+				echo "error";
+				break;}
+			if($_POST["txt-fallecimiento"] == ""){
+				echo "error";
+				break;}
+			if($_POST["txt-nacionalidad"] == ""){
+				echo "error";
+				break;}
+			if($_POST["txt-lengua-materna"] == ""){
+				echo "error";
+				break;}
+			break;
+
+		case 'editorial':
+			if($_POST["txt-nombre-editorial"] == ""){
+				echo "error";
+				break;}
+			if($_POST["txt-nombre-abreviado-editorial"] == ""){
+				echo "error";
+				break;}
+			if($_POST["txt-direccion-editorial"] == ""){
+				echo "error";
+				break;}
+			if($_POST["txt-telefono-editorial"] == ""){
+				echo "error";
+				break;}
+			if($_POST["txt-correo-electronico-editorial"] == ""){
+				echo "error";
+				break;}
+			break;
+
+		case 'categoria':
+			if($_POST["txt-nombre-categoria"] == ""){
+				echo "error";
+				break;
+			}
+			echo $_POST["txt-nombre-categoria"];
+			break;
+
+		case 'coleccion':
+			if($_POST["txt-nombre-coleccion"] == ""){
+				echo "error";
+				break;
+			}
+			echo $_POST["txt-nombre-coleccion"];
 			break;
 
 		default:

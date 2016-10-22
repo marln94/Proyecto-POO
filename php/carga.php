@@ -31,6 +31,17 @@
 
 			break;
 
+
+		case 'tabla-editoriales':
+			
+
+			break;
+
+
+		case 'tabla-categorias':
+
+
+			break;
 			
 		default:
 			# code...

@@ -4217,3 +4217,10 @@ ul.notifications {
 .tile-stats h3 > a:hover{
   color: #747373;
 }
+.checkbox label, .radio label {
+    min-height: 20px;
+    padding-left: 0px;
+    margin-bottom: 0;
+    font-weight: 400;
+    cursor: pointer;
+}

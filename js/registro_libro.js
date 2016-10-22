@@ -1,4 +1,12 @@
 $(document).ready(function(){
+	$("#rd-tipo-libro-digital").iCheck({
+		checkboxClass: 'icheckbox_square',
+		radioClass: 'iradio_square',
+	});
+	$("#rd-tipo-libro-fisico").iCheck({
+		checkboxClass: 'icheckbox_square',
+		radioClass: 'iradio_square',
+	});
 	$("#btn-registrar-libro").click(function(){
 		if(verificar()){
 			if($("#radios input[name=rd-tipo-libro]:checked").val() == 'fisico'){
@@ -90,19 +98,20 @@ $(document).ready(function(){
 		elemento.closest('.item').removeClass('bad').find('.alert').remove();
 	}
 
-	$("#rd-tipo-libro-digital").click(function(){
-      $("#txt-ejemplares").attr('disabled','disabled');
-      $("#txt-descripcion-fisica").attr('disabled','disabled');
-      $("#slc-sucursal").attr('disabled','disabled');
 
-      $("#txt-ejemplares").val("");
-      $("#txt-descripcion-fisica").val("");
-      $("#slc-sucursal").val('').change();
+    $("#rd-tipo-libro-digital").on('ifChecked', function(){  				/*evento de iCheck*/
+    	$("#txt-ejemplares").attr('disabled','disabled');
+		$("#txt-descripcion-fisica").attr('disabled','disabled');
+		$("#slc-sucursal").attr('disabled','disabled');
+
+		$("#txt-ejemplares").val("");
+		$("#txt-descripcion-fisica").val("");
+		$("#slc-sucursal").val('').change();
     });
-    $("#rd-tipo-libro-fisico").click(function(){
-      $("#txt-ejemplares").removeAttr('disabled');
-      $("#txt-descripcion-fisica").removeAttr('disabled');
-      $("#slc-sucursal").removeAttr('disabled');
+    $("#rd-tipo-libro-fisico").on('ifChecked',function(){
+    	$("#txt-ejemplares").removeAttr('disabled');
+		$("#txt-descripcion-fisica").removeAttr('disabled');
+		$("#slc-sucursal").removeAttr('disabled');
     });
 
     /**select2**/

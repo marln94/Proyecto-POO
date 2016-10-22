@@ -1,6 +1,5 @@
 $(document).ready(function(){
 	$("#btn-registrar-libro").click(function(){
-		console.log($("#txt-nacimiento").val());
 		if(verificar()){
 			var parametros = "txt-nombre-autor="+$("#txt-nombre-autor").val()+"&"+"txt-nacimiento="+$("#txt-nacimiento").val()+"&"+"txt-fallecimiento="+$("#txt-fallecimiento").val()+"&"+"txt-nacionalidad="+$("#txt-nacionalidad").val()+"&"+"txt-lengua-materna="+$("#txt-lengua-materna").val();
 			$.ajax({
