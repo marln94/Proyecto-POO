@@ -194,11 +194,11 @@
         });
         $.ajax({
           type: 'POST',
-          url: '../php/carga.php?opcion=categorias',
+          url: '../php/carga.php?opcion=categorias-usuarios',
           success: function(respuesta){
             $('#contenedor-categorias').html(respuesta);
             $("#categoria1").click(function(event){
-              event.preventDefault();
+              
             });
           }
         });
