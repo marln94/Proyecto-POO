@@ -25,24 +25,47 @@
         <div class="col-sm-3 col-md-3 left_col menu_fixed">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="../index.php" class="site_title color-vino letra-logo"><i class="fa fa-book"></i> <span>Bibliotec </span></a>
+              <a href="administrador.php" class="site_title color-vino letra-logo"><i class="fa fa-book"></i> <span>Bibliotec </span></a>
             </div>
 
             <div class="clearfix"></div>
 
-            <!-- sidebar menu -->
-            <div class="container-fluid responsive">
-            <br><br>
-              <div style="color: #ECE3E2">
-                <h5>Para acceder a más características del sistema</h5>
+            <!-- menu profile quick info -->
+            <div class="container-fluid">
+              <div class="">
+                <div class="profile_pic">
+                  <img  alt="..." class="img-thumbnail profile_img" id="imagen-usuario">
+                </div>
+                <div class="profile_info">
+                  <span>Bienvenido,</span>
+                  <h2 id="nombre-usuario"></h2>
+                </div>
               </div>
             </div>
+            <!-- /menu profile quick info -->
+
+            <br><br>
+            <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
+                <h3> Bibliotecarios</h3>
                 <ul class="nav side-menu">
-                  <li><a style="font-size: 26px;" href="login.php"> Inicie sesión </a>
+                  <li><a href="listado_bibliotecarios.php"><i class="fa fa-table"></i> Ver bibliotecarios</a>
                   </li>
-                  <li><a style="font-size: 20px;" href="crear_cuenta.php"> Crear cuenta </a>
+                  <li><a href="crear_cuenta_bibliotecario.php"><i class="fa fa-plus-circle"></i> Crear cuenta</a>
+                  </li>
+                  <li><a href="eliminar_cuenta_bibliotecario.php"><i class="fa fa-minus-circle"></i> Eliminar cuenta</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="menu_section">
+                <h3> Usuarios</h3>
+                <ul class="nav side-menu">
+                  <li><a href="listado_usuarios.php"><i class="fa fa-table"></i> Ver usuarios</a>
+                  </li>
+                  <li><a href="a_crear_cuenta.php"><i class="fa fa-plus-circle"></i> Crear cuenta</a>
+                  </li>
+                  <li><a href="eliminar_cuenta_usuario.php"><i class="fa fa-minus-circle"></i> Eliminar cuenta</a>
                   </li>
                 </ul>
               </div>
@@ -140,7 +163,17 @@
     <!-- JS -->
     <script>
       $(document).ready(function() {
+        $.ajax({
+          type: 'POST',
+          url: '../php/carga.php?opcion=administrador',
+          success: function(respuesta){
+            var arr = respuesta.split(',');
+            document.title = 'Bibliotec - '+arr[1];
+            $('#imagen-usuario').attr('src',arr[0])
+            $('#nombre-usuario').html(arr[1]);
 
+          }
+        });
       });
     </script>
     <!-- /JS -->

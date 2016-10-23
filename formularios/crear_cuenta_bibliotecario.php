@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Bibliotec - Crear cuenta</title>
+    <title>Bibliotec</title>
 
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -24,30 +24,60 @@
       <div class="main_container">
         <div class="col-sm-3 col-md-3 left_col menu_fixed">
           <div class="left_col scroll-view">
-            <div class="navbar nav_title" style="border: 0;">
-              <a href="../index.php" class="site_title color-vino letra-logo"><i class="fa fa-book"></i> <span>Bibliotec </span></a>
+            <div class="navbar nav_title color-vino" style="border: 0;">
+              <a href="administrador.php" class="site_title color-vino letra-logo"><i class="fa fa-book"></i> <span>Bibliotec </span></a>
             </div>
 
             <div class="clearfix"></div>
 
-            <!-- sidebar menu -->
-            <div class="container-fluid responsive">
-            <br><br>
-              <div style="color: #ECE3E2">
-                <h5>Para acceder a más características del sistema</h5>
+            <!-- menu profile quick info -->
+            <div class="container-fluid">
+              <div class="">
+                <div class="profile_pic">
+                  <img  alt="..." class="img-thumbnail profile_img" id="imagen-usuario">
+                </div>
+                <div class="profile_info">
+                  <span>Bienvenido,</span>
+                  <h2 id="nombre-usuario"></h2>
+                </div>
               </div>
             </div>
+            <!-- /menu profile quick info -->
+            <br>
+            <br>
+            <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
+                <h3> Bibliotecarios</h3>
                 <ul class="nav side-menu">
-                  <li><a style="font-size: 26px;" href="login.php"> Inicie sesión </a>
+                  <li><a href="listado_bibliotecarios.php"><i class="fa fa-table"></i> Ver bibliotecarios</a>
                   </li>
-                  <li><a style="font-size: 20px;" href="crear_cuenta.php"> Crear cuenta </a>
+                  <li><a href="crear_cuenta_bibliotecario.php"><i class="fa fa-plus-circle"></i> Crear cuenta</a>
+                  </li>
+                  <li><a href="eliminar_cuenta_bibliotecario.php"><i class="fa fa-minus-circle"></i> Eliminar cuenta</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="menu_section">
+                <h3> Usuarios</h3>
+                <ul class="nav side-menu">
+                  <li><a href="listado_usuarios.php"><i class="fa fa-table"></i> Ver usuarios</a>
+                  </li>
+                  <li><a href="a_crear_cuenta.php"><i class="fa fa-plus-circle"></i> Crear cuenta</a>
+                  </li>
+                  <li><a href="eliminar_cuenta_usuario.php"><i class="fa fa-minus-circle"></i> Eliminar cuenta</a>
                   </li>
                 </ul>
               </div>
             </div>
             <!-- /sidebar menu -->
+            <!-- footer menu -->
+            <div class="sidebar-footer hidden-small">
+              <a data-toggle="tooltip" data-placement="top" title="Cerrar sesión">
+                <span class="glyphicon glyphicon-log-out" aria-hidden="true" style="color: #190705"></span>
+              </a>
+            </div>
+            <!-- /footer menu -->
           </div>
         </div>
 
@@ -94,7 +124,21 @@
                         </div>
                       </div>
                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12"> Imagen de perfil <span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="txt-domicilio"> Domicilio <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="txt-domicilio" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="txt-telefono"> Teléfono <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="txt-telefono" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" > Imagen de perfil <span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input type="file" id="file-imagen-perfil" class="form-control col-md-7 col-xs-12" accept="image/*">
@@ -135,12 +179,35 @@
     <!-- Custom Theme Scripts -->
     <script src="../js/custom.min.js"></script>
 
-    <script src="../js/crear_cuenta.js"></script>
+    <script src="../js/crear_cuenta_bibliotecario.js"></script>
 
     <!-- JS -->
     <script>
       $(document).ready(function() {
+        $('#contenedor-categorias').html('<p style="text-align: center;"><img src="../images/loading.gif"> </p>');
+        $.ajax({
+          type: 'POST',
+          url: '../php/carga.php?opcion=administrador',
+          success: function(respuesta){
+            var arr = respuesta.split(',');
+            document.title = 'Bibliotec - '+arr[1];
+            $('#imagen-usuario').attr('src',arr[0])
+            $('#nombre-usuario').html(arr[1]);
 
+          }
+        });
+        $.ajax({
+          type: 'POST',
+          url: '../php/carga.php?opcion=categorias-usuarios',
+          success: function(respuesta){
+            $('#contenedor-categorias').html(respuesta);
+            $("#categoria1").click(function(event){
+              
+            });
+          }
+        });
+
+        
       });
     </script>
     <!-- /JS -->

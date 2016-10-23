@@ -188,7 +188,7 @@
       $(document).ready(function() {
         $.ajax({
           type: 'POST',
-          url: '../php/carga.php?opcion=usuario',
+          url: '../php/carga.php?opcion=bibliotecario',
           success: function(respuesta){
             var arr = respuesta.split(',');
             document.title = 'Bibliotec - '+arr[1];

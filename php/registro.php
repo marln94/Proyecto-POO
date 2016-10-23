@@ -15,6 +15,27 @@
 				echo "error";
 				break;}
 			break;
+
+		case 'cuenta-bibliotecario':
+			if($_POST["txt-nombre"] == ""){
+				echo "error";
+				break;}
+			if($_POST["txt-email"] == ""){
+				echo "error";
+				break;}
+			if($_POST["txt-nombre-usuario"] == ""){
+				echo "error";
+				break;}
+			if($_POST["txt-contraseña"] == ""){
+				echo "error";
+				break;}
+			if($_POST["txt-domicilio"] == ""){
+				echo "error";
+				break;}
+			if($_POST["txt-telefono"] == ""){
+				echo "error";
+				break;}
+			break;
 		
 		case 'libro':
 			if ($_POST["rd-tipo-libro"] == "fisico") {

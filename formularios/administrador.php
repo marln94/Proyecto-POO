@@ -25,7 +25,7 @@
         <div class="col-sm-3 col-md-3 left_col menu_fixed">
           <div class="left_col scroll-view">
             <div class="navbar nav_title color-vino" style="border: 0;">
-              <a href="bibliotecario.php" class="site_title color-vino letra-logo"><i class="fa fa-book"></i> <span>Bibliotec </span></a>
+              <a href="administrador.php" class="site_title color-vino letra-logo"><i class="fa fa-book"></i> <span>Bibliotec </span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -44,71 +44,28 @@
             </div>
             <!-- /menu profile quick info -->
             <br>
+            <br>
             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
+                <h3> Bibliotecarios</h3>
                 <ul class="nav side-menu">
-                  <li><a href="prestamo_libro.php"><i class="fa fa-arrow-circle-right"></i> Préstamo libro </span></a>
+                  <li><a href="listado_bibliotecarios.php"><i class="fa fa-table"></i> Ver bibliotecarios</a>
                   </li>
-                  <li><a href="recepcion_libro.php"><i class="fa fa-arrow-circle-down"></i> Recepción libro </span></a>
+                  <li><a href="crear_cuenta_bibliotecario.php"><i class="fa fa-plus-circle"></i> Crear cuenta</a>
+                  </li>
+                  <li><a href="eliminar_cuenta_bibliotecario.php"><i class="fa fa-minus-circle"></i> Eliminar cuenta</a>
                   </li>
                 </ul>
               </div>
               <div class="menu_section">
+                <h3> Usuarios</h3>
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-circle"></i> Administrar libros </a>
-                    <ul class="nav child_menu">
-                      <li><a href="listado_libro.php"><i class="fa fa-table"></i> Listado </span></a>
-                      </li>
-                      <li><a href="registro_libro.php"><i class="fa fa-plus-circle"></i> Registrar libro </span></a>
-                      </li>
-                      <li><a href="retiro_libro.php"><i class="fa fa-minus-circle"></i> Retirar libro </span></a>
-                      </li>
-                    </ul>
+                  <li><a href="listado_usuarios.php"><i class="fa fa-table"></i> Ver usuarios</a>
                   </li>
-                  <li><a><i class="fa fa-circle"></i> Administrar autores </a>
-                    <ul class="nav child_menu">
-                      <li><a href="listado_autor.php"><i class="fa fa-table"></i> Listado </span></a>
-                      </li>
-                      <li><a href="registro_autor.php"><i class="fa fa-plus-circle"></i> Registrar autor </span></a>
-                      </li>
-                      <li><a href="retiro_autor.php"><i class="fa fa-minus-circle"></i> Retirar autor </span></a>
-                      </li>
-                    </ul>
+                  <li><a href="a_crear_cuenta.php"><i class="fa fa-plus-circle"></i> Crear cuenta</a>
                   </li>
-                  <li><a><i class="fa fa-circle"></i> Administrar editoriales </a>
-                    <ul class="nav child_menu">
-                      <li><a href="listado_editorial.php"><i class="fa fa-table"></i> Listado </span></a>
-                      </li>
-                      <li><a href="registro_editorial.php"><i class="fa fa-plus-circle"></i> Registrar editorial </span></a>
-                      </li>
-                      <li><a href="retiro_editorial.php"><i class="fa fa-minus-circle"></i> Retirar editorial </span></a>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
-              <div class="menu_section">
-                <ul class="nav side-menu">
-                  <li><a><i class="fa fa-circle"></i> Administrar categorías </a>
-                    <ul class="nav child_menu">
-                      <li><a href="listado_categoria.php"><i class="fa fa-table"></i> Listado </span></a>
-                      </li>
-                      <li><a href="registro_categoria.php"><i class="fa fa-plus-circle"></i> Registrar categoria </span></a>
-                      </li>
-                      <li><a href="retiro_categoria.php"><i class="fa fa-minus-circle"></i> Retirar categoria </span></a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-circle"></i> Administrar colecciones </a>
-                    <ul class="nav child_menu">
-                      <li><a href="listado_coleccion.php"><i class="fa fa-table"></i> Listado </span></a>
-                      </li>
-                      <li><a href="registro_coleccion.php"><i class="fa fa-plus-circle"></i> Registrar colección </span></a>
-                      </li>
-                      <li><a href="retiro_coleccion.php"><i class="fa fa-minus-circle"></i> Retirar colección </span></a>
-                      </li>
-                    </ul>
+                  <li><a href="eliminar_cuenta_usuario.php"><i class="fa fa-minus-circle"></i> Eliminar cuenta</a>
                   </li>
                 </ul>
               </div>
@@ -137,35 +94,23 @@
               <button class="button_1 btn btn-default" type="button">Buscar</button>
             </span>
           </div>
-          <!--listado-->
+          <!--categorías-->
           <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h3><span class="fa fa-table"></span> Listado de Colecciones</h3>
+                    <h3>Categorías</h3>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <div class="row top_tiles">
-                      <table class="table table-bordered">
-                        <thead> <th>Código</th>
-                                <th>Nombre</th>
-                                <th>Cantidad de libros</th>
-                        </thead>
-                        <tbody id="tbl-listado-colecciones">
-                          <tr>
-                            <td>1</td>
-                            <td>Colección1</td>
-                            <td>5</td>
-                          </tr>
-                        </tbody>
-                      </table>
+                    <div class="row top_tiles" id="contenedor-categorias">
+                      
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          <!--/listado-->
+          <!--/cateogrías-->
         </div>
         <!-- /page content -->
 
@@ -192,24 +137,30 @@
     <!-- JS -->
     <script>
       $(document).ready(function() {
-        //$('#contenedor-categorias').html('<p style="text-align: center;"><img src="../images/loading.gif"> </p>');
+        $('#contenedor-categorias').html('<p style="text-align: center;"><img src="../images/loading.gif"> </p>');
         $.ajax({
           type: 'POST',
-          url: '../php/carga.php?opcion=bibliotecario',
+          url: '../php/carga.php?opcion=administrador',
           success: function(respuesta){
             var arr = respuesta.split(',');
             document.title = 'Bibliotec - '+arr[1];
             $('#imagen-usuario').attr('src',arr[0])
             $('#nombre-usuario').html(arr[1]);
+
           }
         });
         $.ajax({
           type: 'POST',
-          url: '../php/carga.php?opcion=tabla-categorias',
-          success: function(){
-
+          url: '../php/carga.php?opcion=categorias-usuarios',
+          success: function(respuesta){
+            $('#contenedor-categorias').html(respuesta);
+            $("#categoria1").click(function(event){
+              
+            });
           }
         });
+
+        
       });
     </script>
     <!-- /JS -->
