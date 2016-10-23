@@ -4224,3 +4224,38 @@ ul.notifications {
     font-weight: 400;
     cursor: pointer;
 }
+.btn2{
+  font-size: 25px;
+}
+.count2 {
+  margin-left: 10px;
+  font-size: 21px;
+  line-height: 1.65857;
+  color: #190705; }
+.count2:hover {
+  color: #165C64;
+}
+.p_autor{
+  color:  #BAB8B8;
+  font-size: 18px;
+  margin-top: 0px;
+  margin-left: 20px;
+  border-right: 1px solid #e8e8e8;
+}
+.info-libro{
+  border-top: 1px solid #e8e8e8;
+  padding-top: 10px;
+  margin-top: 10px;
+}
+.img-portadas-libro {
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  z-index: 3;
+  background-color: #ffffff;
+  box-shadow: 3px 3px 5px grey;
+}
+.img-portada-libro-2{
+  width: 80%;
+  margin: 0 auto;
+}

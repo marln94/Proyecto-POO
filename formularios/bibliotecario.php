@@ -197,8 +197,13 @@
           url: '../php/carga.php?opcion=categorias',
           success: function(respuesta){
             $('#contenedor-categorias').html(respuesta);
+            $("#categoria1").click(function(event){
+              event.preventDefault();
+            });
           }
         });
+
+        
       });
     </script>
     <!-- /JS -->
