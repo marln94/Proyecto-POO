@@ -13,8 +13,6 @@
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- Select2 -->
-    <link href="../vendors/select2/dist/css/select2.min.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
     <link href="../css/custom.css" rel="stylesheet">
@@ -141,65 +139,34 @@
               <button class="button_1 btn btn-default" type="button">Buscar</button>
             </span>
           </div>
-          <!--formulario registro editorial-->
+          <!--categorías-->
           <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h3><span class="fa fa-plus-circle"></span> Registrar editorial en el sistema</h3>
+                    <h3>Categorías</h3>
                     <div class="clearfix"></div>
                   </div>
-                  <div class="form-horizontal form-label-left">
-                      <span class="section">Información de la editorial</span>
-
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="txt-nombre-editorial"> Nombre<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="txt-nombre-editorial" class="form-control col-md-7 col-xs-12" >
-                        </div>
-                      </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="txt-nombre-abreviado-editorial"> Nombre abreviado
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="txt-nombre-abreviado-editorial" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="txt-direccion-editorial"> Dirección <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="txt-direccion-editorial" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="txt-telefono-editorial"> Teléfono <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="txt-telefono-editorial" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="txt-correo-electronico-editorial"> Correo electrónico<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="txt-correo-electronico-editorial" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      <div id="mensaje"></div>
-                      <div class="ln_solid"></div>
-                      <div class="form-group">
-                        <div class="col-md-6 col-md-offset-3">
-                          <button id="btn-registrar-editorial" class="btn btn-success"> Registrar </button>
-                        </div>
-                      </div>
+                  <div class="x_content">
+                    <div class="row top_tiles">
+                      <table class="table table-striped">
+                        <thead>
+                          <th>Código préstamo</th>
+                          <th>Libro</th>
+                          <th>Usuario</th>
+                        </thead>
+                        <tr>
+                          <td>1</td>
+                          <td>Libro1,autor1,editorial1,año1</td>
+                          <td>Usuario1</td>
+                        </tr>
+                      </table>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          <!--/formulario registro editorial-->
+          <!--/cateogrías-->
         </div>
         <!-- /page content -->
 
@@ -220,12 +187,8 @@
     <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
     <script src="../vendors/fastclick/lib/fastclick.js"></script>
-    <!-- Select2 -->
-    <script src="../vendors/select2/dist/js/select2.full.min.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="../js/custom.min.js"></script>
-
-    <script src="../js/registro_editorial.js"></script>
 
     <!-- JS -->
     <script>
@@ -238,6 +201,7 @@
             document.title = 'Bibliotec - '+arr[1];
             $('#imagen-usuario').attr('src',arr[0])
             $('#nombre-usuario').html(arr[1]);
+
           }
         });
       });

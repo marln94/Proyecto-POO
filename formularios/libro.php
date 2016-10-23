@@ -86,52 +86,56 @@
                       <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
                         <table class="table table-striped">
                           <tr>
-                            <td>Tipo de libro</td>
+                            <th>Tipo de libro</th>
                             <td> TipoX </td>
                           </tr>
                           <tr>
-                            <td>Código</td>
+                            <th>Código</th>
                             <td> xxxxxx</td>
                           </tr>
                           <tr>
-                            <td>Título</td>
+                            <th>Título</th>
                             <td> Título x</td>
                           </tr>
                           <tr>
-                            <td>Autor</td>
+                            <th>Autor</th>
                             <td> Autor x</td>
                           </tr>
                           <tr>
-                            <td>Editorial</td>
+                            <th>Editorial</th>
                             <td> Editorial x</td>
                           </tr>
                           <tr>
-                            <td>Año publicación</td>
+                            <th>Año publicación</th>
                             <td> xxxx</td>
                           </tr>
                           <tr>
-                            <td>Categoría</td>
+                            <th>Categoría</th>
                             <td> Categoría x</td>
                           </tr>
                           <tr>
-                            <td>Ejemplares</td>
+                            <th>Ejemplares</th>
                             <td> xx</td>
                           </tr>
                           <tr>
-                            <td>Descripción física</td>
+                            <th>Descripción física</th>
                             <td> págs. xxaosduab</td>
                           </tr>
                           <tr>
-                            <td>Colección</td>
+                            <th>Colección</th>
                             <td> Colección x</td>
                           </tr>
                           <tr>
-                            <td>ISBN</td>
+                            <th>ISBN</th>
                             <td> xxxx</td>
                           </tr>
                           <tr>
-                            <td>Sucursal(es)</td>
+                            <th>Sucursal(es)</th>
                             <td> Sucursal x</td>
+                          </tr>
+                          <tr>
+                            <th>Disponibilidad</th>
+                            <td>Disponible</td>
                           </tr>
                         </table>
                       </div>

@@ -52,6 +52,8 @@
                   </li>
                   <li><a href="recepcion_libro.php"><i class="fa fa-arrow-circle-down"></i> Recepción libro </span></a>
                   </li>
+                  <li><a href="prestamos.php"><i class="fa fa-tasks"></i> Préstamos en curso </span></a>
+                  </li>
                 </ul>
               </div>
               <div class="menu_section">

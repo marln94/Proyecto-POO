@@ -85,7 +85,7 @@
         <div class="right_col" role="main">
           <div class="page-title">
             <div class="title_left">
-              <h3>Crear cuenta</h3>
+              <h3>Crear cuenta de bibliotecario</h3>
             </div>
           </div>
           <!--creación de cuenta-->
