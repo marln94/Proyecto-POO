@@ -3,7 +3,6 @@ Proyecto que se desarrolla en la clase de Programación Orientada a Objetos (UNA
 
 Acceso temporal a formularios:
 
-[Formulario administrador](/Proyecto-POO/formularios/administrador.php)
-/Proyecto-POO/formularios/registrado.php
-/Proyecto-POO/formularios/bibliotecario.php
-/Proyecto-POO/formularios/administrador.php
+ 1. /Proyecto-POO/formularios/registrado.php
+ 2. /Proyecto-POO/formularios/bibliotecario.php
+ 3. /Proyecto-POO/formularios/administrador.php
