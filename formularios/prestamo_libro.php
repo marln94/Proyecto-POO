@@ -22,7 +22,7 @@
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
-        <div class="col-sm-3 col-md-3 left_col menu_fixed">
+        <div class="col-sm-3 col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title color-vino" style="border: 0;">
               <a href="bibliotecario.php" class="site_title color-vino letra-logo"><i class="fa fa-book"></i> <span>Bibliotec </span></a>
@@ -51,6 +51,8 @@
                   <li><a href="prestamo_libro.php"><i class="fa fa-arrow-circle-right"></i> Préstamo libro </span></a>
                   </li>
                   <li><a href="recepcion_libro.php"><i class="fa fa-arrow-circle-down"></i> Recepción libro </span></a>
+                  </li>
+                  <li><a href="prestamos.php"><i class="fa fa-tasks"></i> Préstamos en curso </span></a>
                   </li>
                 </ul>
               </div>

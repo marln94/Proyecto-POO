@@ -22,7 +22,7 @@
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
-        <div class="col-sm-3 col-md-3 left_col menu_fixed">
+        <div class="col-sm-3 col-md-3 left_col ">
           <div class="left_col scroll-view">
             <div class="navbar nav_title color-vino" style="border: 0;">
               <a href="registrado.php" class="site_title color-vino letra-logo"><i class="fa fa-book"></i> <span>Bibliotec </span></a>
@@ -48,7 +48,8 @@
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <ul class="nav side-menu">
-                  
+                  <li><a href="prestamos.php"><i class="fa fa-tasks"></i> Ver préstamos actuales </span></a>
+                  </li>
                 </ul>
               </div>
             </div>
