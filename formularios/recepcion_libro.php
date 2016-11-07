@@ -150,25 +150,32 @@
                   <div class="x_content">
                     <div class="row top_tiles">
                       <div class="col-md-6">
-                        <div class="thumbnail">
-                          <div class="image view">
-                            <span class="fa fa-qrcode" style="font-size: 110px"></span>
+                        <div class="thumbnail" style="height: 400px;">
+                          <div class="image view" style="height: 330px;">
+                            <div class="uno" id="icono-qr">
+                              <div class="dos">
+                                <span class="fa fa-qrcode" style="font-size: 180px"></span>
+                              </div>
+                            </div>
+                            <div id="caja-qr" ></div>
                           </div>
                           <div class="caption view">
-                            <button class="btn"> Escanear código del libro</button>
+                            <button class="btn" id="btn-escanear">Escanear código del libro</button>
                           </div>
                         </div>
                       </div>
                       <div class="col-md-6">
-                        <div class="thumbnail">
-                          <div class="image view">
-                            <div style="margin-top: 27px; ">
-                              Escriba el código del libro
-                              <input type="text" id="txt-codigo-libro" class="form-control">
+                        <div class="thumbnail" style="height: 400px;">
+                          <div class="image view" style="height: 330px;">
+                            <div class="uno">
+                              <div class="dos">
+                                Escriba el código del libro
+                                <input type="text" id="txt-codigo-libro" class="form-control">
+                              </div>
                             </div>
                           </div>
                           <div class="caption view">
-                            <button class="btn"> Introducir código del libro</button>
+                            <button class="btn">Introducir código del libro</button>
                           </div>
                         </div>
                       </div>
@@ -201,19 +208,13 @@
     <!-- Custom Theme Scripts -->
     <script src="../js/custom.min.js"></script>
 
+    <script src="../js/recepcion_libro.js"></script>
+    <script src="../js/jquery.webcamqrcode.js"></script>
+
     <!-- JS -->
     <script>
       $(document).ready(function() {
-        $.ajax({
-          type: 'POST',
-          url: '../php/carga.php?opcion=bibliotecario',
-          success: function(respuesta){
-            var arr = respuesta.split(',');
-            document.title = 'Bibliotec - '+arr[1];
-            $('#imagen-usuario').attr('src',arr[0])
-            $('#nombre-usuario').html(arr[1]);
-          }
-        });
+        
       });
     </script>
     <!-- /JS -->

@@ -4259,3 +4259,17 @@ ul.notifications {
   width: 80%;
   margin: 0 auto;
 }
+#caja-qr{
+  margin:0 auto;
+  padding-left: 12px;
+  width: 350px;
+  height: 350px;
+}
+.uno {
+  display: table; 
+  height: 330px; 
+  position: relative;
+  width: 100%;}
+.dos {
+  display: table-cell; 
+  vertical-align: middle;}
