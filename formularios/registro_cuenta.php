@@ -13,6 +13,8 @@
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- boostrap-fileinput -->
+    <link href="../css/bootstrap-fileinput/fileinput.min.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
     <link href="../css/custom.css" rel="stylesheet">
@@ -42,7 +44,7 @@
                 <ul class="nav side-menu">
                   <li><a style="font-size: 26px;" href="login.php"> Inicie sesión </a>
                   </li>
-                  <li><a style="font-size: 20px;" href="crear_cuenta.php"> Crear cuenta </a>
+                  <li><a style="font-size: 20px;" href="registro_cuenta.php"> Registrar cuenta </a>
                   </li>
                 </ul>
               </div>
@@ -58,7 +60,7 @@
               <h3>Crear cuenta</h3>
             </div>
           </div>
-          <!--creación de cuenta-->
+          <!--registro de cuenta-->
           <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
@@ -66,10 +68,17 @@
                       <span class="section">Información de contacto</span>
 
                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="txt-nombre"> Nombre y apellido<span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="txt-nombre"> Nombre<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input type="text" id="txt-nombre" class="form-control col-md-7 col-xs-12" >
+                        </div>
+                      </div>
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="txt-apellido"> Apellido<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="txt-apellido" class="form-control col-md-7 col-xs-12" >
                         </div>
                       </div>
                       <div class="item form-group">
@@ -97,7 +106,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12"> Imagen de perfil <span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="file" id="file-imagen-perfil" class="form-control col-md-7 col-xs-12" accept="image/*">
+                          <input type="file" id="file-imagen-usuario" class="file col-md-7 col-xs-12" accept="image/*">
                         </div>
                       </div>
                       <div id="mensaje"></div>
@@ -111,7 +120,7 @@
                 </div>
               </div>
             </div>
-          <!--/creación de cuenta-->
+          <!--/registro de cuenta-->
         </div>
         <!-- /page content -->
 
@@ -134,8 +143,14 @@
     <script src="../vendors/fastclick/lib/fastclick.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="../js/custom.min.js"></script>
+    <!-- bootstrap-fileinput -->
+    <script src="../js/bootstrap-fileinput/plugins/canvas-to-blob.min.js"></script>
+    <script src="../js/bootstrap-fileinput/plugins/sortable.min.js"></script>
+    <script src="../js/bootstrap-fileinput//plugins/purify.min.js"></script>
+    <script src="../js/bootstrap-fileinput/fileinput.min.js"></script>
+    <script src="../js/bootstrap-fileinput/locales/es.js"></script>
 
-    <script src="../js/crear_cuenta.js"></script>
+    <script src="../js/registro_cuenta.js"></script>
 
     <!-- JS -->
     <script>

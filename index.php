@@ -42,7 +42,7 @@
                 <ul class="nav side-menu">
                   <li><a style="font-size: 26px;" href="formularios/login.php"> Inicie sesión </a>
                   </li>
-                  <li><a style="font-size: 20px;" href="formularios/crear_cuenta.php"> Crear cuenta </a>
+                  <li><a style="font-size: 20px;" href="formularios/registro_cuenta.php"> Registrar cuenta </a>
                   </li>
                 </ul>
               </div>

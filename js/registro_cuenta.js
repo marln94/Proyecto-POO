@@ -4,7 +4,7 @@ $(document).ready(function(){
 
 	$('#btn-crear-cuenta').click(function(){
 		if (verificar()) {
-			var parametros = "txt-nombre="+$("#txt-nombre").val()+"&"+"txt-email="+$("#txt-email").val()+"&"+"txt-nombre-usuario="+$("#txt-nombre-usuario").val()+"&"+"txt-contraseña="+$("#txt-contraseña").val();
+			var parametros = "txt-nombre="+$("#txt-nombre").val()+"&"+"txt-apellido="+$("#txt-apellido").val()+"&"+"txt-email="+$("#txt-email").val()+"&"+"txt-nombre-usuario="+$("#txt-nombre-usuario").val()+"&"+"txt-contraseña="+$("#txt-contraseña").val();
 			$.ajax({
 				type: "POST",
 				url: "../php/registro.php?opcion=cuenta",
@@ -14,7 +14,7 @@ $(document).ready(function(){
 						$("#mensaje").addClass('well');
 						$("#mensaje").html("Formulario con información errónea");
 					} else{
-						/*codigo*/
+						console.log(respuesta);
 					}
 				}
 			});
@@ -25,9 +25,13 @@ $(document).ready(function(){
 		var validacion = true;
 		$(".bad").removeClass('bad').find('.alert').remove();
 		if( $("#txt-nombre").val() == "" ){
-			marcar($("#txt-nombre").closest(".item"),"Ingrese un nombre y apellido");
+			marcar($("#txt-nombre").closest(".item"),"Ingrese un nombre");
 			validacion = validacion && false;
 		} else{desmarcar($("#txt-nombre"))}
+		if( $("#txt-apellido").val() == "" ){
+			marcar($("#txt-apellido").closest(".item"),"Ingrese un apellido");
+			validacion = validacion && false;
+		} else{desmarcar($("#txt-apellido"))}
 		if( $("#txt-email").val() == "" || !emailreg.test($("#txt-email").val())){
 			marcar($("#txt-email").closest(".item"),"Ingrese un correo válido");
 			validacion = validacion && false;
