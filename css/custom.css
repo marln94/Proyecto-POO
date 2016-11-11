@@ -2177,7 +2177,7 @@ textarea:focus {
 .bs-glyphicons li {
   float: left;
   width: 25%;
-  height: 115px;
+  height: 125px;            /** MODIFICADO **/
   padding: 10px;
   font-size: 10px;
   line-height: 1.4;
@@ -2188,7 +2188,7 @@ textarea:focus {
 .bs-glyphicons .glyphicon {
   margin-top: 5px;
   margin-bottom: 10px;
-  font-size: 24px; }
+  font-size: 30px; }          /** MODIFICADO **/
 
 .bs-glyphicons .glyphicon-class {
   display: block;
@@ -2197,7 +2197,16 @@ textarea:focus {
 
 .bs-glyphicons li:hover {
   color: #fff;
-  background-color: #1ABB9C; }
+  background-color: #165C64; }      /** MODIFICADO **/
+
+/** agregado **/
+.bs-glyphicons a:hover {
+  color: #fff;
+  background-color: #165C64; }
+
+.bs-glyphicons a{
+  color: #641E16;
+}
 
 @media (min-width: 768px) {
   .bs-glyphicons {
@@ -2205,8 +2214,8 @@ textarea:focus {
     margin-left: 0; }
 
   .bs-glyphicons li {
-    width: 12.5%;
-    font-size: 12px; } }
+    width: 25%;                   /** MODIFICADO **/
+    font-size: 20px; } }          /** MODIFICADO **/
 /* *********  /glyphicons  **************************** */
 /* *********  form tags input  **************************** */
 .tagsinput {
@@ -4273,3 +4282,33 @@ ul.notifications {
 .dos {
   display: table-cell; 
   vertical-align: middle;}
+
+.uno-panel {
+  display: table; 
+  height: 120px; 
+  position: relative;
+  width: 100%;}
+.dos-panel {
+  display: table-cell; 
+  vertical-align: middle;}
+.panel-opcion{
+  width: 100%;
+}
+.panel-opcion p{
+  text-align: center;
+  margin-bottom: 0px;
+}
+.panel-opcion i{
+  font-size: 60px;
+}
+.link-panel{
+  box-sizing: border-box;
+  display: inline-block;
+  width: 24%;
+  color: #641E16;
+  font-size: 20px;
+}
+.link-panel :hover{
+  color: #641E16;
+  background-color: #f9f9f9;
+}

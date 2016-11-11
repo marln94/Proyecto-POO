@@ -1,13 +1,17 @@
 $(document).ready(function(){
 	var emailreg = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
 	
+	$("#modal-sesion").on('hidden.bs.modal', function(){
+		limpiarCampos();
+		$(location).attr('href',"../index.php");
+	});
 
 	$('#btn-crear-cuenta').click(function(){
 		if (verificar()) {
 			var parametros = "txt-nombre="+$("#txt-nombre").val()+"&"+"txt-apellido="+$("#txt-apellido").val()+"&"+"txt-email="+$("#txt-email").val()+"&"+"txt-nombre-usuario="+$("#txt-nombre-usuario").val()+"&"+"txt-contraseña="+$("#txt-contraseña").val();
 			$.ajax({
 				type: "POST",
-				url: "../php/registro.php?opcion=cuenta",
+				url: "../ajax/ctrl_registro_cuenta.php?accion=1",
 				data: parametros,
 				success: function(respuesta){
 					if(respuesta == 'error'){
@@ -15,6 +19,8 @@ $(document).ready(function(){
 						$("#mensaje").html("Formulario con información errónea");
 					} else{
 						console.log(respuesta);
+						$("#modal-sesion").modal('show');
+						//$(location).attr('href',"../index.php");
 					}
 				}
 			});
@@ -57,5 +63,13 @@ $(document).ready(function(){
 
 	desmarcar = function(elemento){
 		elemento.closest('.item').removeClass('bad').find('.alert').remove();
+	}
+
+	limpiarCampos = function(){
+		$("#txt-nombre").val("");
+		$("#txt-apellido").val("");
+		$("#txt-email").val("");
+		$("#txt-nombre-usuario").val("");
+		$("#txt-contraseña").val("");
 	}
 });

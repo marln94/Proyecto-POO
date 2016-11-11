@@ -2,6 +2,7 @@
 
 	class Usuario{
 
+		private $codigoUsuario;
 		private $codigoTipoUsuario;
 		private $nombre;
 		private $apellido;
@@ -12,7 +13,8 @@
 		private $telefono;
 		private $imagenUsuario;
 
-		public function __construct($codigoTipoUsuario,
+		public function __construct($codigoUsuario,
+					$codigoTipoUsuario,
 					$nombre,
 					$apellido,
 					$correoElectronico,
@@ -21,6 +23,7 @@
 					$domicilio,
 					$telefono,
 					$imagenUsuario){
+			$this->codigoUsuario = $codigoUsuario;
 			$this->codigoTipoUsuario = $codigoTipoUsuario;
 			$this->nombre = $nombre;
 			$this->apellido = $apellido;
@@ -30,6 +33,12 @@
 			$this->domicilio = $domicilio;
 			$this->telefono = $telefono;
 			$this->imagenUsuario = $imagenUsuario;
+		}
+		public function getCodigoUsuario(){
+			return $this->codigoUsuario;
+		}
+		public function setCodigoUsuario($codigoUsuario){
+			$this->codigoUsuario = $codigoUsuario;
 		}
 		public function getCodigoTipoUsuario(){
 			return $this->codigoTipoUsuario;
