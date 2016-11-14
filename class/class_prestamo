@@ -1,0 +1,60 @@
+<?php
+
+	class Prestamo{
+
+		private $codigoprestamo;
+		private $codigousuario;
+		private $codigolibro;
+		private $fechaprestamo;
+		private $fechadevolucion;
+
+		public function __construct($codigoprestamo,
+					$codigousuario,
+					$codigolibro,
+					$fechaprestamo,
+					$fechadevolucion){
+			$this->codigoprestamo = $codigoprestamo;
+			$this->codigousuario = $codigousuario;
+			$this->codigolibro = $codigolibro;
+			$this->fechaprestamo = $fechaprestamo;
+			$this->fechadevolucion = $fechadevolucion;
+		}
+		public function getCodigoprestamo(){
+			return $this->codigoprestamo;
+		}
+		public function setCodigoprestamo($codigoprestamo){
+			$this->codigoprestamo = $codigoprestamo;
+		}
+		public function getCodigousuario(){
+			return $this->codigousuario;
+		}
+		public function setCodigousuario($codigousuario){
+			$this->codigousuario = $codigousuario;
+		}
+		public function getCodigolibro(){
+			return $this->codigolibro;
+		}
+		public function setCodigolibro($codigolibro){
+			$this->codigolibro = $codigolibro;
+		}
+		public function getFechaprestamo(){
+			return $this->fechaprestamo;
+		}
+		public function setFechaprestamo($fechaprestamo){
+			$this->fechaprestamo = $fechaprestamo;
+		}
+		public function getFechadevolucion(){
+			return $this->fechadevolucion;
+		}
+		public function setFechadevolucion($fechadevolucion){
+			$this->fechadevolucion = $fechadevolucion;
+		}
+		public function toString(){
+			return "Codigoprestamo: " . $this->codigoprestamo . 
+				" Codigousuario: " . $this->codigousuario . 
+				" Codigolibro: " . $this->codigolibro . 
+				" Fechaprestamo: " . $this->fechaprestamo . 
+				" Fechadevolucion: " . $this->fechadevolucion;
+		}
+	}
+?>
