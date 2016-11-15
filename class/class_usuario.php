@@ -100,7 +100,7 @@
 						telefono, 
 						imagen_usuario
 					) VALUES (
-					NULL, %s, '%s', '%s', '%s', '%s', NULL, NULL, NULL
+					NULL, %s, '%s', '%s', '%s', sha1('%s'), NULL, NULL, NULL
 				)",
 				stripslashes($this->tipoUsuario->getCodigoTipoUsuario()),
 				stripslashes($this->nombre),
@@ -108,6 +108,7 @@
 				stripslashes($this->correoElectronico),
 				stripslashes($this->contraseña)
 			);
+			echo $sql;
 			$resultado = $conexion->ejecutarInstruccion($sql);
 		}
 
@@ -115,7 +116,7 @@
 			$sql = sprintf("
 				SELECT codigo_usuario, codigo_tipo_usuario, nombre, apellido
 				FROM tbl_usuarios 
-				WHERE correo_electronico='%s' AND contrasena='%s'",
+				WHERE correo_electronico='%s' AND contrasena=sha1('%s')",
 				stripslashes($correoElectronico),
 				stripslashes($contrasena)
 			);

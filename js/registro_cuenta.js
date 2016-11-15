@@ -3,7 +3,7 @@ $(document).ready(function(){
 	
 	$("#modal-sesion").on('hidden.bs.modal', function(){
 		limpiarCampos();
-		$(location).attr('href',"../index.php");
+		$(location).attr('href',"login.php");
 	});
 
 	$('#btn-crear-cuenta').click(function(){
@@ -14,6 +14,7 @@ $(document).ready(function(){
 				url: "../ajax/ctrl_registro_cuenta.php?accion=1",
 				data: parametros,
 				success: function(respuesta){
+					console.log(respuesta);
 					if(respuesta == 'error'){
 						$("#mensaje").addClass('well');
 						$("#mensaje").html("Formulario con información errónea");

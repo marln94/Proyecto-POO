@@ -63,7 +63,72 @@
             </div>
             <?php
               }
+              if($_SESSION['codigo-tipo-usuario'] == 2){
+                /*Panel para bibliotecario*/
             ?>
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <ul class="nav side-menu">
+                  <li><a href="prestamo_libro.php"><i class="fa fa-arrow-circle-right"></i> Préstamo libro </span></a>
+                  </li>
+                  <li><a href="recepcion_libro.php"><i class="fa fa-arrow-circle-down"></i> Recepción libro </span></a>
+                  </li>
+                  <li><a href="prestamos.php"><i class="fa fa-tasks"></i> Préstamos en curso </span></a>
+                  </li>
+                </ul>
+              </div>
+              <div class="menu_section">
+                <ul class="nav side-menu">
+                  <li><a href="administrar_libros.php"><i class="fa fa-circle"></i> Administrar libros </a>
+                  </li>
+                  <li><a href="administrar_autores.php"><i class="fa fa-circle"></i> Administrar autores </a>
+                  </li>
+                  <li><a href="administrar_editoriales.php"><i class="fa fa-circle"></i> Administrar editoriales </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="menu_section">
+                <ul class="nav side-menu">
+                  <li><a href="administrar_categorias.php"><i class="fa fa-circle"></i> Administrar categorías </a>
+                  </li>
+                  <li><a href="administrar_colecciones.php"><i class="fa fa-circle"></i> Administrar colecciones </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <?php
+              }
+              if($_SESSION['codigo-tipo-usuario'] == 1){
+                /*Panel para administrador*/
+            ?>
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <h3> Bibliotecarios</h3>
+                <ul class="nav side-menu">
+                  <li><a href="listado_bibliotecarios.php"><i class="fa fa-table"></i> Ver bibliotecarios</a>
+                  </li>
+                  <li><a href="crear_cuenta_bibliotecario.php"><i class="fa fa-plus-circle"></i> Crear cuenta</a>
+                  </li>
+                  <li><a href="eliminar_cuenta_bibliotecario.php"><i class="fa fa-minus-circle"></i> Eliminar cuenta</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="menu_section">
+                <h3> Usuarios</h3>
+                <ul class="nav side-menu">
+                  <li><a href="listado_usuarios.php"><i class="fa fa-table"></i> Ver usuarios</a>
+                  </li>
+                  <li><a href="a_crear_cuenta.php"><i class="fa fa-plus-circle"></i> Crear cuenta</a>
+                  </li>
+                  <li><a href="eliminar_cuenta_usuario.php"><i class="fa fa-minus-circle"></i> Eliminar cuenta</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <?php
+              }
+            ?>
+
             <!-- /sidebar menu -->
             <!-- footer menu -->
             <div class="sidebar-footer hidden-small">

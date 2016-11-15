@@ -1,3 +1,8 @@
+<?php
+  session_start();
+  if(isset($_SESSION['codigo-usuario'])){
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,14 +23,15 @@
     <link href="../css/custom.css" rel="stylesheet">
 
   </head>
-
+  <input type="hidden" id="codigo-tipo-usuario" value="<?php echo $_SESSION['codigo-tipo-usuario']?>">
+  <input type="hidden" id="codigo-usuario" value="<?php echo $_SESSION['codigo-usuario']?>">
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
         <div class="col-sm-3 col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title color-vino" style="border: 0;">
-              <a href="bibliotecario.php" class="site_title color-vino letra-logo"><i class="fa fa-book"></i> <span>Bibliotec </span></a>
+              <a href="../index.php" class="site_title color-vino letra-logo"><i class="fa fa-book"></i> <span>Bibliotec </span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -38,13 +44,30 @@
                 </div>
                 <div class="profile_info">
                   <span>Bienvenido,</span>
-                  <h2 id="nombre-usuario"></h2>
+                  <h2><?php echo $_SESSION['nombre']." ".$_SESSION['apellido']?></h2>
                 </div>
               </div>
             </div>
             <!-- /menu profile quick info -->
             <br>
             <!-- sidebar menu -->
+            <?php
+              if($_SESSION['codigo-tipo-usuario'] == 3){
+              /*Panel para usuario registrado*/
+            ?>
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <ul class="nav side-menu">
+                  <li><a href="prestamos.php"><i class="fa fa-tasks"></i> Ver préstamos actuales </span></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <?php
+              }
+              if($_SESSION['codigo-tipo-usuario'] == 2){
+                /*Panel para bibliotecario*/
+            ?>
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <ul class="nav side-menu">
@@ -75,10 +98,43 @@
                 </ul>
               </div>
             </div>
+            <?php
+              }
+              if($_SESSION['codigo-tipo-usuario'] == 1){
+                /*Panel para administrador*/
+            ?>
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <h3> Bibliotecarios</h3>
+                <ul class="nav side-menu">
+                  <li><a href="listado_bibliotecarios.php"><i class="fa fa-table"></i> Ver bibliotecarios</a>
+                  </li>
+                  <li><a href="crear_cuenta_bibliotecario.php"><i class="fa fa-plus-circle"></i> Crear cuenta</a>
+                  </li>
+                  <li><a href="eliminar_cuenta_bibliotecario.php"><i class="fa fa-minus-circle"></i> Eliminar cuenta</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="menu_section">
+                <h3> Usuarios</h3>
+                <ul class="nav side-menu">
+                  <li><a href="listado_usuarios.php"><i class="fa fa-table"></i> Ver usuarios</a>
+                  </li>
+                  <li><a href="a_crear_cuenta.php"><i class="fa fa-plus-circle"></i> Crear cuenta</a>
+                  </li>
+                  <li><a href="eliminar_cuenta_usuario.php"><i class="fa fa-minus-circle"></i> Eliminar cuenta</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <?php
+              }
+            ?>
+
             <!-- /sidebar menu -->
             <!-- footer menu -->
             <div class="sidebar-footer hidden-small">
-              <a data-toggle="tooltip" data-placement="top" title="Cerrar sesión">
+              <a href="logout.php" data-toggle="tooltip" data-placement="top" title="Cerrar sesión">
                 <span class="glyphicon glyphicon-log-out" aria-hidden="true" style="color: #190705"></span>
               </a>
             </div>
@@ -104,22 +160,13 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h3>Categorías</h3>
+                    <h3>Préstamos</h3>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
                     <div class="row top_tiles">
-                      <table class="table table-striped">
-                        <thead>
-                          <th>Código préstamo</th>
-                          <th>Libro</th>
-                          <th>Usuario</th>
-                        </thead>
-                        <tr>
-                          <td>1</td>
-                          <td>Libro1,autor1,editorial1,año1</td>
-                          <td>Usuario1</td>
-                        </tr>
+                      <table class="table table-striped" id="tabla-prestamos">
+                        
                       </table>
                     </div>
                   </div>
@@ -150,22 +197,18 @@
     <!-- Custom Theme Scripts -->
     <script src="../js/custom.min.js"></script>
 
+    <script src="../js/prestamos.js"></script>
+
     <!-- JS -->
     <script>
-      $(document).ready(function() {
-        $.ajax({
-          type: 'POST',
-          url: '../php/carga.php?opcion=bibliotecario',
-          success: function(respuesta){
-            var arr = respuesta.split(',');
-            document.title = 'Bibliotec - '+arr[1];
-            $('#imagen-usuario').attr('src',arr[0])
-            $('#nombre-usuario').html(arr[1]);
-
-          }
-        });
-      });
+      
     </script>
     <!-- /JS -->
   </body>
 </html>
+
+<?php
+  } else{
+    header("Location: ../index.php");
+  }
+?>

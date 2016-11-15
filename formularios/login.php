@@ -1,3 +1,15 @@
+<?php
+  session_start();
+  if(isset($_SESSION["codigo-tipo-usuario"])){
+    if($_SESSION["codigo-tipo-usuario"] == 3)
+      header("Location: registrado.php");
+    if($_SESSION["codigo-tipo-usuario"] == 2)
+      header("Location: bibliotecario.php");
+    if($_SESSION["codigo-tipo-usuario"] == 1)
+      header("Location: administrador.php");
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>

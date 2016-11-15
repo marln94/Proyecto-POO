@@ -95,13 +95,15 @@
                           <input type="password" id="txt-contraseña" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12"> Imagen de perfil <span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="file" id="file-imagen-usuario" class="file col-md-7 col-xs-12" accept="image/*">
+                      <form id="form-imagen">
+                        <div class="item form-group">
+                          <label class="control-label col-md-3 col-sm-3 col-xs-12"> Imagen de perfil <span>
+                          </label>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="file" id="file-imagen-usuario" class="file col-md-7 col-xs-12" accept="image/*">
+                          </div>
                         </div>
-                      </div>
+                      </form>
                       <div id="mensaje"></div>
                       <div class="ln_solid"></div>
                       <div class="form-group">
@@ -141,7 +143,7 @@
             <p> Ingresa en el sistema para comenzar a utilizar tu cuenta</p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Iniciar sesión</button>
           </div>
         </div>
       </div>
