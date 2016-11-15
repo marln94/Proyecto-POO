@@ -8,20 +8,25 @@ $(document).ready(function(){
 
 	$('#btn-crear-cuenta').click(function(){
 		if (verificar()) {
-			var parametros = "txt-nombre="+$("#txt-nombre").val()+"&"+"txt-apellido="+$("#txt-apellido").val()+"&"+"txt-email="+$("#txt-email").val()+"&"+"txt-contraseña="+$("#txt-contraseña").val();
+			var formData = new FormData($("#form-imagen")[0]);
+			formData.append("txt-nombre",$("#txt-nombre").val());
+			formData.append("txt-apellido",$("#txt-apellido").val());
+			formData.append("txt-email",$("#txt-email").val());
+			formData.append("txt-contraseña",$("#txt-contraseña").val());
+
 			$.ajax({
 				type: "POST",
 				url: "../ajax/ctrl_registro_cuenta.php?accion=1",
-				data: parametros,
+				data: formData,
+				contentType: false,
+	            processData: false,
 				success: function(respuesta){
-					console.log(respuesta);
 					if(respuesta == 'error'){
 						$("#mensaje").addClass('well');
 						$("#mensaje").html("Formulario con información errónea");
 					} else{
-						console.log(respuesta);
+						$("#mensaje-registro").html(respuesta);
 						$("#modal-sesion").modal('show');
-						//$(location).attr('href',"../index.php");
 					}
 				}
 			});

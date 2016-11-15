@@ -7,7 +7,6 @@ function devolverLibro(codigoLibro){
 		url: "../ajax/ctrl_prestamos.php?opcion=2",
 		data: parametros,
 		success: function(respuesta){
-			alert(respuesta);
 			cargarPrestamos();
 		}
 	});

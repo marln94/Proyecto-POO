@@ -38,7 +38,7 @@
             <div class="container-fluid">
               <div class="">
                 <div class="profile_pic">
-                  <img  alt="..." class="img-thumbnail profile_img" id="imagen-usuario">
+                  <img  alt="..." class="img-thumbnail profile_img" src="../php/imagen.php?id=<?php echo $_SESSION['codigo-usuario'] ?>">
                 </div>
                 <div class="profile_info">
                   <span>Bienvenido,</span>

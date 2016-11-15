@@ -1,7 +1,7 @@
 <?php
 	include_once("class_tipo_usuario.php");
 
-	class Usuario{
+	class usuario{
 
 		private $codigoUsuario;
 		private $tipoUsuario;
@@ -12,6 +12,8 @@
 		private $domicilio;
 		private $telefono;
 		private $imagenUsuario;
+		private $tipoImagen;
+		private $estadoUsuario;
 
 		public function __construct($codigoUsuario,
 					$tipoUsuario,
@@ -21,7 +23,9 @@
 					$contraseña,
 					$domicilio,
 					$telefono,
-					$imagenUsuario){
+					$imagenUsuario,
+					$tipoImagen,
+					$estadoUsuario){
 			$this->codigoUsuario = $codigoUsuario;
 			$this->tipoUsuario = $tipoUsuario;
 			$this->nombre = $nombre;
@@ -31,6 +35,8 @@
 			$this->domicilio = $domicilio;
 			$this->telefono = $telefono;
 			$this->imagenUsuario = $imagenUsuario;
+			$this->tipoImagen = $tipoImagen;
+			$this->estadoUsuario = $estadoUsuario;
 		}
 		public function getCodigoUsuario(){
 			return $this->codigoUsuario;
@@ -86,6 +92,18 @@
 		public function setImagenUsuario($imagenUsuario){
 			$this->imagenUsuario = $imagenUsuario;
 		}
+		public function getTipoImagen(){
+			return $this->tipoImagen;
+		}
+		public function setTipoImagen($tipoImagen){
+			$this->tipoImagen = $tipoImagen;
+		}
+		public function getEstadoUsuario(){
+			return $this->estadoUsuario;
+		}
+		public function setEstadoUsuario($estadoUsuario){
+			$this->estadoUsuario = $estadoUsuario;
+		}
 
 		public function guardarRegistro($conexion){
 			$sql = sprintf(
@@ -98,17 +116,21 @@
 						contrasena, 
 						domicilio, 
 						telefono, 
-						imagen_usuario
+						imagen_usuario,
+						tipo_imagen,
+						estado_usuario
 					) VALUES (
-					NULL, %s, '%s', '%s', '%s', sha1('%s'), NULL, NULL, NULL
+					NULL, %s, '%s', '%s', '%s', sha1('%s'), NULL, NULL, '%s', '%s','%s'
 				)",
 				stripslashes($this->tipoUsuario->getCodigoTipoUsuario()),
 				stripslashes($this->nombre),
 				stripslashes($this->apellido),
 				stripslashes($this->correoElectronico),
-				stripslashes($this->contraseña)
+				stripslashes($this->contraseña),
+				stripslashes($this->imagenUsuario),
+				stripslashes($this->tipoImagen),
+				stripslashes($this->estadoUsuario)
 			);
-			echo $sql;
 			$resultado = $conexion->ejecutarInstruccion($sql);
 		}
 
@@ -116,7 +138,7 @@
 			$sql = sprintf("
 				SELECT codigo_usuario, codigo_tipo_usuario, nombre, apellido
 				FROM tbl_usuarios 
-				WHERE correo_electronico='%s' AND contrasena=sha1('%s')",
+				WHERE correo_electronico='%s' AND contrasena=sha1('%s') AND estado_usuario=1",
 				stripslashes($correoElectronico),
 				stripslashes($contrasena)
 			);

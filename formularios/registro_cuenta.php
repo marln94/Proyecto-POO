@@ -100,7 +100,7 @@
                           <label class="control-label col-md-3 col-sm-3 col-xs-12"> Imagen de perfil <span>
                           </label>
                           <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="file" id="file-imagen-usuario" class="file col-md-7 col-xs-12" accept="image/*">
+                            <input type="file" name="imagen" id="imagen" class="col-md-7 col-xs-12" accept="image/*">
                           </div>
                         </div>
                       </form>
@@ -139,8 +139,9 @@
           </div>
           <div class="modal-body">
             <h4> La cuenta se registró con éxito</h4>
-            <br>
             <p> Ingresa en el sistema para comenzar a utilizar tu cuenta</p>
+            <br>
+            <p id="mensaje-registro"></p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Iniciar sesión</button>

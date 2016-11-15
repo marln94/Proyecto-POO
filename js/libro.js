@@ -7,7 +7,6 @@ function solicitarLibro(codigoLibro){
 		url: "../ajax/ctrl_libro.php?opcion=2",
 		data: parametros,
 		success: function(resultado){
-			alert(resultado);
 			cargarLibro();
 		}
 	});

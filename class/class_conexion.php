@@ -42,6 +42,14 @@
 			return mysqli_num_rows($resultado);
 		}
 
+		public function escaparCaracteres($data){
+			return mysqli_real_escape_string($this->link, $data);
+		}
+
+		public function ultimoId(){
+			return mysqli_insert_id($this->link);
+		}
+
 		public function getUsuario(){
 			return $this->usuario;
 		}
