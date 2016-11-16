@@ -1,3 +1,8 @@
+<?php
+  session_start();
+  if(isset($_SESSION['codigo-usuario'])){
+    if($_SESSION['codigo-tipo-usuario'] == 2){
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,7 +23,7 @@
     <link href="../css/custom.css" rel="stylesheet">
 
   </head>
-
+  <input type="hidden" id="codigo-usuario" value="<?php echo $_SESSION['codigo-usuario']?>">
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
@@ -34,11 +39,11 @@
             <div class="container-fluid">
               <div class="">
                 <div class="profile_pic">
-                  <img  alt="..." class="img-thumbnail profile_img" id="imagen-usuario">
+                  <img  alt="..." class="img-thumbnail profile_img" src="../php/imagen.php?id=<?php echo $_SESSION['codigo-usuario'] ?>">
                 </div>
                 <div class="profile_info">
                   <span>Bienvenido,</span>
-                  <h2 id="nombre-usuario"></h2>
+                  <h2><?php echo $_SESSION['nombre']." ".$_SESSION['apellido']?></h2>
                 </div>
               </div>
             </div>
@@ -78,8 +83,11 @@
             <!-- /sidebar menu -->
             <!-- footer menu -->
             <div class="sidebar-footer hidden-small">
-              <a data-toggle="tooltip" data-placement="top" title="Cerrar sesión">
+              <a href="logout.php" data-toggle="tooltip" data-placement="top" title="Cerrar sesión">
                 <span class="glyphicon glyphicon-log-out" aria-hidden="true" style="color: #190705"></span>
+              </a>
+              <a href="configuracion.php" data-toggle="tooltip" data-placement="top" title="Configuración">
+                <span class="glyphicon glyphicon-cog" aria-hidden="true" style="color: #190705"></span>
               </a>
             </div>
             <!-- /footer menu -->
@@ -135,7 +143,7 @@
                             </div>
                           </div>
                           <div class="caption view">
-                            <button class="btn">Introducir código del libro</button>
+                            <button class="btn" id="btn-introducir-codigo">Introducir código del libro</button>
                           </div>
                         </div>
                       </div>
@@ -159,6 +167,21 @@
       </div>
     </div>
 
+    <!-- Modal -->
+    <div id="modal-aviso" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title"> Información </h4>
+          </div>
+          <div class="modal-body" id="div-editar">
+            <p id="mensaje-aviso"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
     <!-- jQuery -->
     <script src="../vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
@@ -180,3 +203,11 @@
     <!-- /JS -->
   </body>
 </html>
+<?php
+    } else{
+      header("Location: page_403.html");
+    }
+  } else{
+    header("Location: ../index.php");
+  }
+?>

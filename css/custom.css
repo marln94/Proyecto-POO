@@ -4319,3 +4319,14 @@ ul.notifications {
   margin: 0 auto;
   padding: 4px;
   object-fit: scale-down; }
+.link-config {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 24%;
+  color: #641E16;
+  font-size: 13px;
+}
+.link-config:hover{
+  color: #641E16;
+  background-color: #f9f9f9;
+}

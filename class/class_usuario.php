@@ -177,6 +177,7 @@
 			} else{
 				echo "Error en la actualización del nombre";
 			}
+			return $nuevoValor;
 		}
 		public static function actualizarApellido($conexion,$codigoUsuario,$nuevoValor){
 			$sql = sprintf("
@@ -192,6 +193,7 @@
 			} else{
 				echo "Error en la actualización del apellido";
 			}
+			return $nuevoValor;
 		}
 		public static function actualizarCorreoElectronico($conexion,$codigoUsuario,$nuevoValor){
 			$sql = sprintf("
@@ -231,7 +233,38 @@
 			} else{
 				echo "error";
 			}
-			
+		}
+
+		public static function eliminarCuenta($conexion,$codigoUsuario){
+			$sql = sprintf("
+				SELECT visible
+				FROM tbl_prestamos
+				WHERE codigo_usuario='%s'",
+				$codigoUsuario
+			);
+			$resultado = $conexion->ejecutarInstruccion($sql);
+			$eliminar = true;
+			while ($fila = $conexion->obtenerFila($resultado)) {
+				if($fila["visible"] == 1){
+					$eliminar = false;
+					break;
+				}
+			}
+			if($eliminar){
+				$sql = sprintf("
+					UPDATE tbl_usuarios
+					SET estado_usuario=0
+					WHERE codigo_usuario='%s'",
+					$codigoUsuario
+				);
+				echo $sql;
+				$resultado = $conexion->ejecutarInstruccion($sql);
+				if(!$resultado){
+					echo "error";
+				}
+			} else{
+				echo "pendiente";
+			}
 		}
 	}
 ?>

@@ -13,6 +13,13 @@
 			$conexion = new Conexion();
 			Libro::devolverLibro($conexion,$_POST["codigo-libro"],$_POST["codigo-usuario"],$_POST["fecha-devolucion"]);
 			break;
+
+		case '3':
+			include_once("../class/class_conexion.php");
+			include_once("../class/class_prestamo.php");
+			$conexion = new Conexion();
+			Prestamo::prestamosGeneral($conexion);
+			break;
 		default:
 			# code...
 			break;

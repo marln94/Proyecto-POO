@@ -1,22 +1,11 @@
 $(document).ready(function(){
-	$.ajax({
-      type: 'POST',
-      url: '../php/carga.php?opcion=bibliotecario',
-      success: function(respuesta){
-        var arr = respuesta.split(',');
-        document.title = 'Bibliotec - '+arr[1];
-        $('#imagen-usuario').attr('src',arr[0])
-        $('#nombre-usuario').html(arr[1]);
-      }
-    });
-
 	$("#btn-escanear").click(function(){
 		if($("#btn-escanear").html() == 'Escanear código del libro'){
 			$("#icono-qr").hide();
 			$("#caja-qr").WebcamQRCode({
 				onQRCodeDecode: function( resultado ){
 					//Métodos para procesar el código QR//
-					alert("Contenido QR: "+resultado);
+					$("#caja-qr").WebcamQRCode().stop();
 				}
 			});
 			$("#caja-qr").show();
@@ -29,4 +18,40 @@ $(document).ready(function(){
 			$("#btn-escanear").html("Escanear código del libro");
 		}
 	});
+	$("#btn-introducir-codigo").click(function(){
+		if($("#txt-codigo-libro").val() != ""){
+			recibirLibro($("#txt-codigo-libro").val());
+		}
+	});
 });
+
+function recibirLibro(codigoLibro){
+	var parametros = "codigo-libro="+codigoLibro
+						+"&codigo-usuario="+$("#codigo-usuario").val()
+						+"&fecha-devolucion="+obtenerFecha();
+	$.ajax({
+		method: "post",
+		url: "../ajax/ctrl_prestamos.php?opcion=2",
+		data: parametros,
+		success: function(resultado){
+			if(resultado == 'vacio'){
+				$("#mensaje-aviso").html("No se puede recibir el libro.");
+				$("#modal-aviso").modal("show");
+			} else{
+				$("#mensaje-aviso").html("Recepción realizada.");
+				$("#modal-aviso").modal("show");
+			}
+			$("#txt-codigo-libro").val("");
+		}
+	});
+}
+
+obtenerFecha = function() {
+    var tdate = new Date();
+   	var dd = tdate.getDate(); //yields day
+   	var MM = tdate.getMonth(); //yields month
+   	var yyyy = tdate.getFullYear(); //yields year
+   	var xxx = yyyy + "-" +( MM+1) + "-" + dd;
+
+   	return xxx;
+}

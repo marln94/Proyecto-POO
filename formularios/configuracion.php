@@ -174,33 +174,35 @@
                           </form>
                           <div style="width: 80%;margin: 0 auto;">
                             <div class="btn-group-vertical" style="width: 100%; margin-top: 5%;">
-                              <button class="btn btn-default" id="btn-solicitar">Cambiar imagen</button>
+                              <button class="btn btn-default" id="editar-imagen">Cambiar imagen</button>
                             </div>
                           </div>
                         </div>
                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                        <table class="table table-hover">
-                          <tr>
-                            <th>Nombre</th>
-                            <td id="nombre"></td>
-                            <td><a href="" id="editar-nombre">Editar</a></td>
-                          </tr>
-                          <tr>
-                            <th>Apellido</th>
-                            <td id="apellido"></td>
-                            <td><a href="" id="editar-apellido">Editar</a></td>
-                          </tr>
-                          <tr>
-                            <th>Correo electrónico</th>
-                            <td id="correo-electronico"></td>
-                            <td><a href="" id="editar-correo-electronico">Editar</a></td>
-                          </tr>
-                          <tr>
-                            <th>Contraseña</th>
-                            <td id="contraseña"></td>
-                            <td><a href="" id="editar-contraseña">Editar</a></td>
-                          </tr>
-                        </table>
+                          <table class="table table-hover">
+                            <tr>
+                              <th>Nombre</th>
+                              <td id="nombre"></td>
+                              <td><a href="" id="editar-nombre" class="link-config">Editar</a></td>
+                            </tr>
+                            <tr>
+                              <th>Apellido</th>
+                              <td id="apellido"></td>
+                              <td><a href="" id="editar-apellido" class="link-config">Editar</a></td>
+                            </tr>
+                            <tr>
+                              <th>Correo electrónico</th>
+                              <td id="correo-electronico"></td>
+                              <td><a href="" id="editar-correo-electronico" class="link-config">Editar</a></td>
+                            </tr>
+                            <tr>
+                              <th>Contraseña</th>
+                              <td id="contraseña"></td>
+                              <td><a href="" id="editar-contraseña" class="link-config">Editar</a></td>
+                            </tr>
+                          </table>
+                          <button class="btn btn-danger" id="btn-eliminar-cuenta"><span class="glyphicon glyphicon-trash"></span> Eliminar cuenta</button>
+                          <div id="div-eliminar"></div>
                         </div>
                       </div>
                     </div>
@@ -238,7 +240,7 @@
       </div>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal2 -->
     <div id="modal-aviso" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
       <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
@@ -247,7 +249,24 @@
             <h4 class="modal-title"> Información </h4>
           </div>
           <div class="modal-body" id="div-editar">
-            <p> Información actualizada correctamente</p>
+            <p id="mensaje-aviso"> Información actualizada correctamente</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal3 -->
+    <div id="modal-confirmar" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title"> Confirmación </h4>
+          </div>
+          <div class="modal-body" id="div-editar">
+            <p> ¿Desea eliminar su cuenta?</p>
+            <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+            <button type="button" class="btn btn-primary" id="btn-confirmar">Sí</button>
           </div>
         </div>
       </div>

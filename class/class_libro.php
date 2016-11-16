@@ -177,35 +177,25 @@
 			            <div style="width: 80%;margin: 0 auto;">
 			              <div class="btn-group-vertical" style="width: 100%; margin-top: 5%;">
 			              <?php
-			            	if($codigoTipoUsuario == 3){
-			                	$solicitar = "";
-			                	$leer = "";
-			                	if($fila1['codigo_disponibilidad']==1 && $fila1['codigo_tipo_libro']==1){
-			                		$leer = "disabled";
-			                	}
-			                	if($fila1['codigo_disponibilidad']==1 && $fila1['codigo_tipo_libro']==2){
-			                		$solicitar = "disabled";
-			                	}
-			                	if($fila1['codigo_disponibilidad']==2 && $fila1['codigo_tipo_libro']==1){
-			                		$solicitar = "disabled";
-			                		$leer = "disabled";
-			                	}
-			                	if($fila1['codigo_disponibilidad']==2 && $fila1['codigo_tipo_libro']==2){
-			                		$solicitar = "disabled";
-			                		$leer = "disabled";
-			                	}
-
+		                	$solicitar = "";
+		                	$leer = "";
+		                	if($fila1['codigo_disponibilidad']==1 && $fila1['codigo_tipo_libro']==1){
+		                		$leer = "disabled";
+		                	}
+		                	if($fila1['codigo_disponibilidad']==1 && $fila1['codigo_tipo_libro']==2){
+		                		$solicitar = "disabled";
+		                	}
+		                	if($fila1['codigo_disponibilidad']==2 && $fila1['codigo_tipo_libro']==1){
+		                		$solicitar = "disabled";
+		                		$leer = "disabled";
+		                	}
+		                	if($fila1['codigo_disponibilidad']==2 && $fila1['codigo_tipo_libro']==2){
+		                		$solicitar = "disabled";
+		                		$leer = "disabled";
+		                	}
 			                ?>
 			                <button onclick="solicitarLibro(<?php echo $fila1['codigo_libro'] ?>)" class="btn btn-default" id="btn-solicitar" <?php echo $solicitar ?> >Solicitar libro</button>
 			                <button class="btn btn-default" id="leer-digital" <?php echo $leer?> >Leer en digital</button>
-			                <?php
-			                	} else{
-			                ?>
-			                <button class="btn btn-default" id="btn-solicitar" <?php echo "disabled" ?> >Solicitar libro</button>
-			                <button class="btn btn-default" id="leer-digital" <?php echo "disabled"?>>Leer en digital</button>
-			                <?php
-			                	}
-			                ?>
 
 			              </div>
 			            </div>
@@ -217,7 +207,7 @@
 			                	<td><?php echo $fila1['nombre_tipo_libro']?></td>
 			              	</tr>
 			              	<tr>
-			                	<th>Código</th>
+			                	<th>Código de libro</th>
 			                	<td><?php echo $fila1['codigo_libro']?></td>
 			              	</tr>
 			              	<tr>
@@ -328,69 +318,56 @@
 
 		public static function solicitarLibro($conexion,$codigoLibro,$codigoUsuario,$fechaPrestamo){
 			$sql = sprintf("
-				SELECT cantidad_libros, codigo_disponibilidad
-				FROM tbl_libros
-				WHERE codigo_libro = '%s'",
-				$codigoLibro
-			);
-			$resultado = $conexion->ejecutarInstruccion($sql);
-			$fila = $conexion->obtenerFila($resultado);
-
-			$fila['cantidad_libros']--;
-			if($fila['cantidad_libros'] == 0){
-				$fila['codigo_disponibilidad'] = 2;
-			}
-
-			$sql2 = sprintf("
-				UPDATE tbl_libros
-				SET cantidad_libros = '%s',
-					codigo_disponibilidad = '%s'
-				WHERE codigo_libro = '%s'",
-				$fila['cantidad_libros'],
-				$fila['codigo_disponibilidad'],
-				$codigoLibro
-			);
-			$resultado2 = $conexion->ejecutarInstruccion($sql2);
-			
-			$sql = sprintf("
-				INSERT INTO tbl_prestamos(codigo_prestamo, codigo_usuario, 
-					codigo_libro, fecha_prestamo, 
-					fecha_devolucion, visible) 
-				VALUES (NULL,'%s','%s','%s',NULL,%s)",
-				$codigoUsuario,
+				SELECT codigo_libro, codigo_usuario
+				FROM tbl_prestamos
+				WHERE codigo_libro='%s' AND codigo_usuario='%s' AND visible=1",
 				$codigoLibro,
-				$fechaPrestamo,
-				1
+				$codigoUsuario
 			);
 			$resultado = $conexion->ejecutarInstruccion($sql);
+			if($conexion->cantidadRegistros($resultado) > 0){
+				echo "existe";
+			} else{
+				$sql = sprintf("
+					SELECT cantidad_libros, codigo_disponibilidad
+					FROM tbl_libros
+					WHERE codigo_libro = '%s'",
+					$codigoLibro
+				);
+				$resultado = $conexion->ejecutarInstruccion($sql);
+				$fila = $conexion->obtenerFila($resultado);
+
+				$fila['cantidad_libros']--;
+				if($fila['cantidad_libros'] == 0){
+					$fila['codigo_disponibilidad'] = 2;
+				}
+
+				$sql2 = sprintf("
+					UPDATE tbl_libros
+					SET cantidad_libros = '%s',
+						codigo_disponibilidad = '%s'
+					WHERE codigo_libro = '%s'",
+					$fila['cantidad_libros'],
+					$fila['codigo_disponibilidad'],
+					$codigoLibro
+				);
+				$resultado2 = $conexion->ejecutarInstruccion($sql2);
+				
+				$sql = sprintf("
+					INSERT INTO tbl_prestamos(codigo_prestamo, codigo_usuario, 
+						codigo_libro, fecha_prestamo, 
+						fecha_devolucion, visible) 
+					VALUES (NULL,'%s','%s','%s',NULL,%s)",
+					$codigoUsuario,
+					$codigoLibro,
+					$fechaPrestamo,
+					1
+				);
+				$resultado = $conexion->ejecutarInstruccion($sql);
+			}
 		}
 
 		public static function devolverLibro($conexion,$codigoLibro,$codigoUsuario,$fechaDevolucion){
-			$sql = sprintf("
-				SELECT cantidad_libros, codigo_disponibilidad
-				FROM tbl_libros
-				WHERE codigo_libro = '%s'",
-				$codigoLibro
-			);
-			$resultado = $conexion->ejecutarInstruccion($sql);
-			$fila = $conexion->obtenerFila($resultado);
-
-			$fila['cantidad_libros']++;
-			if($fila['cantidad_libros'] != 0){
-				$fila['codigo_disponibilidad'] = 1;
-			}
-
-			$sql2 = sprintf("
-				UPDATE tbl_libros
-				SET cantidad_libros = '%s',
-					codigo_disponibilidad = '%s'
-				WHERE codigo_libro = '%s'",
-				$fila['cantidad_libros'],
-				$fila['codigo_disponibilidad'],
-				$codigoLibro
-			);
-			$resultado2 = $conexion->ejecutarInstruccion($sql2);
-
 			$sql = sprintf("
 				SELECT codigo_prestamo
 				FROM tbl_prestamos
@@ -411,8 +388,79 @@
 				0,
 				$fila3['codigo_prestamo']
 			);
-			echo $sql2;
 			$resultado2 = $conexion->ejecutarInstruccion($sql2);
+			if(empty($fila3['codigo_prestamo'])){
+				echo "vacio";
+			}else{
+				$sql = sprintf("
+					SELECT cantidad_libros, codigo_disponibilidad
+					FROM tbl_libros
+					WHERE codigo_libro = '%s'",
+					$codigoLibro
+				);
+				$resultado = $conexion->ejecutarInstruccion($sql);
+				$fila = $conexion->obtenerFila($resultado);
+				$fila['cantidad_libros']++;
+				if($fila['cantidad_libros'] != 0){
+					$fila['codigo_disponibilidad'] = 1;
+				}
+
+				$sql2 = sprintf("
+					UPDATE tbl_libros
+					SET cantidad_libros = '%s',
+						codigo_disponibilidad = '%s'
+					WHERE codigo_libro = '%s'",
+					$fila['cantidad_libros'],
+					$fila['codigo_disponibilidad'],
+					$codigoLibro
+				);
+				$resultado2 = $conexion->ejecutarInstruccion($sql2);
+			}
+		}
+
+		public static function solicitarLibroBibliotecario($conexion,$codigoLibro,$codigoUsuario,$fechaPrestamo){
+			$sql = sprintf("
+				SELECT cantidad_libros, codigo_disponibilidad
+				FROM tbl_libros
+				WHERE codigo_libro = '%s'",
+				$codigoLibro
+			);
+			$resultado = $conexion->ejecutarInstruccion($sql);
+			$fila = $conexion->obtenerFila($resultado);
+
+			
+			if($fila['cantidad_libros']-1 >= 0){
+				$fila['cantidad_libros']--;
+				if($fila['cantidad_libros'] == 0){
+					$fila['codigo_disponibilidad'] = 2;
+				}
+				$sql2 = sprintf("
+					UPDATE tbl_libros
+					SET cantidad_libros = '%s',
+						codigo_disponibilidad = '%s'
+					WHERE codigo_libro = '%s'",
+					$fila['cantidad_libros'],
+					$fila['codigo_disponibilidad'],
+					$codigoLibro
+				);
+				$resultado2 = $conexion->ejecutarInstruccion($sql2);
+				
+				$sql = sprintf("
+					INSERT INTO tbl_prestamos(codigo_prestamo, codigo_usuario, 
+						codigo_libro, fecha_prestamo, 
+						fecha_devolucion, visible) 
+					VALUES (NULL,'%s','%s','%s',NULL,%s)",
+					$codigoUsuario,
+					$codigoLibro,
+					$fechaPrestamo,
+					1
+				);
+				$resultado = $conexion->ejecutarInstruccion($sql);
+			}else{
+				echo "vacio";
+			}
+
+			
 		}
 	}
 ?>

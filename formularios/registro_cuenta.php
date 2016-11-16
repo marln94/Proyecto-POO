@@ -100,7 +100,7 @@
                           <label class="control-label col-md-3 col-sm-3 col-xs-12"> Imagen de perfil <span>
                           </label>
                           <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="file" name="imagen" id="imagen" class="col-md-7 col-xs-12" accept="image/*">
+                            <input type="file" name="imagen" id="imagen" class="form-control col-md-7 col-xs-12" accept="image/*">
                           </div>
                         </div>
                       </form>
@@ -108,6 +108,7 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
+                          <input type="hidden" name="MAX_FILE_SIZE" value="100000" />
                           <button id="btn-crear-cuenta" class="btn btn-success">Crear</button>
                         </div>
                       </div>
