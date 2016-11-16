@@ -7,7 +7,17 @@ function solicitarLibro(codigoLibro){
 		url: "../ajax/ctrl_libro.php?opcion=2",
 		data: parametros,
 		success: function(resultado){
-			cargarLibro();
+			if(resultado == 'existe'){
+				$("#mensaje-aviso").html("Ya tiene este libro en su lista de préstamos");
+				$("#modal-aviso").modal("show");
+			} else{
+				cargarLibro();
+				$("#mensaje-aviso").html("Préstamo realizado. Puede devolverlo en la sección 'Préstamos actuales'");
+				$("#modal-aviso").modal("show");
+				$("#modal-aviso").on('hidden.bs.modal', function(){
+					$(location).attr('href',"../index.php");
+				});
+			}
 		}
 	});
 }

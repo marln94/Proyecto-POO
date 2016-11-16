@@ -11,6 +11,8 @@ function entrar(){
 					$(location).attr('href',"registrado.php");
 				}else if(respuesta == 2){
 					$(location).attr('href',"bibliotecario.php");
+				}else if(respuesta == 1){
+					$(location).attr('href',"administrador.php");
 				}else{
 					$("#mensaje").html(respuesta);
 					$("#modal-advertencia").modal("show");
@@ -33,6 +35,7 @@ function verificar() {
 }
 
 $(document).ready(function(){
+	$("#txt-email").focus();
 	$("#btn-iniciar").click(function(){
 		entrar();
 	});

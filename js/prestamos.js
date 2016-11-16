@@ -23,6 +23,15 @@ function cargarPrestamos(){
 			}
 		});
 	}
+	if($("#codigo-tipo-usuario").val() == 2){
+		$.ajax({
+			method: "post",
+			url: "../ajax/ctrl_prestamos.php?opcion=3",
+			success: function(respuesta){
+				$("#tabla-prestamos").html(respuesta);
+			}
+		});
+	}
 }
 
 obtenerFecha = function() {

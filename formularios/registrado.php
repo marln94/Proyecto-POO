@@ -3,7 +3,6 @@
   if(isset($_SESSION['codigo-usuario'])){
     if($_SESSION['codigo-tipo-usuario'] == 3){
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>

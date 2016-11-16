@@ -1,38 +1,5 @@
 <?php
 	switch ($_GET["opcion"]) {
-		case 'bibliotecario':
-			echo "../images/user2.png".",";
-			echo "Marlon Calderón".",";
-			break;
-
-		case 'administrador':
-			echo "../images/user.png".",";
-			echo "Administrador".",";
-			break;
-
-		case 'tabla-libros':
-			
-
-			break;
-		
-
-		case 'tabla-libros':
-			
-
-			break;
-
-
-		case 'tabla-editoriales':
-			
-
-			break;
-
-
-		case 'tabla-categorias':
-
-
-			break;
-
 		case 'listado-bibliotecarios':
 			for($i=0;$i<5;$i++){
 			echo '<div class="col-md-4 col-sm-4 col-xs-12 profile_details">
