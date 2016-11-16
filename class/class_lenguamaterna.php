@@ -2,29 +2,29 @@
 
 	class LenguaMaterna{
 
-		private $codigolenguamaterna;
-		private $nombrelenguamaterna;
+		private $codigoLenguaMaterna;
+		private $nombreLenguaMaterna;
 
-		public function __construct($codigolenguamaterna,
-					$nombrelenguamaterna){
-			$this->codigolenguamaterna = $codigolenguamaterna;
-			$this->nombrelenguamaterna = $nombrelenguamaterna;
+		public function __construct($codigoLenguaMaterna,
+					$nombreLenguaMterna){
+			$this->codigoLenguaMaterna = $codigoLenguaMaterna;
+			$this->nombreLenguaMaterna = $nombreLenguaMaterna;
 		}
-		public function getCodigolenguamaterna(){
-			return $this->codigolenguamaterna;
+		public function getCodigoLenguaMaterna(){
+			return $this->codigoLenguaMaterna;
 		}
-		public function setCodigolenguamaterna($codigolenguamaterna){
-			$this->codigolenguamaterna = $codigolenguamaterna;
+		public function setCodigoLenguaMaterna($codigoLenguaMaterna){
+			$this->codigoLenguaMaterna = $codigoLenguaMaterna;
 		}
-		public function getNombrelenguamaterna(){
-			return $this->nombrelenguamaterna;
+		public function getNombreLenguaMaterna(){
+			return $this->nombreLenguaMaterna;
 		}
-		public function setNombrelenguamaterna($nombrelenguamaterna){
-			$this->nombrelenguamaterna = $nombrelenguamaterna;
+		public function setNombreLenguaMaterna($nombreLenguaMaterna){
+			$this->nombreLenguaMaterna = $nombreLenguaMaterna;
 		}
 		public function toString(){
-			return "Codigolenguamaterna: " . $this->codigolenguamaterna . 
-				" Nombrelenguamaterna: " . $this->nombrelenguamaterna;
+			return "CodigoLenguaMaterna: " . $this->codigoLenguaMaterna . 
+				" NombreLenguaMaterna: " . $this->nombreLenguaMaterna;
 		}
 	}
 ?>

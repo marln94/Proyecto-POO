@@ -1,7 +1,7 @@
 <?php
 	include_once("class_tipo_usuario.php");
 
-	class usuario{
+	class Usuario{
 
 		private $codigoUsuario;
 		private $tipoUsuario;
@@ -12,8 +12,6 @@
 		private $domicilio;
 		private $telefono;
 		private $imagenUsuario;
-		private $tipoImagen;
-		private $estadoUsuario;
 
 		public function __construct($codigoUsuario,
 					$tipoUsuario,
@@ -23,9 +21,7 @@
 					$contraseña,
 					$domicilio,
 					$telefono,
-					$imagenUsuario,
-					$tipoImagen,
-					$estadoUsuario){
+					$imagenUsuario){
 			$this->codigoUsuario = $codigoUsuario;
 			$this->tipoUsuario = $tipoUsuario;
 			$this->nombre = $nombre;
@@ -35,8 +31,6 @@
 			$this->domicilio = $domicilio;
 			$this->telefono = $telefono;
 			$this->imagenUsuario = $imagenUsuario;
-			$this->tipoImagen = $tipoImagen;
-			$this->estadoUsuario = $estadoUsuario;
 		}
 		public function getCodigoUsuario(){
 			return $this->codigoUsuario;
@@ -92,18 +86,6 @@
 		public function setImagenUsuario($imagenUsuario){
 			$this->imagenUsuario = $imagenUsuario;
 		}
-		public function getTipoImagen(){
-			return $this->tipoImagen;
-		}
-		public function setTipoImagen($tipoImagen){
-			$this->tipoImagen = $tipoImagen;
-		}
-		public function getEstadoUsuario(){
-			return $this->estadoUsuario;
-		}
-		public function setEstadoUsuario($estadoUsuario){
-			$this->estadoUsuario = $estadoUsuario;
-		}
 
 		public function guardarRegistro($conexion){
 			$sql = sprintf(
@@ -116,20 +98,15 @@
 						contrasena, 
 						domicilio, 
 						telefono, 
-						imagen_usuario,
-						tipo_imagen,
-						estado_usuario
+						imagen_usuario
 					) VALUES (
-					NULL, %s, '%s', '%s', '%s', sha1('%s'), NULL, NULL, '%s', '%s','%s'
+					NULL, %s, '%s', '%s', '%s', '%s', NULL, NULL, NULL
 				)",
 				stripslashes($this->tipoUsuario->getCodigoTipoUsuario()),
 				stripslashes($this->nombre),
 				stripslashes($this->apellido),
 				stripslashes($this->correoElectronico),
-				stripslashes($this->contraseña),
-				stripslashes($this->imagenUsuario),
-				stripslashes($this->tipoImagen),
-				stripslashes($this->estadoUsuario)
+				stripslashes($this->contraseña)
 			);
 			$resultado = $conexion->ejecutarInstruccion($sql);
 		}
@@ -138,7 +115,7 @@
 			$sql = sprintf("
 				SELECT codigo_usuario, codigo_tipo_usuario, nombre, apellido
 				FROM tbl_usuarios 
-				WHERE correo_electronico='%s' AND contrasena=sha1('%s') AND estado_usuario=1",
+				WHERE correo_electronico='%s' AND contrasena='%s'",
 				stripslashes($correoElectronico),
 				stripslashes($contrasena)
 			);
@@ -150,88 +127,6 @@
 			} else{
 				return false;
 			}
-		}
-
-		public static function informacionUsuario($conexion,$codigoUsuario){
-			$sql = sprintf("
-				SELECT nombre, apellido, correo_electronico, contrasena
-				FROM tbl_usuarios 
-				WHERE codigo_usuario='%s' AND estado_usuario=1",
-				$codigoUsuario
-			);
-			$resultado = $conexion->ejecutarInstruccion($sql);
-			return $conexion->obtenerFila($resultado);
-		}
-
-		public static function actualizarNombre($conexion,$codigoUsuario,$nuevoValor){
-			$sql = sprintf("
-				UPDATE tbl_usuarios
-				SET nombre='%s'
-				WHERE codigo_usuario='%s'",
-				$nuevoValor,
-				$codigoUsuario
-			);
-			$resultado = $conexion->ejecutarInstruccion($sql);
-			if($resultado){
-				echo "Nombre actualizado correctamente";
-			} else{
-				echo "Error en la actualización del nombre";
-			}
-		}
-		public static function actualizarApellido($conexion,$codigoUsuario,$nuevoValor){
-			$sql = sprintf("
-				UPDATE tbl_usuarios
-				SET apellido='%s'
-				WHERE codigo_usuario='%s'",
-				$nuevoValor,
-				$codigoUsuario
-			);
-			$resultado = $conexion->ejecutarInstruccion($sql);
-			if($resultado){
-				echo "Apellido actualizado correctamente";
-			} else{
-				echo "Error en la actualización del apellido";
-			}
-		}
-		public static function actualizarCorreoElectronico($conexion,$codigoUsuario,$nuevoValor){
-			$sql = sprintf("
-				UPDATE tbl_usuarios
-				SET correo_electronico='%s'
-				WHERE codigo_usuario='%s'",
-				$nuevoValor,
-				$codigoUsuario
-			);
-			$resultado = $conexion->ejecutarInstruccion($sql);
-			if($resultado){
-				echo "Correo electrónico actualizado correctamente";
-			} else{
-				echo "Error en la actualización del correo electrónico";
-			}
-		}
-		public static function actualizarContraseña($conexion,$codigoUsuario,$nuevoValor,$valorActual){
-			$sql = sprintf("
-				SELECT contrasena
-				FROM tbl_usuarios
-				WHERE codigo_usuario='%s'",
-				$codigoUsuario
-			);
-			$resultado = $conexion->ejecutarInstruccion($sql);
-			$fila = $conexion->obtenerFila($resultado);
-
-			if($fila["contrasena"] == sha1($valorActual)){
-				$sql = sprintf("
-					UPDATE tbl_usuarios
-					SET contrasena=sha1('%s')
-					WHERE codigo_usuario='%s' AND contrasena=sha1('%s')",
-					$nuevoValor,
-					$codigoUsuario,
-					$valorActual
-				);
-				$resultado = $conexion->ejecutarInstruccion($sql);
-			} else{
-				echo "error";
-			}
-			
 		}
 	}
 ?>
