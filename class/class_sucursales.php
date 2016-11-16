@@ -2,39 +2,39 @@
 
 	class Sucursal{
 
-		private $codigosucursal;
-		private $direccionsucursal;
-		private $telefonosucursal;
+		private $codigoSucursal;
+		private $direccionSucursal;
+		private $telefonoSucursal;
 
-		public function __construct($codigosucursal,
-					$direccionsucursal,
-					$telefonosucursal){
-			$this->codigosucursal = $codigosucursal;
-			$this->direccionsucursal = $direccionsucursal;
-			$this->telefonosucursal = $telefonosucursal;
+		public function __construct($codigoSucursal,
+					$direccionSucursal,
+					$telefonoSucursal){
+			$this->codigoSucursal = $codigoSucursal;
+			$this->direccionSucursal = $direccionSucursal;
+			$this->telefonoSucursal = $telefonoSucursal;
 		}
-		public function getCodigosucursal(){
-			return $this->codigosucursal;
+		public function getCodigoSucursal(){
+			return $this->codigoSucursal;
 		}
-		public function setCodigosucursal($codigosucursal){
-			$this->codigosucursal = $codigosucursal;
+		public function setCodigoSucursal($codigoSucursal){
+			$this->codigoSucursal = $codigoSucursal;
 		}
-		public function getDireccionsucursal(){
-			return $this->direccionsucursal;
+		public function getDireccionSucursal(){
+			return $this->direccionSucursal;
 		}
-		public function setDireccionsucursal($direccionsucursal){
-			$this->direccionsucursal = $direccionsucursal;
+		public function setDireccionSucursal($direccionSucursal){
+			$this->direccionSucursal = $direccionSucursal;
 		}
-		public function getTelefonosucursal(){
-			return $this->telefonosucursal;
+		public function getTelefonoSucursal(){
+			return $this->telefonoSucursal;
 		}
-		public function setTelefonosucursal($telefonosucursal){
-			$this->telefonosucursal = $telefonosucursal;
+		public function setTelefonoSucursal($telefonoSucursal){
+			$this->telefonoSucursal = $telefonoSucursal;
 		}
 		public function toString(){
-			return "Codigosucursal: " . $this->codigosucursal . 
-				" Direccionsucursal: " . $this->direccionsucursal . 
-				" Telefonosucursal: " . $this->telefonosucursal;
+			return "CodigoSucursal: " . $this->codigoSucursal . 
+				" DireccionSucursal: " . $this->direccionSucursal . 
+				" TelefonoSucursal: " . $this->telefonoSucursal;
 		}
 	}
 ?>

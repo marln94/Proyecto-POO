@@ -1,65 +1,63 @@
 <?php
-
 	class Autor{
-
-		private $codigoautor;
-		private $codigonacionalidad;
-		private $codigolenguamaterna;
-		private $nombreyapellido;
-		private $fechanacimiento;
-		private $fechafallecimiento;
+		private $codigoAutor;
+		private $codigoNacionalidad;
+		private $codigoLenguaMaterna;
+		private $nombreyApellido;
+		private $fechaNacimiento;
+		private $fechaFallecimiento;
 		private $imagen;
 
-		public function __construct($codigoautor,
-					$codigonacionalidad,
-					$codigolenguamaterna,
-					$nombreyapellido,
-					$fechanacimiento,
-					$fechafallecimiento,
+		public function __construct($codigoAutor,
+					$codigoNacionalidad,
+					$codigoLenguaMaterna,
+					$nombreyApellido,
+					$fechaNacimiento,
+					$fechaFallecimiento,
 					$imagen){
-			$this->codigoautor = $codigoautor;
-			$this->codigonacionalidad = $codigonacionalidad;
-			$this->codigolenguamaterna = $codigolenguamaterna;
-			$this->nombreyapellido = $nombreyapellido;
-			$this->fechanacimiento = $fechanacimiento;
-			$this->fechafallecimiento = $fechafallecimiento;
+			$this->codigoAutor = $codigoAutor;
+			$this->codigoNacionalidad = $codigoNacionalidad;
+			$this->codigoenguaMaterna = $codigoLenguaMaterna;
+			$this->nombreyApellido = $nombreyApellido;
+			$this->fechaNacimiento = $fechaNacimiento;
+			$this->fechaFallecimiento = $fechaFallecimiento;
 			$this->imagen = $imagen;
 		}
-		public function getCodigoautor(){
-			return $this->codigoautor;
+		public function getCodigoAutor(){
+			return $this->codigoAutor;
 		}
-		public function setCodigoautor($codigoautor){
-			$this->codigoautor = $codigoautor;
+		public function setCodigoAutor($codigoAutor){
+			$this->codigoautor = $codigoAutor;
 		}
-		public function getCodigonacionalidad(){
-			return $this->codigonacionalidad;
+		public function getCodigoNacionalidad(){
+			return $this->codigoNacionalidad;
 		}
-		public function setCodigonacionalidad($codigonacionalidad){
-			$this->codigonacionalidad = $codigonacionalidad;
+		public function setCodigonNacionalidad($codigoNacionalidad){
+			$this->codigoNacionalidad = $codigoNacionalidad;
 		}
-		public function getCodigolenguamaterna(){
-			return $this->codigolenguamaterna;
+		public function getCodigoLenguaMaterna(){
+			return $this->codigoLenguaMaterna;
 		}
-		public function setCodigolenguamaterna($codigolenguamaterna){
-			$this->codigolenguamaterna = $codigolenguamaterna;
+		public function setCodigoLenguaMaterna($codigoLenguaMaterna){
+			$this->codigoLenguaMaterna = $codigoLenguaMaterna;
 		}
-		public function getNombreyapellido(){
-			return $this->nombreyapellido;
+		public function getNombreyApellido(){
+			return $this->nombreyApellido;
 		}
-		public function setNombreyapellido($nombreyapellido){
-			$this->nombreyapellido = $nombreyapellido;
+		public function setNombreyApellido($nombreyApellido){
+			$this->nombreyApellido = $nombreyApellido;
 		}
-		public function getFechanacimiento(){
-			return $this->fechanacimiento;
+		public function getFechaNacimiento(){
+			return $this->fechaNacimiento;
 		}
-		public function setFechanacimiento($fechanacimiento){
-			$this->fechanacimiento = $fechanacimiento;
+		public function setFechaNacimiento($fechaNacimiento){
+			$this->fechaNacimiento = $fechaNacimiento;
 		}
-		public function getFechafallecimiento(){
-			return $this->fechafallecimiento;
+		public function getFechaFallecimiento(){
+			return $this->fechaFallecimiento;
 		}
-		public function setFechafallecimiento($fechafallecimiento){
-			$this->fechafallecimiento = $fechafallecimiento;
+		public function setFechaFallecimiento($fechaFallecimiento){
+			$this->fechaFallecimiento = $fechaFallecimiento;
 		}
 		public function getImagen(){
 			return $this->imagen;
@@ -68,12 +66,12 @@
 			$this->imagen = $imagen;
 		}
 		public function toString(){
-			return "Codigoautor: " . $this->codigoautor . 
-				" Codigonacionalidad: " . $this->codigonacionalidad . 
-				" Codigolenguamaterna: " . $this->codigolenguamaterna . 
-				" Nombreyapellido: " . $this->nombreyapellido . 
-				" Fechanacimiento: " . $this->fechanacimiento . 
-				" Fechafallecimiento: " . $this->fechafallecimiento . 
+			return "CodigoAutor: " . $this->codigoAutor . 
+				" CodigoNacionalidad: " . $this->codigoNacionalidad . 
+				" Codigolenguamaterna: " . $this->codigoLenguaMaterna . 
+				" NombreyApellido: " . $this->nombreyApellido . 
+				" FechaNacimiento: " . $this->fechaNacimiento . 
+				" FechaFallecimiento: " . $this->fechaFallecimiento . 
 				" Imagen: " . $this->imagen;
 		}
 	}

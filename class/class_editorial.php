@@ -2,43 +2,43 @@
 
 	class Editorial{
 
-		private $codigoeditorial;
-		private $nombreeditorial;
-		private $nombreabreviado;
+		private $codigoEditorial;
+		private $nombreEditorial;
+		private $nombreAbreviado;
 		private $direccion;
 		private $telefono;
-		private $correoelectronico;
+		private $correoElectronico;
 
-		public function __construct($codigoeditorial,
-					$nombreeditorial,
-					$nombreabreviado,
+		public function __construct($codigoEditorial,
+					$nombreEditorial,
+					$nombreAbreviado,
 					$direccion,
 					$telefono,
-					$correoelectronico){
-			$this->codigoeditorial = $codigoeditorial;
-			$this->nombreeditorial = $nombreeditorial;
-			$this->nombreabreviado = $nombreabreviado;
+					$correoElectronico){
+			$this->codigoEditorial = $codigoEditorial;
+			$this->nombreEditorial = $nombreEditorial;
+			$this->nombreAbreviado = $nombreAbreviado;
 			$this->direccion = $direccion;
 			$this->telefono = $telefono;
-			$this->correoelectronico = $correoelectronico;
+			$this->correoElectronico = $correoElectronico;
 		}
-		public function getCodigoeditorial(){
-			return $this->codigoeditorial;
+		public function getCodigoEditorial(){
+			return $this->codigoEditorial;
 		}
-		public function setCodigoeditorial($codigoeditorial){
-			$this->codigoeditorial = $codigoeditorial;
+		public function setCodigoEditorial($codigoEditorial){
+			$this->codigoEditorial = $codigoEditorial;
 		}
-		public function getNombreeditorial(){
-			return $this->nombreeditorial;
+		public function getNombreEditorial(){
+			return $this->nombreEditorial;
 		}
-		public function setNombreeditorial($nombreeditorial){
-			$this->nombreeditorial = $nombreeditorial;
+		public function setNombreEditorial($nombreEditorial){
+			$this->nombreEditorial = $nombreEditorial;
 		}
-		public function getNombreabreviado(){
-			return $this->nombreabreviado;
+		public function getNombreAbreviado(){
+			return $this->nombreAbreviado;
 		}
-		public function setNombreabreviado($nombreabreviado){
-			$this->nombreabreviado = $nombreabreviado;
+		public function setNombreAbreviado($nombreAbreviado){
+			$this->nombreAbreviado = $nombreAbreviado;
 		}
 		public function getDireccion(){
 			return $this->direccion;
@@ -53,18 +53,18 @@
 			$this->telefono = $telefono;
 		}
 		public function getCorreoelectronico(){
-			return $this->correoelectronico;
+			return $this->correoElectronico;
 		}
-		public function setCorreoelectronico($correoelectronico){
-			$this->correoelectronico = $correoelectronico;
+		public function setCorreoelectronico($correoElectronico){
+			$this->correoElectronico = $correoElectronico;
 		}
 		public function toString(){
-			return "Codigoeditorial: " . $this->codigoeditorial . 
-				" Nombreeditorial: " . $this->nombreeditorial . 
-				" Nombreabreviado: " . $this->nombreabreviado . 
+			return "CodigoEditorial: " . $this->codigoEditorial . 
+				" NombreEditorial: " . $this->nombreEditorial . 
+				" NombreAbreviado: " . $this->nombreAbreviado . 
 				" Direccion: " . $this->direccion . 
 				" Telefono: " . $this->telefono . 
-				" Correoelectronico: " . $this->correoelectronico;
+				" CorreoElectronico: " . $this->correoElectronico;
 		}
 	}
 ?>
