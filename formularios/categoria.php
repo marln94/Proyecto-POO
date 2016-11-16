@@ -135,6 +135,9 @@
               <a href="logout.php" data-toggle="tooltip" data-placement="top" title="Cerrar sesión">
                 <span class="glyphicon glyphicon-log-out" aria-hidden="true" style="color: #190705"></span>
               </a>
+              <a href="configuracion.php" data-toggle="tooltip" data-placement="top" title="Configuración">
+                <span class="glyphicon glyphicon-cog" aria-hidden="true" style="color: #190705"></span>
+              </a>
             </div>
             <!-- /footer menu -->
           </div>

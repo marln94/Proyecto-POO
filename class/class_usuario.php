@@ -151,5 +151,87 @@
 				return false;
 			}
 		}
+
+		public static function informacionUsuario($conexion,$codigoUsuario){
+			$sql = sprintf("
+				SELECT nombre, apellido, correo_electronico, contrasena
+				FROM tbl_usuarios 
+				WHERE codigo_usuario='%s' AND estado_usuario=1",
+				$codigoUsuario
+			);
+			$resultado = $conexion->ejecutarInstruccion($sql);
+			return $conexion->obtenerFila($resultado);
+		}
+
+		public static function actualizarNombre($conexion,$codigoUsuario,$nuevoValor){
+			$sql = sprintf("
+				UPDATE tbl_usuarios
+				SET nombre='%s'
+				WHERE codigo_usuario='%s'",
+				$nuevoValor,
+				$codigoUsuario
+			);
+			$resultado = $conexion->ejecutarInstruccion($sql);
+			if($resultado){
+				echo "Nombre actualizado correctamente";
+			} else{
+				echo "Error en la actualización del nombre";
+			}
+		}
+		public static function actualizarApellido($conexion,$codigoUsuario,$nuevoValor){
+			$sql = sprintf("
+				UPDATE tbl_usuarios
+				SET apellido='%s'
+				WHERE codigo_usuario='%s'",
+				$nuevoValor,
+				$codigoUsuario
+			);
+			$resultado = $conexion->ejecutarInstruccion($sql);
+			if($resultado){
+				echo "Apellido actualizado correctamente";
+			} else{
+				echo "Error en la actualización del apellido";
+			}
+		}
+		public static function actualizarCorreoElectronico($conexion,$codigoUsuario,$nuevoValor){
+			$sql = sprintf("
+				UPDATE tbl_usuarios
+				SET correo_electronico='%s'
+				WHERE codigo_usuario='%s'",
+				$nuevoValor,
+				$codigoUsuario
+			);
+			$resultado = $conexion->ejecutarInstruccion($sql);
+			if($resultado){
+				echo "Correo electrónico actualizado correctamente";
+			} else{
+				echo "Error en la actualización del correo electrónico";
+			}
+		}
+		public static function actualizarContraseña($conexion,$codigoUsuario,$nuevoValor,$valorActual){
+			$sql = sprintf("
+				SELECT contrasena
+				FROM tbl_usuarios
+				WHERE codigo_usuario='%s'",
+				$codigoUsuario
+			);
+			$resultado = $conexion->ejecutarInstruccion($sql);
+			$fila = $conexion->obtenerFila($resultado);
+
+			if($fila["contrasena"] == sha1($valorActual)){
+				$sql = sprintf("
+					UPDATE tbl_usuarios
+					SET contrasena=sha1('%s')
+					WHERE codigo_usuario='%s' AND contrasena=sha1('%s')",
+					$nuevoValor,
+					$codigoUsuario,
+					$valorActual
+				);
+				$resultado = $conexion->ejecutarInstruccion($sql);
+			} else{
+				echo "error";
+			}
+			
+		}
 	}
 ?>

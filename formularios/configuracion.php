@@ -2,7 +2,6 @@
   session_start();
   if(isset($_SESSION['codigo-usuario'])){
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -23,14 +22,14 @@
     <link href="../css/custom.css" rel="stylesheet">
 
   </head>
-  <input type="hidden" id="codigo-tipo-usuario" value="<?php echo $_SESSION['codigo-tipo-usuario']?>">
   <input type="hidden" id="codigo-usuario" value="<?php echo $_SESSION['codigo-usuario']?>">
+  <input type="hidden" id="codigo-tipo-usuario" value="<?php echo $_SESSION['codigo-tipo-usuario']?>">
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
-        <div class="col-sm-3 col-md-3 left_col">
+        <div class="col-sm-3 col-md-3 left_col ">
           <div class="left_col scroll-view">
-            <div class="navbar nav_title color-vino" style="border: 0;">
+            <div class="navbar nav_title" style="border: 0;">
               <a href="../index.php" class="site_title color-vino letra-logo"><i class="fa fa-book"></i> <span>Bibliotec </span></a>
             </div>
 
@@ -149,7 +148,7 @@
         <div class="right_col" role="main">
           <div class="page-title">
             <div class="title_left">
-              <h3><i class="fa fa-search" style="font-size: 30px"></i> Búsqueda rápida </h3>
+              <h3><i class="fa fa-search" style="font-size: 30px"></i> Búsqueda rápida</h3>
             </div>
           </div>
           <div class="input-group" style="margin-bottom: 21px">
@@ -158,25 +157,58 @@
               <button class="button_1 btn btn-default" type="button">Buscar</button>
             </span>
           </div>
-          <!--categorías-->
+          <!--libros-->
           <div class="row">
-              <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="col-md-12 col-sm-12 col-xs-12" id="contenedor-libros">
                 <div class="x_panel">
-                  <div class="x_title">
-                    <h3>Préstamos</h3>
-                    <div class="clearfix"></div>
+                   <div class="x_title">
+                      <h3>Configuración</h3>
+                      <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <div class="row top_tiles">
-                      <table class="table table-striped" id="tabla-prestamos">
-                        
-                      </table>
+                    <div class="row top_tiles" >
+                      <div class="animated flipInY col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                          <form id="form-imagen">
+                            <img  alt="..." class="img-thumbnail profile-img-configuracion" src="../php/imagen.php?id=<?php echo $_SESSION['codigo-usuario'] ?>">
+                          </form>
+                          <div style="width: 80%;margin: 0 auto;">
+                            <div class="btn-group-vertical" style="width: 100%; margin-top: 5%;">
+                              <button class="btn btn-default" id="btn-solicitar">Cambiar imagen</button>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <table class="table table-hover">
+                          <tr>
+                            <th>Nombre</th>
+                            <td id="nombre"></td>
+                            <td><a href="" id="editar-nombre">Editar</a></td>
+                          </tr>
+                          <tr>
+                            <th>Apellido</th>
+                            <td id="apellido"></td>
+                            <td><a href="" id="editar-apellido">Editar</a></td>
+                          </tr>
+                          <tr>
+                            <th>Correo electrónico</th>
+                            <td id="correo-electronico"></td>
+                            <td><a href="" id="editar-correo-electronico">Editar</a></td>
+                          </tr>
+                          <tr>
+                            <th>Contraseña</th>
+                            <td id="contraseña"></td>
+                            <td><a href="" id="editar-contraseña">Editar</a></td>
+                          </tr>
+                        </table>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
             </div>
-          <!--/cateogrías-->
+          </div>
+          <!--/libros-->
         </div>
         <!-- /page content -->
 
@@ -191,6 +223,36 @@
       </div>
     </div>
 
+    <!-- Modal -->
+    <div id="modal-editar" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title"> Editar información </h4>
+          </div>
+          <div class="modal-body" id="div-editar">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal-aviso" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title"> Información </h4>
+          </div>
+          <div class="modal-body" id="div-editar">
+            <p> Información actualizada correctamente</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- jQuery -->
     <script src="../vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
@@ -200,18 +262,18 @@
     <!-- Custom Theme Scripts -->
     <script src="../js/custom.min.js"></script>
 
-    <script src="../js/prestamos.js"></script>
+    <script src="../js/configuracion.js"></script>
 
     <!-- JS -->
     <script>
-      
+
     </script>
     <!-- /JS -->
   </body>
 </html>
 
 <?php
-  } else{
+  }else{
     header("Location: ../index.php");
   }
 ?>

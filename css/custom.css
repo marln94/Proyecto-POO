@@ -4220,8 +4220,8 @@ ul.notifications {
   z-index: 1000;
   position: inherit;
   margin-top: 20px;
-  border: 1px solid rgba(52, 73, 94, 0.44);
-  padding: 4px;
+  border: 1px solid #641E16;
+  padding: 0px;
   object-fit: scale-down; }
 .tile-stats h3 > a:hover{
   color: #747373;
@@ -4312,3 +4312,10 @@ ul.notifications {
   color: #641E16;
   background-color: #f9f9f9;
 }
+.img-thumbnail.profile-img-configuracion {
+  width: 100%;
+  background: #fff;
+  position: inherit;
+  margin: 0 auto;
+  padding: 4px;
+  object-fit: scale-down; }
