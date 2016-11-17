@@ -48,5 +48,56 @@
 			<?php
 			}
 		}
+
+		public function guardarRegistro($conexion){
+			$sql = sprintf("
+				INSERT INTO tbl_colecciones(codigo_coleccion,nombre_coleccion,estado)
+				VALUES (NULL,'%s','%s')",
+				$conexion->escaparCaracteres($this->nombreColeccion),
+				$this->estado
+			);
+			$resultado = $conexion->ejecutarInstruccion($sql);
+		}
+
+		public static function retirarColeccion($conexion,$codigoColeccion){
+			$sql = sprintf("
+				SELECT estado
+				FROM tbl_libros
+				WHERE codigo_coleccion='%s'",
+				$codigoColeccion
+				);
+			$resultado = $conexion->ejecutarInstruccion($sql);
+			$eliminar = true;
+			while($fila = $conexion->obtenerFila($resultado)){
+				if($fila["estado"] == 1){
+					$eliminar = false;
+					break;
+				}
+			}
+			if($eliminar){
+				$sql = sprintf("
+					SELECT estado
+					FROM tbl_colecciones
+					WHERE codigo_coleccion='%s'",
+					$codigoColeccion
+				);
+				$resultado = $conexion->ejecutarInstruccion($sql);
+				$fila = $conexion->obtenerFila($resultado);
+				if($fila["estado"] == 1){
+					$sql = sprintf("
+						UPDATE tbl_colecciones
+						SET estado='%s'
+						WHERE codigo_coleccion='%s'",
+						0,
+						$codigoColeccion
+					);
+					$resultado = $conexion->ejecutarInstruccion($sql);
+				} else{
+					echo "error";
+				}
+			} else{
+				echo "error";
+			}
+		}
 	}
 ?>

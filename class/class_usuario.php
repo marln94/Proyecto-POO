@@ -122,14 +122,14 @@
 					) VALUES (
 					NULL, %s, '%s', '%s', '%s', sha1('%s'), NULL, NULL, '%s', '%s','%s'
 				)",
-				stripslashes($this->tipoUsuario->getCodigoTipoUsuario()),
-				stripslashes($this->nombre),
-				stripslashes($this->apellido),
-				stripslashes($this->correoElectronico),
-				stripslashes($this->contraseña),
-				stripslashes($this->imagenUsuario),
-				stripslashes($this->tipoImagen),
-				stripslashes($this->estadoUsuario)
+				$conexion->escaparCaracteres($this->tipoUsuario->getCodigoTipoUsuario()),
+				$conexion->escaparCaracteres($this->nombre),
+				$conexion->escaparCaracteres($this->apellido),
+				$conexion->escaparCaracteres($this->correoElectronico),
+				$conexion->escaparCaracteres($this->contraseña),
+				$conexion->escaparCaracteres($this->imagenUsuario),
+				$conexion->escaparCaracteres($this->tipoImagen),
+				$conexion->escaparCaracteres($this->estadoUsuario)
 			);
 			$resultado = $conexion->ejecutarInstruccion($sql);
 		}

@@ -89,5 +89,60 @@
 			}
 		}
 
+		public function guardarRegistro($conexion){
+			$sql = sprintf("
+				INSERT INTO tbl_editoriales(codigo_editorial,nombre_editorial,
+								nombre_abreviado,direccion,telefono,correo_electronico,estado)
+				VALUES (NULL,'%s','%s','%s','%s','%s','%s')",
+				$conexion->escaparCaracteres($this->nombreEditorial),
+				$conexion->escaparCaracteres($this->nombreAbreviado),
+				$conexion->escaparCaracteres($this->direccion),
+				$conexion->escaparCaracteres($this->telefono),
+				$conexion->escaparCaracteres($this->correoElectronico),
+				$conexion->escaparCaracteres($this->estado)
+			);
+			$resultado = $conexion->ejecutarInstruccion($sql);
+		}
+
+		public static function retirarEditorial($conexion,$codigoEditorial){
+			$sql = sprintf("
+				SELECT estado
+				FROM tbl_libros
+				WHERE codigo_editorial='%s'",
+				$codigoEditorial
+				);
+			$resultado = $conexion->ejecutarInstruccion($sql);
+			$eliminar = true;
+			while($fila = $conexion->obtenerFila($resultado)){
+				if($fila["estado"] == 1){
+					$eliminar = false;
+					break;
+				}
+			}
+			if($eliminar){
+				$sql = sprintf("
+					SELECT estado
+					FROM tbl_editoriales
+					WHERE codigo_editorial='%s'",
+					$codigoEditorial
+				);
+				$resultado = $conexion->ejecutarInstruccion($sql);
+				$fila = $conexion->obtenerFila($resultado);
+				if($fila["estado"] == 1){
+					$sql = sprintf("
+						UPDATE tbl_editoriales
+						SET estado='%s'
+						WHERE codigo_editorial='%s'",
+						0,
+						$codigoEditorial
+					);
+					$resultado = $conexion->ejecutarInstruccion($sql);
+				} else{
+					echo "error";
+				}
+			} else{
+				echo "error";
+			}
+		}
 	}
 ?>

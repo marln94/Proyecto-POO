@@ -18,8 +18,6 @@
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- Select2 -->
-    <link href="../vendors/select2/dist/css/select2.min.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
     <link href="../css/custom.css" rel="stylesheet">
@@ -29,7 +27,7 @@
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
-        <div class="col-sm-3 col-md-3 left_col ">
+        <div class="col-sm-3 col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title color-vino" style="border: 0;">
               <a href="bibliotecario.php" class="site_title color-vino letra-logo"><i class="fa fa-book"></i> <span>Bibliotec </span></a>
@@ -111,38 +109,52 @@
               <button class="button_1 btn btn-default" type="button">Buscar</button>
             </span>
           </div>
-          <!--formulario registro coleccion-->
+          <!--listado-->
           <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h3><span class="fa fa-plus-circle"></span> Registrar colección en el sistema</h3>
+                    <h3>Administrar Sucursales</h3>
                     <div class="clearfix"></div>
                   </div>
-                  <div class="form-horizontal form-label-left">
-                      <span class="section">Información de la colección</span>
-
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="txt-nombre-coleccion"> Nombre<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="txt-nombre-coleccion" class="form-control col-md-7 col-xs-12" >
+                  <div class="x_content">
+                    <div class="row top_tiles">
+                      <a href="listado_sucursal.php" class="link-panel">
+                        <div class="panel-opcion">
+                          <div class="uno-panel">
+                            <div class="dos-panel">
+                              <p><span><i class="fa fa-table"></i></span></p>
+                              <p>Listado</p>
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                      </div>
-                      <div id="mensaje"></div>
-                      <div class="ln_solid"></div>
-                      <div class="form-group">
-                        <div class="col-md-6 col-md-offset-3">
-                          <button id="btn-registrar-coleccion" class="btn btn-success"> Registrar </button>
+                      </a>
+                      <a href="registro_sucursal.php" class="link-panel">
+                        <div class="panel-opcion">
+                          <div class="uno-panel">
+                            <div class="dos-panel">
+                              <p><span><i class="fa fa-plus-circle"></i></span></p>
+                              <p>Registrar</p>
+                            </div>
+                          </div>
                         </div>
-                      </div>
+                      </a>
+                      <a href="retiro_sucursal.php" class="link-panel">
+                        <div class="panel-opcion">
+                          <div class="uno-panel">
+                            <div class="dos-panel">
+                              <p><span><i class="fa fa-minus-circle"></i></span></p>
+                              <p>Eliminar</p>
+                            </div>
+                          </div>
+                        </div>
+                      </a>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          <!--/formulario registro coleccion-->
+          <!--/listado-->
         </div>
         <!-- /page content -->
 
@@ -157,38 +169,37 @@
       </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" id="modal-sesion">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title" id="myModalLabel">Colección registrada</h4>
-          </div>
-          <div class="modal-body">
-            <h4> La colección se ingresó con éxito al sistema</h4>
-            <br>
-            <p id="mensaje-registro"></p>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <!-- jQuery -->
     <script src="../vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
     <script src="../vendors/fastclick/lib/fastclick.js"></script>
-    <!-- Select2 -->
-    <script src="../vendors/select2/dist/js/select2.full.min.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="../js/custom.min.js"></script>
 
-    <script src="../js/registro_coleccion.js"></script>
-
     <!-- JS -->
     <script>
-      
+      $(document).ready(function() {
+        //$('#contenedor-categorias').html('<p style="text-align: center;"><img src="../images/loading.gif"> </p>');
+        $.ajax({
+          type: 'POST',
+          url: '../php/carga.php?opcion=bibliotecario',
+          success: function(respuesta){
+            var arr = respuesta.split(',');
+            document.title = 'Bibliotec - '+arr[1];
+            $('#imagen-usuario').attr('src',arr[0])
+            $('#nombre-usuario').html(arr[1]);
+          }
+        });
+        $.ajax({
+          type: 'POST',
+          url: '../php/carga.php?opcion=tabla-libros',
+          success: function(){
+
+          }
+        });
+      });
     </script>
     <!-- /JS -->
   </body>

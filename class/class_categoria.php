@@ -6,15 +6,18 @@
 		private $nombreCategoria;
 		private $cantidadLibros;
 		private $urlImagenCategoria;
+		private $estado;
 
 		public function __construct($codigoCategoria,
 					$nombreCategoria,
 					$cantidadLibros,
-					$urlImagenCategoria){
+					$urlImagenCategoria,
+					$estado){
 			$this->codigoCategoria = $codigoCategoria;
 			$this->nombreCategoria = $nombreCategoria;
 			$this->cantidadLibros = $cantidadLibros;
 			$this->urlImagenCategoria = $urlImagenCategoria;
+			$this->estado = $estado;
 		}
 		public function getCodigoCategoria(){
 			return $this->codigoCategoria;
@@ -40,6 +43,12 @@
 		public function setUrlImagenCategoria($urlImagenCategoria){
 			$this->urlImagenCategoria = $urlImagenCategoria;
 		}
+		public function getEstado(){
+			return $this->estado;
+		}
+		public function setEstado($estado){
+			$this->estado = $estado;
+		}
 
 		/** parámetro "fuera" para acceder desde otras carpetas a la carpeta de imágenes **/
 		/** parámetro "formulario" para acceder desde la misma carpeta al formulario categoria.php **/
@@ -47,7 +56,8 @@
 			$resultado = $conexion->ejecutarInstruccion("
 				SELECT codigo_categoria, nombre_categoria, 
 						cantidad_libros, url_imagen_categoria 
-				FROM tbl_categorias");
+				FROM tbl_categorias
+				WHERE estado=1");
 			while($fila = $conexion->obtenerFila($resultado)){
 			?>
 				<div class="animated flipInY col-lg-6 col-md-6 col-sm-6 col-xs-12" style="height: 110px;">
@@ -191,6 +201,71 @@
 	            <td><?php echo $fila["cantidad_libros"] ?></td>
 	        </tr>
 			<?php
+			}
+		}
+
+		public function guardarRegistro($conexion){
+			$sql = sprintf("
+				INSERT INTO tbl_categorias(codigo_categoria,nombre_categoria,cantidad_libros,estado)
+				VALUES (NULL,'%s','%s','%s')",
+				$conexion->escaparCaracteres($this->nombreCategoria),
+				$conexion->escaparCaracteres($this->cantidadLibros),
+				$conexion->escaparCaracteres($this->estado)
+			);
+			$resultado = $conexion->ejecutarInstruccion($sql);
+		}
+
+		public function guardarImagen($conexion,$urlImagenCategoria,$codigoCategoria){
+			$sql = sprintf("
+				UPDATE tbl_categorias
+				SET url_imagen_categoria='%s'
+				WHERE codigo_categoria='%s'",
+				substr($urlImagenCategoria,3),
+				$codigoCategoria
+			);
+			$resultado = $conexion->ejecutarInstruccion($sql);
+		}
+
+		public static function retirarCategoria($conexion,$codigoCategoria){
+			$sql = sprintf("
+				SELECT b.estado
+				FROM tbl_categorias_x_libros a
+				INNER JOIN tbl_libros b
+					ON a.codigo_libro=b.codigo_libro
+				WHERE a.codigo_categoria='%s'",
+				$codigoCategoria
+				);
+			$resultado = $conexion->ejecutarInstruccion($sql);
+			$eliminar = true;
+			while($fila = $conexion->obtenerFila($resultado)){
+				if($fila["estado"] == 1){
+					$eliminar = false;
+					break;
+				}
+			}
+			if($eliminar){
+				$sql = sprintf("
+					SELECT estado
+					FROM tbl_categorias
+					WHERE codigo_categoria='%s'",
+					$codigoCategoria
+				);
+				$resultado = $conexion->ejecutarInstruccion($sql);
+				$fila = $conexion->obtenerFila($resultado);
+				if($fila["estado"] == 1){
+					$sql = sprintf("
+						UPDATE tbl_categorias
+						SET estado='%s'
+						WHERE codigo_categoria='%s'",
+						0,
+						$codigoCategoria
+					);
+					$resultado = $conexion->ejecutarInstruccion($sql);
+				} else{
+					echo "error";
+				}
+			} else{
+				echo "error";
 			}
 		}
 	}

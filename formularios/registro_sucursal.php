@@ -111,30 +111,36 @@
               <button class="button_1 btn btn-default" type="button">Buscar</button>
             </span>
           </div>
-          <!--formulario registro coleccion-->
+          <!--formulario registro sucursal-->
           <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h3><span class="fa fa-plus-circle"></span> Registrar colección en el sistema</h3>
+                    <h3><span class="fa fa-plus-circle"></span> Registrar sucursal en el sistema</h3>
                     <div class="clearfix"></div>
                   </div>
                   <div class="form-horizontal form-label-left">
-                      <span class="section">Información de la colección</span>
+                      <span class="section">Información de la sucursal</span>
 
                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="txt-nombre-coleccion"> Nombre<span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="txt-direccion-sucursal"> Dirección<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="txt-nombre-coleccion" class="form-control col-md-7 col-xs-12" >
+                          <input type="text" id="txt-direccion-sucursal" class="form-control col-md-7 col-xs-12" >
                         </div>
                       </div>
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="txt-telefono-sucursal"> Teléfono
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="txt-telefono-sucursal" class="form-control col-md-7 col-xs-12">
+                        </div>
                       </div>
                       <div id="mensaje"></div>
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <button id="btn-registrar-coleccion" class="btn btn-success"> Registrar </button>
+                          <button id="btn-registrar-sucursal" class="btn btn-success"> Registrar </button>
                         </div>
                       </div>
                     </div>
@@ -142,7 +148,7 @@
                 </div>
               </div>
             </div>
-          <!--/formulario registro coleccion-->
+          <!--/formulario registro sucursal-->
         </div>
         <!-- /page content -->
 
@@ -162,10 +168,10 @@
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title" id="myModalLabel">Colección registrada</h4>
+            <h4 class="modal-title" id="myModalLabel">Sucursal registrada</h4>
           </div>
           <div class="modal-body">
-            <h4> La colección se ingresó con éxito al sistema</h4>
+            <h4> La sucursal se ingresó con éxito al sistema</h4>
             <br>
             <p id="mensaje-registro"></p>
           </div>
@@ -184,7 +190,7 @@
     <!-- Custom Theme Scripts -->
     <script src="../js/custom.min.js"></script>
 
-    <script src="../js/registro_coleccion.js"></script>
+    <script src="../js/registro_sucursal.js"></script>
 
     <!-- JS -->
     <script>

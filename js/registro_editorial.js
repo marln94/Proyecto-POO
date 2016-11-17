@@ -6,15 +6,19 @@ $(document).ready(function(){
 			var parametros = "txt-nombre-editorial="+$("#txt-nombre-editorial").val()+"&"+"txt-nombre-abreviado-editorial="+$("#txt-nombre-abreviado-editorial").val()+"&"+"txt-direccion-editorial="+$("#txt-direccion-editorial").val()+"&"+"txt-telefono-editorial="+$("#txt-telefono-editorial").val()+"&"+"txt-correo-electronico-editorial="+$("#txt-correo-electronico-editorial").val();
 			$.ajax({
 				type: "POST",
-				url: "../php/registro.php?opcion=editorial",
+				url: "../ajax/ctrl_registro_editorial.php?opcion=1",
 				data: parametros,
 				success: function(respuesta){
 					if(respuesta == 'error'){
 						$("#mensaje").addClass('well');
 						$("#mensaje").html("Formulario con información errónea");
 					} else{
-						/*Codigo*/
-						alert(respuesta);
+						$("#mensaje-registro").html(respuesta);
+						$("#modal-sesion").modal('show');
+						$("#modal-sesion").modal('show');
+						$("#modal-sesion").on('hidden.bs.modal', function(){
+							$(location).attr('href',"registro_editorial.php");
+						});
 					}
 				}
 			});
@@ -58,4 +62,10 @@ $(document).ready(function(){
 	desmarcar = function(elemento){
 		elemento.closest('.item').removeClass('bad').find('.alert').remove();
 	}
+	$("#txt-telefono-editorial").keypress(function (e) {
+	    //if the letter is not digit then display error and don't type anything
+	    if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+	    	return false;
+		}
+   	});	
 });

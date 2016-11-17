@@ -77,6 +77,8 @@
                   </li>
                   <li><a href="administrar_colecciones.php"><i class="fa fa-circle"></i> Administrar colecciones </a>
                   </li>
+                  <li><a href="administrar_sucursales.php"><i class="fa fa-circle"></i> Administrar sucursales </a>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -178,26 +180,7 @@
 
     <!-- JS -->
     <script>
-      $(document).ready(function() {
-        //$('#contenedor-categorias').html('<p style="text-align: center;"><img src="../images/loading.gif"> </p>');
-        $.ajax({
-          type: 'POST',
-          url: '../php/carga.php?opcion=bibliotecario',
-          success: function(respuesta){
-            var arr = respuesta.split(',');
-            document.title = 'Bibliotec - '+arr[1];
-            $('#imagen-usuario').attr('src',arr[0])
-            $('#nombre-usuario').html(arr[1]);
-          }
-        });
-        $.ajax({
-          type: 'POST',
-          url: '../php/carga.php?opcion=tabla-libros',
-          success: function(){
-
-          }
-        });
-      });
+      
     </script>
     <!-- /JS -->
   </body>

@@ -79,6 +79,8 @@
                   </li>
                   <li><a href="administrar_colecciones.php"><i class="fa fa-circle"></i> Administrar colecciones </a>
                   </li>
+                  <li><a href="administrar_sucursales.php"><i class="fa fa-circle"></i> Administrar sucursales </a>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -194,7 +196,7 @@
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title" id="myModalLabel">Cuenta registrada</h4>
+            <h4 class="modal-title" id="myModalLabel">Autor registrado</h4>
           </div>
           <div class="modal-body">
             <h4> El autor se ingresó con éxito al sistema</h4>

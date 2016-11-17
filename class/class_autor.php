@@ -107,7 +107,7 @@
 				SELECT codigo_nacionalidad
 				FROM tbl_nacionalidades
 				WHERE nombre_nacionalidad = '%s'",
-				$this->codigoNacionalidad
+				$conexion->escaparCaracteres($this->codigoNacionalidad)
 			);
 			$resultado = $conexion->ejecutarInstruccion($sql);
 			if($conexion->cantidadRegistros($resultado) > 0){
@@ -117,7 +117,7 @@
 				$sql = sprintf("
 					INSERT INTO tbl_nacionalidades(codigo_nacionalidad,nombre_nacionalidad)
 					VALUES (NULL,'%s')",
-					$this->codigoNacionalidad
+					$conexion->escaparCaracteres($this->codigoNacionalidad)
 				);
 				$resultado = $conexion->ejecutarInstruccion($sql);
 				$this->codigoNacionalidad = $conexion->ultimoId();
@@ -126,7 +126,7 @@
 				SELECT codigo_lengua_materna
 				FROM tbl_lenguas_maternas
 				WHERE nombre_lengua_materna = '%s'",
-				$this->codigoLenguaMaterna
+				$conexion->escaparCaracteres($this->codigoLenguaMaterna)
 			);
 			$resultado = $conexion->ejecutarInstruccion($sql);
 			if($conexion->cantidadRegistros($resultado) > 0){
@@ -136,7 +136,7 @@
 				$sql = sprintf("
 					INSERT INTO tbl_lenguas_maternas(codigo_lengua_materna,nombre_lengua_materna)
 					VALUES (NULL,'%s')",
-					$this->codigoLenguaMaterna
+					$conexion->escaparCaracteres($this->codigoLenguaMaterna)
 				);
 				$resultado = $conexion->ejecutarInstruccion($sql);
 				$this->codigoLenguaMaterna = $conexion->ultimoId();
@@ -148,13 +148,13 @@
 					apellido, fecha_nacimiento, 
 					fecha_fallecimiento, estado)
 				VALUES (NULL, '%s','%s','%s','%s','%s','%s','%s')",
-				stripslashes($this->codigoNacionalidad),
-				stripslashes($this->codigoLenguaMaterna),
-				stripslashes($this->nombre),
-				stripslashes($this->apellido),
-				stripslashes($this->fechaNacimiento),
-				stripslashes($this->fechaFallecimiento),
-				stripslashes($this->estado)
+				$conexion->escaparCaracteres($this->codigoNacionalidad),
+				$conexion->escaparCaracteres($this->codigoLenguaMaterna),
+				$conexion->escaparCaracteres($this->nombre),
+				$conexion->escaparCaracteres($this->apellido),
+				$conexion->escaparCaracteres($this->fechaNacimiento),
+				$conexion->escaparCaracteres($this->fechaFallecimiento),
+				$conexion->escaparCaracteres($this->estado)
 			);
 			$resultado = $conexion->ejecutarInstruccion($sql);
 		}

@@ -3,18 +3,24 @@ $(document).ready(function(){
 
 	$("#btn-registrar-categoria").click(function(){
 		if(verificar()){
-			var parametros = "txt-nombre-categoria="+$("#txt-nombre-categoria").val();
+			var formData = new FormData($("#form-imagen")[0]);
+			formData.append("txt-nombre-categoria",$("#txt-nombre-categoria").val());
 			$.ajax({
 				type: "POST",
-				url: "../php/registro.php?opcion=categoria",
-				data: parametros,
+				url: "../ajax/ctrl_registro_categoria.php?opcion=1",
+				data: formData,
+				contentType: false,
+	            processData: false,
 				success: function(respuesta){
 					if(respuesta == 'error'){
 						$("#mensaje").addClass('well');
 						$("#mensaje").html("Formulario con información errónea");
 					} else{
-						/*Codigo*/
-						alert(respuesta);
+						$("#mensaje-registro").html(respuesta);
+						$("#modal-sesion").modal('show');
+						$("#modal-sesion").on('hidden.bs.modal', function(){
+							$(location).attr('href',"registro_categoria.php");
+						});
 					}
 				}
 			});
