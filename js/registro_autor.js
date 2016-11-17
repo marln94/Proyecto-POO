@@ -32,7 +32,6 @@ $(document).ready(function(){
 				contentType: false,
 	            processData: false,
 				success: function(respuesta){
-					console.log(respuesta)
 					if(respuesta == 'error'){
 						$("#mensaje").addClass('well');
 						$("#mensaje").html("Formulario con información errónea");

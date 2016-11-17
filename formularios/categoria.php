@@ -66,7 +66,7 @@
               if($_SESSION['codigo-tipo-usuario'] == 2){
                 /*Panel para bibliotecario*/
             ?>
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+           <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <ul class="nav side-menu">
                   <li><a href="prestamo_libro.php"><i class="fa fa-arrow-circle-right"></i> Préstamo libro </span></a>
@@ -92,6 +92,8 @@
                   <li><a href="administrar_categorias.php"><i class="fa fa-circle"></i> Administrar categorías </a>
                   </li>
                   <li><a href="administrar_colecciones.php"><i class="fa fa-circle"></i> Administrar colecciones </a>
+                  </li>
+                  <li><a href="administrar_sucursales.php"><i class="fa fa-circle"></i> Administrar sucursales </a>
                   </li>
                 </ul>
               </div>

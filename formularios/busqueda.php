@@ -93,6 +93,8 @@
                   </li>
                   <li><a href="administrar_colecciones.php"><i class="fa fa-circle"></i> Administrar colecciones </a>
                   </li>
+                  <li><a href="administrar_sucursales.php"><i class="fa fa-circle"></i> Administrar sucursales </a>
+                  </li>
                 </ul>
               </div>
             </div>

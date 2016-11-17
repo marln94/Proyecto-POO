@@ -141,22 +141,38 @@
 				$resultado = $conexion->ejecutarInstruccion($sql);
 				$this->codigoLenguaMaterna = $conexion->ultimoId();
 			}
-
-			$sql = sprintf("
-				INSERT INTO tbl_autores(codigo_autor, codigo_nacionalidad, 
-					codigo_lengua_materna, nombre, 
-					apellido, fecha_nacimiento, 
-					fecha_fallecimiento, estado)
-				VALUES (NULL, '%s','%s','%s','%s','%s','%s','%s')",
-				$conexion->escaparCaracteres($this->codigoNacionalidad),
-				$conexion->escaparCaracteres($this->codigoLenguaMaterna),
-				$conexion->escaparCaracteres($this->nombre),
-				$conexion->escaparCaracteres($this->apellido),
-				$conexion->escaparCaracteres($this->fechaNacimiento),
-				$conexion->escaparCaracteres($this->fechaFallecimiento),
-				$conexion->escaparCaracteres($this->estado)
-			);
-			$resultado = $conexion->ejecutarInstruccion($sql);
+			if($this->fechaFallecimiento == ""){
+				$sql = sprintf("
+					INSERT INTO tbl_autores(codigo_autor, codigo_nacionalidad, 
+						codigo_lengua_materna, nombre, 
+						apellido, fecha_nacimiento, 
+						fecha_fallecimiento, estado)
+					VALUES (NULL, '%s','%s','%s','%s','%s',NULL,'%s')",
+					$conexion->escaparCaracteres($this->codigoNacionalidad),
+					$conexion->escaparCaracteres($this->codigoLenguaMaterna),
+					$conexion->escaparCaracteres($this->nombre),
+					$conexion->escaparCaracteres($this->apellido),
+					$conexion->escaparCaracteres($this->fechaNacimiento),
+					$conexion->escaparCaracteres($this->estado)
+				);
+				$resultado = $conexion->ejecutarInstruccion($sql);
+			}else{
+				$sql = sprintf("
+					INSERT INTO tbl_autores(codigo_autor, codigo_nacionalidad, 
+						codigo_lengua_materna, nombre, 
+						apellido, fecha_nacimiento, 
+						fecha_fallecimiento, estado)
+					VALUES (NULL, '%s','%s','%s','%s','%s','%s','%s')",
+					$conexion->escaparCaracteres($this->codigoNacionalidad),
+					$conexion->escaparCaracteres($this->codigoLenguaMaterna),
+					$conexion->escaparCaracteres($this->nombre),
+					$conexion->escaparCaracteres($this->apellido),
+					$conexion->escaparCaracteres($this->fechaNacimiento),
+					$conexion->escaparCaracteres($this->fechaFallecimiento),
+					$conexion->escaparCaracteres($this->estado)
+				);
+				$resultado = $conexion->ejecutarInstruccion($sql);
+			}
 		}
 
 		public static function retirarAutor($conexion,$codigoAutor){

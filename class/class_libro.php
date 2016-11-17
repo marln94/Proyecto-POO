@@ -866,8 +866,12 @@
                 <div class="clearfix"></div>
             </div>
 			<?php
-			$sql1 = "SELECT titulo_libro,codigo_libro,url_imagen_libro  FROM tbl_libros";
+			$iterador = 0;
+			$sql1 = "SELECT titulo_libro,codigo_libro,url_imagen_libro  
+					FROM tbl_libros
+					WHERE estado=1";
 			$resultado1 = $conexion->ejecutarInstruccion($sql1);
+			$total = $conexion->cantidadRegistros($resultado1);
 			while($fila = $conexion->obtenerFila($resultado1)){
 				if(stripos(removeAccents($fila["titulo_libro"]), removeAccents($query)) !== false){
 			?>
@@ -952,17 +956,20 @@
 		        </div>
             </div>
             <?php
-            	} else{
-            		?>
-            <div class="x_content">
+            	}else{
+            		$iterador++;
+            	}
+        	}
+        	if($iterador == $total){
+        		?>
+        	<div class="x_content">
                 <div class="row top_tiles" >
 					<div class="animated flipInY col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height: 130px;">
-					<p>No hay resultados que coincidan con la búsqueda.</p>
+					<p>No hay resultados.</p>
 					</div>
 				</div>
 			</div>
-            		<?php
-            	}
+        		<?php
         	}
 		}
 
