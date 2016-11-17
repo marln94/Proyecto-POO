@@ -4,14 +4,14 @@
 
 		private $codigoColeccion;
 		private $nombreColeccion;
-		private $cantidadLibros;
+		private $estado;
 
 		public function __construct($codigoColeccion,
 					$nombreColeccion,
-					$cantidadLibros){
+					$estado){
 			$this->codigoColeccion = $codigoColeccion;
 			$this->nombreColeccion = $nombreColeccion;
-			$this->cantidadLibros = $cantidadLibros;
+			$this->estado = $estado;
 		}
 		public function getCodigoColeccion(){
 			return $this->codigoColeccion;
@@ -23,18 +23,30 @@
 			return $this->nombreColeccion;
 		}
 		public function setNombreColeccion($nombreColeccion){
-			$this->nombrecoleccion = $nombreColeccion;
+			$this->nombreColeccion = $nombreColeccion;
 		}
-		public function getCantidadLibros(){
-			return $this->cantidadlibros;
+		public function getEstado(){
+			return $this->estado;
 		}
-		public function setCantidadlibros($cantidadlibros){
-			$this->cantidadlibros = $cantidadlibros;
+		public function setEstado($estado){
+			$this->estado = $estado;
 		}
-		public function toString(){
-			return "Codigocoleccion: " . $this->codigoColeccion . 
-				" Nombrecoleccion: " . $this->nombreColeccion . 
-				" Cantidadlibros: " . $this->cantidadLibros;
+
+		public static function listadoColecciones($conexion){
+			$sql = sprintf("
+				SELECT codigo_coleccion,nombre_coleccion
+				FROM tbl_colecciones
+				WHERE estado=1"
+			);
+			$resultado = $conexion->ejecutarInstruccion($sql);
+			while($fila = $conexion->obtenerFila($resultado)){
+			?>
+			<tr>
+	            <td><?php echo $fila["codigo_coleccion"] ?></td>
+	            <td><?php echo $fila["nombre_coleccion"] ?></td>
+	        </tr>
+			<?php
+			}
 		}
 	}
 ?>

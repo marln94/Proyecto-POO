@@ -1,0 +1,30 @@
+<?php
+
+	class TipoLibro{
+
+		private $codigotipolibro;
+		private $nombretipolibro;
+
+		public function __construct($codigotipolibro,
+					$nombretipolibro){
+			$this->codigotipolibro = $codigotipolibro;
+			$this->nombretipolibro = $nombretipolibro;
+		}
+		public function getCodigotipolibro(){
+			return $this->codigotipolibro;
+		}
+		public function setCodigotipolibro($codigotipolibro){
+			$this->codigotipolibro = $codigotipolibro;
+		}
+		public function getNombretipolibro(){
+			return $this->nombretipolibro;
+		}
+		public function setNombretipolibro($nombretipolibro){
+			$this->nombretipolibro = $nombretipolibro;
+		}
+		public function toString(){
+			return "Codigotipolibro: " . $this->codigotipolibro . 
+				" Nombretipolibro: " . $this->nombretipolibro;
+		}
+	}
+?>

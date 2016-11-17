@@ -108,7 +108,6 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                          <input type="hidden" name="MAX_FILE_SIZE" value="100000" />
                           <button id="btn-crear-cuenta" class="btn btn-success">Crear</button>
                         </div>
                       </div>

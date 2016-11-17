@@ -23,6 +23,14 @@ $(document).ready(function(){
 			recibirLibro($("#txt-codigo-libro").val());
 		}
 	});
+	$("#txt-codigo-libro").keypress(function (e) {
+     //if the letter is not digit then display error and don't type anything
+     if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+        //display error message
+        $("#errmsg").html("Sólo números").show().fadeOut("slow");
+               return false;
+    }
+   });	
 });
 
 function recibirLibro(codigoLibro){

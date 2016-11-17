@@ -1,3 +1,8 @@
+<?php
+  session_start();
+  if(isset($_SESSION['codigo-usuario'])){
+    if($_SESSION['codigo-tipo-usuario'] == 2){
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -34,11 +39,11 @@
             <div class="container-fluid">
               <div class="">
                 <div class="profile_pic">
-                  <img  alt="..." class="img-thumbnail profile_img" id="imagen-usuario">
+                  <img  alt="..." class="img-thumbnail profile_img" src="../php/imagen.php?id=<?php echo $_SESSION['codigo-usuario'] ?>">
                 </div>
                 <div class="profile_info">
                   <span>Bienvenido,</span>
-                  <h2 id="nombre-usuario"></h2>
+                  <h2><?php echo $_SESSION['nombre']." ".$_SESSION['apellido']?></h2>
                 </div>
               </div>
             </div>
@@ -78,8 +83,11 @@
             <!-- /sidebar menu -->
             <!-- footer menu -->
             <div class="sidebar-footer hidden-small">
-              <a data-toggle="tooltip" data-placement="top" title="Cerrar sesión">
+              <a href="logout.php" data-toggle="tooltip" data-placement="top" title="Cerrar sesión">
                 <span class="glyphicon glyphicon-log-out" aria-hidden="true" style="color: #190705"></span>
+              </a>
+              <a href="configuracion.php" data-toggle="tooltip" data-placement="top" title="Configuración">
+                <span class="glyphicon glyphicon-cog" aria-hidden="true" style="color: #190705"></span>
               </a>
             </div>
             <!-- /footer menu -->
@@ -139,16 +147,6 @@
                           </div>
                         </div>
                       </a>
-                      <a href="#" class="link-panel">
-                        <div class="panel-opcion">
-                          <div class="uno-panel">
-                            <div class="dos-panel">
-                              <p><span><i class="fa fa-pencil"></i></span></p>
-                              <p>Editar</p>
-                            </div>
-                          </div>
-                        </div>
-                      </a>
                     </div>
                   </div>
                 </div>
@@ -204,3 +202,11 @@
     <!-- /JS -->
   </body>
 </html>
+<?php
+    } else{
+      header("Location: page_403.html");
+    }
+  } else{
+    header("Location: ../index.php");
+  }
+?>

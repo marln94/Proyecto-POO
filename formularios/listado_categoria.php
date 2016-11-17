@@ -1,3 +1,8 @@
+<?php
+  session_start();
+  if(isset($_SESSION['codigo-usuario'])){
+    if($_SESSION['codigo-tipo-usuario'] == 2){
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -34,11 +39,11 @@
             <div class="container-fluid">
               <div class="">
                 <div class="profile_pic">
-                  <img  alt="..." class="img-thumbnail profile_img" id="imagen-usuario">
+                  <img  alt="..." class="img-thumbnail profile_img" src="../php/imagen.php?id=<?php echo $_SESSION['codigo-usuario'] ?>">
                 </div>
                 <div class="profile_info">
                   <span>Bienvenido,</span>
-                  <h2 id="nombre-usuario"></h2>
+                  <h2><?php echo $_SESSION['nombre']." ".$_SESSION['apellido']?></h2>
                 </div>
               </div>
             </div>
@@ -78,8 +83,11 @@
             <!-- /sidebar menu -->
             <!-- footer menu -->
             <div class="sidebar-footer hidden-small">
-              <a data-toggle="tooltip" data-placement="top" title="Cerrar sesión">
+              <a href="logout.php" data-toggle="tooltip" data-placement="top" title="Cerrar sesión">
                 <span class="glyphicon glyphicon-log-out" aria-hidden="true" style="color: #190705"></span>
+              </a>
+              <a href="configuracion.php" data-toggle="tooltip" data-placement="top" title="Configuración">
+                <span class="glyphicon glyphicon-cog" aria-hidden="true" style="color: #190705"></span>
               </a>
             </div>
             <!-- /footer menu -->
@@ -115,11 +123,7 @@
                                 <th>Cantidad de libros</th>
                         </thead>
                         <tbody id="tbl-listado-categorias">
-                          <tr>
-                            <td>1</td>
-                            <td>Categoría1</td>
-                            <td>5</td>
-                          </tr>
+                          
                         </tbody>
                       </table>
                     </div>
@@ -151,29 +155,20 @@
     <!-- Custom Theme Scripts -->
     <script src="../js/custom.min.js"></script>
 
+    <script src="../js/listado_categoria.js"></script>
+
     <!-- JS -->
     <script>
-      $(document).ready(function() {
-        //$('#contenedor-categorias').html('<p style="text-align: center;"><img src="../images/loading.gif"> </p>');
-        $.ajax({
-          type: 'POST',
-          url: '../php/carga.php?opcion=bibliotecario',
-          success: function(respuesta){
-            var arr = respuesta.split(',');
-            document.title = 'Bibliotec - '+arr[1];
-            $('#imagen-usuario').attr('src',arr[0])
-            $('#nombre-usuario').html(arr[1]);
-          }
-        });
-        $.ajax({
-          type: 'POST',
-          url: '../php/carga.php?opcion=tabla-categorias',
-          success: function(){
-
-          }
-        });
-      });
+      
     </script>
     <!-- /JS -->
   </body>
 </html>
+<?php
+    } else{
+      header("Location: page_403.html");
+    }
+  } else{
+    header("Location: ../index.php");
+  }
+?>

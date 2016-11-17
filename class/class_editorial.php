@@ -8,19 +8,22 @@
 		private $direccion;
 		private $telefono;
 		private $correoElectronico;
+		private $estado;
 
 		public function __construct($codigoEditorial,
 					$nombreEditorial,
 					$nombreAbreviado,
 					$direccion,
 					$telefono,
-					$correoElectronico){
+					$correoElectronico,
+					$estado){
 			$this->codigoEditorial = $codigoEditorial;
 			$this->nombreEditorial = $nombreEditorial;
 			$this->nombreAbreviado = $nombreAbreviado;
 			$this->direccion = $direccion;
 			$this->telefono = $telefono;
 			$this->correoElectronico = $correoElectronico;
+			$this->estado = $estado;
 		}
 		public function getCodigoEditorial(){
 			return $this->codigoEditorial;
@@ -52,19 +55,39 @@
 		public function setTelefono($telefono){
 			$this->telefono = $telefono;
 		}
-		public function getCorreoelectronico(){
+		public function getCorreoElectronico(){
 			return $this->correoElectronico;
 		}
-		public function setCorreoelectronico($correoElectronico){
+		public function setCorreoElectronico($correoElectronico){
 			$this->correoElectronico = $correoElectronico;
 		}
-		public function toString(){
-			return "CodigoEditorial: " . $this->codigoEditorial . 
-				" NombreEditorial: " . $this->nombreEditorial . 
-				" NombreAbreviado: " . $this->nombreAbreviado . 
-				" Direccion: " . $this->direccion . 
-				" Telefono: " . $this->telefono . 
-				" CorreoElectronico: " . $this->correoElectronico;
+		public function getEstado(){
+			return $this->estado;
 		}
+		public function setEstado($estado){
+			$this->estado = $estado;
+		}
+
+		public static function listadoEditoriales($conexion){
+			$sql = sprintf("
+				SELECT codigo_editorial,nombre_editorial,nombre_abreviado,direccion,telefono,correo_electronico
+				FROM tbl_editoriales
+				WHERE estado=1"
+			);
+			$resultado = $conexion->ejecutarInstruccion($sql);
+			while($fila = $conexion->obtenerFila($resultado)){
+			?>
+			<tr>
+	            <td><?php echo $fila["codigo_editorial"] ?></td>
+	            <td><?php echo $fila["nombre_editorial"] ?></td>
+	            <td><?php echo $fila["nombre_abreviado"] ?></td>
+	            <td><?php echo $fila["direccion"] ?></td>
+	            <td><?php echo $fila["telefono"] ?></td>
+	            <td><?php echo $fila["correo_electronico"] ?></td>
+	        </tr>
+			<?php
+			}
+		}
+
 	}
 ?>

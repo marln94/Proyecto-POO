@@ -1,3 +1,8 @@
+<?php
+  session_start();
+  if(isset($_SESSION['codigo-usuario'])){
+    if($_SESSION['codigo-tipo-usuario'] == 2){
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -38,11 +43,11 @@
             <div class="container-fluid">
               <div class="">
                 <div class="profile_pic">
-                  <img  alt="..." class="img-thumbnail profile_img" id="imagen-usuario">
+                  <img  alt="..." class="img-thumbnail profile_img" src="../php/imagen.php?id=<?php echo $_SESSION['codigo-usuario'] ?>">
                 </div>
                 <div class="profile_info">
                   <span>Bienvenido,</span>
-                  <h2 id="nombre-usuario"></h2>
+                  <h2><?php echo $_SESSION['nombre']." ".$_SESSION['apellido']?></h2>
                 </div>
               </div>
             </div>
@@ -82,8 +87,11 @@
             <!-- /sidebar menu -->
             <!-- footer menu -->
             <div class="sidebar-footer hidden-small">
-              <a data-toggle="tooltip" data-placement="top" title="Cerrar sesión">
+              <a href="logout.php" data-toggle="tooltip" data-placement="top" title="Cerrar sesión">
                 <span class="glyphicon glyphicon-log-out" aria-hidden="true" style="color: #190705"></span>
+              </a>
+              <a href="configuracion.php" data-toggle="tooltip" data-placement="top" title="Configuración">
+                <span class="glyphicon glyphicon-cog" aria-hidden="true" style="color: #190705"></span>
               </a>
             </div>
             <!-- /footer menu -->
@@ -120,12 +128,12 @@
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <div class="radio">
                             <label>
-                              <input type="radio" id="rd-tipo-libro-fisico" name="rd-tipo-libro" value="fisico" checked> Físico
+                              <input type="radio" id="rd-tipo-libro-fisico" name="rd-tipo-libro" value="1" checked> Físico
                             </label>
                           </div>
                           <div class="radio">
                             <label>
-                              <input type="radio" id="rd-tipo-libro-digital" name="rd-tipo-libro" value="digital"> Digital
+                              <input type="radio" id="rd-tipo-libro-digital" name="rd-tipo-libro" value="2"> Digital
                             </label>
                           </div>
                         </div>
@@ -138,25 +146,18 @@
                         </div>
                       </div>
                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12"> Autor <span class="required">*</span></label>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12"> Autor(es) <span class="required">*</span></label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <select class="select2_multiple form-control" multiple="multiple" id="slc-autores">
-                            <option value="Autor 1">Autor1</option>
-                            <option value="Autor 2">Autor2</option>
-                            <option value="Autor 3">Autor3</option>
-                            <option value="Autor 4">Autor4</option>
+                            
                           </select>
                         </div>
                       </div>
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12"> Editorial <span class="required">*</span></label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <select class="select2_single form-control" tabindex="-1" id="slc-editoriales">
-                            <option></option>
-                            <option value="Editorial 1">Editorial1</option>
-                            <option value="Editorial 2">Editorial2</option>
-                            <option value="Editorial 3">Editorial3</option>
-                            <option value="Editorial 4">Editorial4</option>
+                          <select class="select2_single form-control" tabindex="-1" id="slc-editorial">
+
                           </select>
                         </div>
                       </div>
@@ -175,16 +176,10 @@
                         </div>
                       </div>
                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12"> Categoría <span class="required">*</span></label>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12"> Categoría(s) <span class="required">*</span></label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <select class="select2_single form-control" tabindex="-1" id="slc-categorias">
-                            <option></option>
-                            <option value="Categoría 1"> Categoría 1 </option>
-                            <option value="Categoría 2"> Categoría 2 </option>
-                            <option value="Categoría 3"> Categoría 3 </option>
-                            <option value="Categoría 4"> Categoría 4 </option>
-                            <option value="Categoría 5"> Categoría 5 </option>
-                            <option value="Categoría 6"> Categoría 6 </option>
+                          <select class="select2_multiple form-control" multiple="multiple" id="slc-categorias">
+                            
                           </select>
                         </div>
                       </div>
@@ -206,7 +201,9 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="txt-coleccion"> Colección <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="txt-coleccion" class="form-control col-md-7 col-xs-12">
+                          <select class="select2_single form-control" tabindex="-1" id="slc-coleccion">
+
+                          </select>
                         </div>
                       </div>
                       <div class="item form-group">
@@ -217,23 +214,29 @@
                         </div>
                       </div>
                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12"> Sucursal(es) <span class="required">*</span></label>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="txt-ubicacion"> Ubicación
+                        </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <select class="select2_multiple form-control multiple_sucursal" multiple="multiple" id="slc-sucursal">
-                            <option> Sucursal 1 </option>
-                            <option> Sucursal 2 </option>
-                            <option> Sucursal 3 </option>
-                            <option> Sucursal 4 </option>
-                          </select>
+                          <input type="text" id="txt-ubicacion" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="file-imagen-perfil"> Imagen de portada <span>
-                        </label>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12"> Sucursal(es) <span class="required">*</span></label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="file" id="file-imagen-perfil" class="form-control col-md-7 col-xs-12" accept="image/*">
+                          <select class="select2_multiple form-control" multiple="multiple" id="slc-sucursal">
+                            
+                          </select>
                         </div>
                       </div>
+                      <form id="form-imagen" enctype="multipart/form-data">
+                        <div class="item form-group">
+                          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="file-imagen-perfil"> Imagen de portada <span>
+                          </label>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="file" name="imagen" id="imagen" class="form-control col-md-7 col-xs-12" accept="image/*">
+                          </div>
+                        </div>
+                      </form>
                       <div id="mensaje"></div>
                       <div class="ln_solid"></div>
                       <div class="form-group">
@@ -261,6 +264,22 @@
       </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" id="modal-sesion">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">Cuenta registrada</h4>
+          </div>
+          <div class="modal-body">
+            <h4> El libro se ingresó con éxito al sistema</h4>
+            <br>
+            <p id="mensaje-registro"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- jQuery -->
     <script src="../vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
@@ -278,19 +297,16 @@
 
     <!-- JS -->
     <script>
-      $(document).ready(function() {
-        $.ajax({
-          type: 'POST',
-          url: '../php/carga.php?opcion=bibliotecario',
-          success: function(respuesta){
-            var arr = respuesta.split(',');
-            document.title = 'Bibliotec - '+arr[1];
-            $('#imagen-usuario').attr('src',arr[0])
-            $('#nombre-usuario').html(arr[1]);
-          }
-        });
-      });
+      
     </script>
     <!-- /JS -->
   </body>
 </html>
+<?php
+    } else{
+      header("Location: page_403.html");
+    }
+  } else{
+    header("Location: ../index.php");
+  }
+?>

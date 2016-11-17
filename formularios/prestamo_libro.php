@@ -139,6 +139,7 @@
                               <div class="dos">
                                 Escriba el código del libro
                                 <input type="text" id="txt-codigo-libro" class="form-control">
+                                <span id="errmsg"></span>
                               </div>
                             </div>
                           </div>

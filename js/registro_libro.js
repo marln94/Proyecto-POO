@@ -1,4 +1,18 @@
 $(document).ready(function(){
+	/*carga de elementos para los select del formulario*/
+	$.ajax({
+    	method: "post",
+    	url: "../ajax/ctrl_registro_libro.php?opcion=1",
+    	dataType: "json",
+    	success: function(respuesta){
+    		$("#slc-autores").html(respuesta.autores);
+    		$("#slc-editorial").html(respuesta.editoriales);
+    		$("#slc-categorias").html(respuesta.categorias);
+    		$("#slc-sucursal").html(respuesta.sucursales);
+    		$("#slc-coleccion").html(respuesta.colecciones);
+    	}
+    });
+
 	$("#rd-tipo-libro-digital").iCheck({
 		checkboxClass: 'icheckbox_square',
 		radioClass: 'iradio_square',
@@ -9,21 +23,55 @@ $(document).ready(function(){
 	});
 	$("#btn-registrar-libro").click(function(){
 		if(verificar()){
-			if($("#radios input[name=rd-tipo-libro]:checked").val() == 'fisico'){
-				var parametros = "txt-titulo="+$("#txt-titulo").val()+"&"+"slc-autores="+$("#slc-autores").val()+"&"+"slc-editoriales="+$("#slc-editoriales").val()+"&"+"txt-año="+$("#txt-año").val()+"&"+"slc-categorias="+$("#slc-categorias").val()+"&"+"txt-ejemplares="+$("#txt-ejemplares").val()+"&"+"txt-descripcion-fisica="+$("#txt-descripcion-fisica").val()+"&"+"txt-coleccion="+$("#txt-coleccion").val()+"&"+"txt-isbn="+$("#txt-isbn").val()+"&"+"slc-sucursal="+$("#slc-sucursal").val()+"&"+"txt-edicion="+$("#txt-edicion").val()+"&rd-tipo-libro=fisico";
+			if($("#radios input[name=rd-tipo-libro]:checked").val() == '1'){
+				var formData = new FormData($("#form-imagen")[0]);
+				formData.append("txt-titulo",$("#txt-titulo").val());
+				formData.append("slc-autores",$("#slc-autores").val());
+				formData.append("slc-editorial",$("#slc-editorial").val());
+				formData.append("txt-año",$("#txt-año").val());
+				formData.append("slc-categorias",$("#slc-categorias").val());
+				formData.append("txt-ejemplares",$("#txt-ejemplares").val());
+				formData.append("txt-descripcion-fisica",$("#txt-descripcion-fisica").val());
+				formData.append("slc-coleccion",$("#slc-coleccion").val());
+				formData.append("txt-isbn",$("#txt-isbn").val());
+				formData.append("txt-ubicacion",$("#txt-ubicacion").val());
+				formData.append("slc-sucursal",$("#slc-sucursal").val());
+				formData.append("txt-edicion",$("#txt-edicion").val());
+				formData.append("rd-tipo-libro",1);
 			} else{
-				var parametros = "txt-titulo="+$("#txt-titulo").val()+"&"+"slc-autores="+$("#slc-autores").val()+"&"+"slc-editoriales="+$("#slc-editoriales").val()+"&"+"txt-año="+$("#txt-año").val()+"&"+"slc-categorias="+$("#slc-categorias").val()+"&"+"txt-ejemplares="+""+"&"+"txt-descripcion-fisica="+""+"&"+"txt-coleccion="+$("#txt-coleccion").val()+"&"+"txt-isbn="+$("#txt-isbn").val()+"&"+"slc-sucursal="+""+"&"+"txt-edicion="+$("#txt-edicion").val()+"&rd-tipo-libro=digital";
+				var formData = new FormData($("#form-imagen")[0]);
+				formData.append("txt-titulo",$("#txt-titulo").val());
+				formData.append("slc-autores",$("#slc-autores").val());
+				formData.append("slc-editorial",$("#slc-editorial").val());
+				formData.append("txt-año",$("#txt-año").val());
+				formData.append("slc-categorias",$("#slc-categorias").val());
+				formData.append("txt-ejemplares",$("#txt-ejemplares").val());
+				formData.append("txt-descripcion-fisica",$("#txt-descripcion-fisica").val());
+				formData.append("slc-coleccion",$("#slc-coleccion").val());
+				formData.append("txt-isbn",$("#txt-isbn").val());
+				formData.append("txt-ubicacion",$("#txt-ubicacion").val());
+				formData.append("slc-sucursal",$("#slc-sucursal").val());
+				formData.append("txt-edicion",$("#txt-edicion").val());
+				formData.append("rd-tipo-libro",2);
 			}
 			$.ajax({
 				type: "POST",
-				url: "../php/registro.php?opcion=libro",
-				data: parametros,
+				url: "../ajax/ctrl_registro_libro.php?opcion=2",
+				data: formData,
+				contentType: false,
+	            processData: false,
 				success: function(respuesta){
+					console.log(respuesta);
 					if(respuesta == 'error'){
 						$("#mensaje").addClass('well');
 						$("#mensaje").html("Formulario con información errónea");
 					} else{
-						/*Codigo*/
+						$("#mensaje-registro").html(respuesta);
+						$("#modal-sesion").modal('show');
+						$("#modal-sesion").modal('show');
+						$("#modal-sesion").on('hidden.bs.modal', function(){
+							$(location).attr('href',"registro_libro.php");
+						});
 					}
 				}
 			});
@@ -31,7 +79,6 @@ $(document).ready(function(){
 	});
 
 	
-
 
 	verificar = function() {
 		var validacion = true;
@@ -47,14 +94,14 @@ $(document).ready(function(){
 			marcar($("#txt-titulo").closest(".item"),"Introduzca un título");
 			validacion = validacion && false;
 		} else{desmarcar($("#txt-titulo"))}
-		if( $("#slc-autores").val() == ""){
+		if( $("#slc-autores").val() == null){
 			marcar($("#slc-autores").closest(".item"),"Seleccione un autor");
 			validacion = validacion && false;
 		} else{desmarcar($("#slc-autores"))}
-		if( $("#slc-editoriales").val() == "" ){
-			marcar($("#slc-editoriales").closest(".item"),"Seleccione una editorial");
+		if( $("#slc-editorial").val() == "" ){
+			marcar($("#slc-editorial").closest(".item"),"Seleccione una editorial");
 			validacion = validacion && false;
-		} else{desmarcar($("#slc-editoriales"))}
+		} else{desmarcar($("#slc-editorial"))}
 		if( $("#txt-edicion").val() == "" ){
 			marcar($("#txt-edicion").closest(".item"),"Introduzca una edición");
 			validacion = validacion && false;
@@ -63,7 +110,7 @@ $(document).ready(function(){
 			marcar($("#txt-año").closest(".item"),"Introduzca un año");
 			validacion = validacion && false;
 		} else{desmarcar($("#txt-año"))}
-		if( $("#slc-categorias").val() == "" ){
+		if( $("#slc-categorias").val() == null ){
 			marcar($("#slc-categorias").closest(".item"),"Seleccione una categoría");
 			validacion = validacion && false;
 		} else{desmarcar($("#slc-categorias"))}
@@ -75,14 +122,10 @@ $(document).ready(function(){
 			marcar($("#txt-descripcion-fisica").closest(".item"),"Introduzca una descripción");
 			validacion = validacion && false;
 		} else{desmarcar($("#txt-descripcion-fisica"))}
-		if( $("#txt-coleccion").val() == "" ){
-			marcar($("#txt-coleccion").closest(".item"),"Introduzca una colección");
+		if( $("#slc-coleccion").val() == "" ){
+			marcar($("#slc-coleccion").closest(".item"),"Introduzca una colección");
 			validacion = validacion && false;
-		} else{desmarcar($("#txt-coleccion"))}
-		/*if( $("#txt-isbn").val() == "" ){
-			marcar($("#txt-isbn").closest(".item"),"Introduzca el código ISBN");
-			validacion = validacion && false;
-		} else{desmarcar($("#txt-isbn"))}*/
+		} else{desmarcar($("#slc-coleccion"))}
 		if( $("#slc-sucursal").val() == null && tipoLibro){
 			marcar($("#slc-sucursal").closest(".item"),"Seleccione una sucursal");
 			validacion = validacion && false;
@@ -107,28 +150,42 @@ $(document).ready(function(){
     	$("#txt-ejemplares").attr('disabled','disabled');
 		$("#txt-descripcion-fisica").attr('disabled','disabled');
 		$("#slc-sucursal").attr('disabled','disabled');
+		$("#txt-ubicacion").attr('disabled','disabled');
 
 		$("#txt-ejemplares").val("");
 		$("#txt-descripcion-fisica").val("");
 		$("#slc-sucursal").val('').change();
+		$("#txt-ubicacion").val("");
     });
     $("#rd-tipo-libro-fisico").on('ifChecked',function(){
     	$("#txt-ejemplares").removeAttr('disabled');
 		$("#txt-descripcion-fisica").removeAttr('disabled');
 		$("#slc-sucursal").removeAttr('disabled');
+		$("#txt-ubicacion").removeAttr('disabled');
     });
 
     /**select2**/
-    $(document).ready(function() {
-        $(".select2_single").select2({
-          placeholder: "Seleccione un elemento",
-          allowClear: true
-        });
-        
-        $(".select2_multiple").select2({
-          maximumSelectionLength: 100,
-          placeholder: "Seleccione elementos",
-          allowClear: true
-        });
-      });
+    $(".select2_single").select2({
+      placeholder: "Seleccione un elemento",
+      allowClear: true
+    });
+    
+    $(".select2_multiple").select2({
+      maximumSelectionLength: 100,
+      placeholder: "Seleccione elementos",
+      allowClear: true
+    });
+
+    $("#txt-año").keypress(function (e) {
+	    //if the letter is not digit then display error and don't type anything
+	    if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+	    	
+		}
+   	});
+   	$("#txt-ejemplares").keypress(function (e) {
+	    //if the letter is not digit then display error and don't type anything
+	    if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+	    	
+		}
+   	});	
 });

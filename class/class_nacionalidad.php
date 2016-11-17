@@ -2,29 +2,29 @@
 
 	class Nacionalidad{
 
-		private $codigoNacionalidad;
-		private $nombreNacionalidad;
+		private $codigonacionalidad;
+		private $nombrenacionalidad;
 
-		public function __construct($codigoNacionalidad,
-					$nombreNacionalidad){
-			$this->codigoNacionalidad = $codigoNacionalidad;
-			$this->nombreNacionalidad = $nombreNacionalidad;
+		public function __construct($codigonacionalidad,
+					$nombrenacionalidad){
+			$this->codigonacionalidad = $codigonacionalidad;
+			$this->nombrenacionalidad = $nombrenacionalidad;
 		}
-		public function getCodigoNacionalidad(){
-			return $this->codigoNacionalidad;
+		public function getCodigonacionalidad(){
+			return $this->codigonacionalidad;
 		}
-		public function setCodigoNacionalidad($codigoNacionalidad){
-			$this->codigoNaNcionalidad = $codigoNacionalidad;
+		public function setCodigonacionalidad($codigonacionalidad){
+			$this->codigonacionalidad = $codigonacionalidad;
 		}
-		public function getNombreNacionalidad(){
-			return $this->nombrenNacionalidad;
+		public function getNombrenacionalidad(){
+			return $this->nombrenacionalidad;
 		}
-		public function setNombreNacionalidad($nombreNacionalidad){
-			$this->nombreNacionalidad = $nombreNacionalidad;
+		public function setNombrenacionalidad($nombrenacionalidad){
+			$this->nombrenacionalidad = $nombrenacionalidad;
 		}
 		public function toString(){
-			return "Codigonacionalidad: " . $this->codigoNacionalidad . 
-				" Nombrenacionalidad: " . $this->nombreNacionalidad;
+			return "Codigonacionalidad: " . $this->codigonacionalidad . 
+				" Nombrenacionalidad: " . $this->nombrenacionalidad;
 		}
 	}
 ?>
