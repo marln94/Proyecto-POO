@@ -1,4 +1,20 @@
 $(document).ready(function(){
+	$("#btn-buscar").click(function(){
+		buscar();
+	});
+	$("#txt-busqueda").on("keypress", function(e){
+		if(e.keyCode == 13){
+			buscar();
+		}
+	});
+
+	function buscar(){
+		if($("#txt-busqueda").val() != ""){
+			$(location).attr('href',"busqueda.php?q="+$("#txt-busqueda").val());
+			$("#txt-busqueda").val("");
+		}
+	}
+	
 	$("#btn-ingresar-libro").click(function(){
 		if(verificar()){
 			var parametros = "txt-titulo="+$("#txt-titulo").val()+"&"+"slc-autores="+$("#slc-autores").val()+"&"+"slc-editoriales="+$("#slc-editoriales").val()+"&"+"txt-año="+$("#txt-año").val()+"&"+"slc-categorias="+$("#slc-categorias").val()+"&"+"txt-codigo-libro="+$("#txt-codigo-libro").val()+"&"+"txt-coleccion="+$("#txt-coleccion").val();

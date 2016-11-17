@@ -70,9 +70,9 @@
             </div>
           </div>
           <div class="input-group" style="margin-bottom: 21px">
-            <input type="text" class="form-control form-control-1" placeholder="Buscar libro">
+            <input type="text" class="form-control form-control-1" placeholder="Buscar libro" id="txt-busqueda">
             <span class="input-group-btn">
-              <button class="button_1 btn btn-default" type="button">Buscar</button>
+              <button class="button_1 btn btn-default" id="btn-buscar">Buscar</button>
             </span>
           </div>
           <!--categorías-->

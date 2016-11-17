@@ -101,6 +101,7 @@
               if($_SESSION['codigo-tipo-usuario'] == 1){
                 /*Panel para administrador*/
             ?>
+            <br>
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3> Bibliotecarios</h3>
@@ -151,9 +152,9 @@
             </div>
           </div>
           <div class="input-group" style="margin-bottom: 21px">
-            <input type="text" class="form-control form-control-1" placeholder="Buscar libro">
+            <input type="text" class="form-control form-control-1" placeholder="Buscar libro" id="txt-busqueda">
             <span class="input-group-btn">
-              <button class="button_1 btn btn-default" type="button">Buscar</button>
+              <button class="button_1 btn btn-default" id="btn-buscar">Buscar</button>
             </span>
           </div>
           <!--libros-->
@@ -262,9 +263,9 @@
             </div>
           </div>
           <div class="input-group" style="margin-bottom: 21px">
-            <input type="text" class="form-control form-control-1" placeholder="Buscar libro">
+            <input type="text" class="form-control form-control-1" placeholder="Buscar libro" id="txt-busqueda">
             <span class="input-group-btn">
-              <button class="button_1 btn btn-default" type="button">Buscar</button>
+              <button class="button_1 btn btn-default" id="btn-buscar">Buscar</button>
             </span>
           </div>
           <!--libros-->

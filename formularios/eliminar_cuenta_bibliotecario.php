@@ -1,3 +1,8 @@
+<?php
+  session_start();
+  if(isset($_SESSION['codigo-usuario'])){
+    if($_SESSION['codigo-tipo-usuario'] == 1){
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -34,11 +39,11 @@
             <div class="container-fluid">
               <div class="">
                 <div class="profile_pic">
-                  <img  alt="..." class="img-thumbnail profile_img" id="imagen-usuario">
+                  <img  alt="..." class="img-thumbnail profile_img" src="../php/imagen.php?id=<?php echo $_SESSION['codigo-usuario'] ?>">
                 </div>
                 <div class="profile_info">
                   <span>Bienvenido,</span>
-                  <h2 id="nombre-usuario"></h2>
+                  <h2><?php echo $_SESSION['nombre']." ".$_SESSION['apellido']?></h2>
                 </div>
               </div>
             </div>
@@ -73,8 +78,11 @@
             <!-- /sidebar menu -->
             <!-- footer menu -->
             <div class="sidebar-footer hidden-small">
-              <a data-toggle="tooltip" data-placement="top" title="Cerrar sesión">
+              <a href="logout.php" data-toggle="tooltip" data-placement="top" title="Cerrar sesión">
                 <span class="glyphicon glyphicon-log-out" aria-hidden="true" style="color: #190705"></span>
+              </a>
+              <a href="configuracion.php" data-toggle="tooltip" data-placement="top" title="Configuración">
+                <span class="glyphicon glyphicon-cog" aria-hidden="true" style="color: #190705"></span>
               </a>
             </div>
             <!-- /footer menu -->
@@ -89,9 +97,9 @@
             </div>
           </div>
           <div class="input-group" style="margin-bottom: 21px">
-            <input type="text" class="form-control form-control-1" placeholder="Buscar libro">
+            <input type="text" class="form-control form-control-1" placeholder="Buscar libro" id="txt-busqueda">
             <span class="input-group-btn">
-              <button class="button_1 btn btn-default" type="button">Buscar</button>
+              <button class="button_1 btn btn-default" id="btn-buscar">Buscar</button>
             </span>
           </div>
           <!--categorías-->
@@ -106,9 +114,9 @@
                     <div class="row top_tiles">
                       <label>Introduzca el correo electrónico del bibliotecario que se eliminará</label>
                       <div class="input-group" style="margin-bottom: 21px">
-                        <input type="text" class="form-control form-control" placeholder="correo de bibliotecario">
+                        <input type="text" class="form-control form-control" placeholder="correo de bibliotecario" id="txt-codigo-bibliotecario">
                         <span class="input-group-btn">
-                          <button class=" btn btn-default" type="button">Buscar</button>
+                          <button class=" btn btn-default" id="btn-eliminar-bibliotecario">Eliminar</button>
                         </span>
                       </div>
                     </div>
@@ -131,6 +139,21 @@
       </div>
     </div>
 
+    <!-- Modal -->
+    <div id="modal-aviso" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title"> Información </h4>
+          </div>
+          <div class="modal-body" id="div-editar">
+            <p id="mensaje-aviso"> Información actualizada correctamente</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- jQuery -->
     <script src="../vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
@@ -140,24 +163,20 @@
     <!-- Custom Theme Scripts -->
     <script src="../js/custom.min.js"></script>
 
+    <script src="../js/retiro_bibliotecario.js"></script>
+
     <!-- JS -->
     <script>
-      $(document).ready(function() {
-        
-        $.ajax({
-          type: 'POST',
-          url: '../php/carga.php?opcion=administrador',
-          success: function(respuesta){
-            var arr = respuesta.split(',');
-            document.title = 'Bibliotec - '+arr[1];
-            $('#imagen-usuario').attr('src',arr[0])
-            $('#nombre-usuario').html(arr[1]);
-
-          }
-        });
-                
-      });
+      
     </script>
     <!-- /JS -->
   </body>
 </html>
+<?php
+    } else{
+      header("Location: page_403.html");
+    }
+  } else{
+    header("Location: ../index.php");
+  }
+?>

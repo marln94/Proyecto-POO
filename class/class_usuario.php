@@ -120,13 +120,15 @@
 						tipo_imagen,
 						estado_usuario
 					) VALUES (
-					NULL, %s, '%s', '%s', '%s', sha1('%s'), NULL, NULL, '%s', '%s','%s'
+					NULL, %s, '%s', '%s', '%s', sha1('%s'), '%s', '%s', '%s', '%s','%s'
 				)",
 				$conexion->escaparCaracteres($this->tipoUsuario->getCodigoTipoUsuario()),
 				$conexion->escaparCaracteres($this->nombre),
 				$conexion->escaparCaracteres($this->apellido),
 				$conexion->escaparCaracteres($this->correoElectronico),
 				$conexion->escaparCaracteres($this->contraseña),
+				$conexion->escaparCaracteres($this->domicilio),
+				$conexion->escaparCaracteres($this->telefono),
 				$conexion->escaparCaracteres($this->imagenUsuario),
 				$conexion->escaparCaracteres($this->tipoImagen),
 				$conexion->escaparCaracteres($this->estadoUsuario)
@@ -257,13 +259,83 @@
 					WHERE codigo_usuario='%s'",
 					$codigoUsuario
 				);
-				echo $sql;
 				$resultado = $conexion->ejecutarInstruccion($sql);
 				if(!$resultado){
 					echo "error";
 				}
 			} else{
 				echo "pendiente";
+			}
+		}
+
+		public static function listadoBibliotecarios($conexion){
+			$sql = "
+				SELECT nombre,apellido,correo_electronico,telefono, imagen_usuario,codigo_usuario
+				FROM tbl_usuarios
+				WHERE codigo_tipo_usuario=2 AND estado_usuario=1";
+			$resultado = $conexion->ejecutarInstruccion($sql);
+
+			while ($fila = $conexion->obtenerFila($resultado)) {
+				if($fila["imagen_usuario"] == NULL){
+					$imagen = "../images/user.png";
+				} else{
+					$imagen = "../php/imagen.php?id=".$fila["codigo_usuario"];
+				}
+			?>
+			<div class="col-md-4 col-sm-4 col-xs-12 profile_details">
+                <div class="well profile_view">
+                  <div class="col-sm-12">
+                    <h4 class="brief"><i>Bibliotecario</i></h4>
+                    <div class="left col-xs-7">
+                      <h2 id="nombre-bibliotecario"><?php echo $fila["nombre"]." ".$fila["apellido"] ?></h2>
+                      <ul class="list-unstyled">
+                      	<li><i class="fa fa-user"></i> Código: <strong><?php echo $fila["codigo_usuario"] ?></strong></li>
+                        <li><i class="fa fa-envelope"></i> Correo: <strong><?php echo $fila["correo_electronico"] ?></strong></li>
+                        <li><i class="fa fa-phone"></i> Teléfono: <strong><?php echo $fila["telefono"] ?></strong></li>
+                      </ul>
+                    </div>
+                    <div class="right col-xs-5 text-center">
+                      <img src="<?php echo $imagen ?>" alt="" class="img-circle img-responsive">
+                    </div>
+                  </div>
+                </div>
+            </div>
+			<?php	
+			}
+		}
+
+		public static function listadoUsuarios($conexion){
+			$sql = "
+				SELECT nombre,apellido,correo_electronico,imagen_usuario,codigo_usuario
+				FROM tbl_usuarios
+				WHERE codigo_tipo_usuario=3 AND estado_usuario=1";
+			$resultado = $conexion->ejecutarInstruccion($sql);
+
+			while ($fila = $conexion->obtenerFila($resultado)) {
+				if($fila["imagen_usuario"] == NULL){
+					$imagen = "../images/user.png";
+				} else{
+					$imagen = "../php/imagen.php?id=".$fila["codigo_usuario"];
+				}
+			?>
+			<div class="col-md-4 col-sm-4 col-xs-12 profile_details">
+                <div class="well profile_view">
+                  <div class="col-sm-12">
+                    <h4 class="brief"><i>Bibliotecario</i></h4>
+                    <div class="left col-xs-7">
+                      <h2 id="nombre-bibliotecario"><?php echo $fila["nombre"]." ".$fila["apellido"] ?></h2>
+                      <ul class="list-unstyled">
+                      	<li><i class="fa fa-user"></i> Código: <strong><?php echo $fila["codigo_usuario"] ?></strong></li>
+                        <li><i class="fa fa-envelope"></i> Correo: <strong><?php echo $fila["correo_electronico"] ?></strong></li>
+                      </ul>
+                    </div>
+                    <div class="right col-xs-5 text-center">
+                      <img src="<?php echo $imagen ?>" alt="" class="img-circle img-responsive">
+                    </div>
+                  </div>
+                </div>
+            </div>
+			<?php	
 			}
 		}
 	}

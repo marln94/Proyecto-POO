@@ -1,3 +1,8 @@
+<?php
+  session_start();
+  if(isset($_SESSION['codigo-usuario'])){
+    if($_SESSION['codigo-tipo-usuario'] == 1){
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -34,11 +39,11 @@
             <div class="container-fluid">
               <div class="">
                 <div class="profile_pic">
-                  <img  alt="..." class="img-thumbnail profile_img" id="imagen-usuario">
+                  <img  alt="..." class="img-thumbnail profile_img" src="../php/imagen.php?id=<?php echo $_SESSION['codigo-usuario'] ?>">
                 </div>
                 <div class="profile_info">
                   <span>Bienvenido,</span>
-                  <h2 id="nombre-usuario"></h2>
+                  <h2><?php echo $_SESSION['nombre']." ".$_SESSION['apellido']?></h2>
                 </div>
               </div>
             </div>
@@ -73,8 +78,11 @@
             <!-- /sidebar menu -->
             <!-- footer menu -->
             <div class="sidebar-footer hidden-small">
-              <a data-toggle="tooltip" data-placement="top" title="Cerrar sesión">
+              <a href="logout.php" data-toggle="tooltip" data-placement="top" title="Cerrar sesión">
                 <span class="glyphicon glyphicon-log-out" aria-hidden="true" style="color: #190705"></span>
+              </a>
+              <a href="configuracion.php" data-toggle="tooltip" data-placement="top" title="Configuración">
+                <span class="glyphicon glyphicon-cog" aria-hidden="true" style="color: #190705"></span>
               </a>
             </div>
             <!-- /footer menu -->
@@ -96,10 +104,17 @@
                       <span class="section">Información de contacto</span>
 
                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="txt-nombre"> Nombre y apellido<span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="txt-nombre"> Nombre<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input type="text" id="txt-nombre" class="form-control col-md-7 col-xs-12" >
+                        </div>
+                      </div>
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="txt-apellido"> Apellido<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="txt-apellido" class="form-control col-md-7 col-xs-12" >
                         </div>
                       </div>
                       <div class="item form-group">
@@ -107,13 +122,6 @@
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input type="email" id="txt-email" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="txt-nombre-usuario"> Nombre de usuario <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="txt-nombre-usuario" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
                       <div class="item form-group">
@@ -141,7 +149,9 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" > Imagen de perfil <span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="file" id="file-imagen-perfil" class="form-control col-md-7 col-xs-12" accept="image/*">
+                          <form id="form-imagen">
+                            <input type="file" id="imagen" name="imagen" class="form-control col-md-7 col-xs-12" accept="image/*">
+                          </form>
                         </div>
                       </div>
                       <div id="mensaje"></div>
@@ -170,6 +180,25 @@
       </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" id="modal-sesion">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">Cuenta registrada</h4>
+          </div>
+          <div class="modal-body">
+            <h4> La cuenta se registró con éxito</h4>
+            <br>
+            <p id="mensaje-registro"></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- jQuery -->
     <script src="../vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
@@ -183,33 +212,16 @@
 
     <!-- JS -->
     <script>
-      $(document).ready(function() {
-        $('#contenedor-categorias').html('<p style="text-align: center;"><img src="../images/loading.gif"> </p>');
-        $.ajax({
-          type: 'POST',
-          url: '../php/carga.php?opcion=administrador',
-          success: function(respuesta){
-            var arr = respuesta.split(',');
-            document.title = 'Bibliotec - '+arr[1];
-            $('#imagen-usuario').attr('src',arr[0])
-            $('#nombre-usuario').html(arr[1]);
-
-          }
-        });
-        $.ajax({
-          type: 'POST',
-          url: '../php/carga.php?opcion=categorias-usuarios',
-          success: function(respuesta){
-            $('#contenedor-categorias').html(respuesta);
-            $("#categoria1").click(function(event){
-              
-            });
-          }
-        });
-
-        
-      });
+      
     </script>
     <!-- /JS -->
   </body>
 </html>
+<?php
+    } else{
+      header("Location: page_403.html");
+    }
+  } else{
+    header("Location: ../index.php");
+  }
+?>

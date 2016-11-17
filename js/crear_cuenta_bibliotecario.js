@@ -1,20 +1,48 @@
 $(document).ready(function(){
+	$("#btn-buscar").click(function(){
+		buscar();
+	});
+	$("#txt-busqueda").on("keypress", function(e){
+		if(e.keyCode == 13){
+			buscar();
+		}
+	});
+
+	function buscar(){
+		if($("#txt-busqueda").val() != ""){
+			$(location).attr('href',"busqueda.php?q="+$("#txt-busqueda").val());
+			$("#txt-busqueda").val("");
+		}
+	}
+	
 	var emailreg = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
 	
 
 	$('#btn-crear-cuenta').click(function(){
 		if (verificar()) {
-			var parametros = "txt-nombre="+$("#txt-nombre").val()+"&"+"txt-email="+$("#txt-email").val()+"&"+"txt-nombre-usuario="+$("#txt-nombre-usuario").val()+"&"+"txt-contraseña="+$("#txt-contraseña").val()+"&"+"txt-domicilio="+$("#txt-domicilio").val()+"&"+"txt-telefono="+$("#txt-telefono").val();
+			var formData = new FormData($("#form-imagen")[0]);
+			formData.append("txt-nombre",$("#txt-nombre").val());
+			formData.append("txt-apellido",$("#txt-apellido").val());
+			formData.append("txt-email",$("#txt-email").val());
+			formData.append("txt-contraseña",$("#txt-contraseña").val());
+			formData.append("txt-domicilio",$("#txt-domicilio").val());
+			formData.append("txt-telefono",$("#txt-telefono").val());
 			$.ajax({
 				type: "POST",
-				url: "../php/registro.php?opcion=cuenta-bibliotecario",
-				data: parametros,
+				url: "../ajax/ctrl_registro_cuenta_bibliotecario.php?opcion=1",
+				data: formData,
+				contentType: false,
+	            processData: false,
 				success: function(respuesta){
 					if(respuesta == 'error'){
 						$("#mensaje").addClass('well');
 						$("#mensaje").html("Formulario con información errónea");
 					} else{
-						/*codigo*/
+						$("#mensaje-registro").html(respuesta);
+						$("#modal-sesion").modal('show');
+						$("#modal-sesion").on('hidden.bs.modal', function(){
+							$(location).attr('href',"crear_cuenta_bibliotecario.php");
+						});
 					}
 				}
 			});
@@ -25,17 +53,17 @@ $(document).ready(function(){
 		var validacion = true;
 		$(".bad").removeClass('bad').find('.alert').remove();
 		if( $("#txt-nombre").val() == "" ){
-			marcar($("#txt-nombre").closest(".item"),"Ingrese un nombre y apellido");
+			marcar($("#txt-nombre").closest(".item"),"Ingrese un nombre");
 			validacion = validacion && false;
 		} else{desmarcar($("#txt-nombre"))}
+		if( $("#txt-apellido").val() == "" ){
+			marcar($("#txt-apellido").closest(".item"),"Ingrese un apellido");
+			validacion = validacion && false;
+		} else{desmarcar($("#txt-apellido"))}
 		if( $("#txt-email").val() == "" || !emailreg.test($("#txt-email").val())){
 			marcar($("#txt-email").closest(".item"),"Ingrese un correo válido");
 			validacion = validacion && false;
 		} else{desmarcar($("#txt-email"))}
-		if( $("#txt-nombre-usuario").val() == ""){
-			marcar($("#txt-nombre-usuario").closest(".item"),"Ingrese un nombre de usuario");
-			validacion = validacion && false;
-		} else{desmarcar($("#txt-nombre-usuario"))}
 		if( $("#txt-contraseña").val() == "" ){
 			marcar($("#txt-contraseña").closest(".item"),"Ingrese una contraseña");
 			validacion = validacion && false;

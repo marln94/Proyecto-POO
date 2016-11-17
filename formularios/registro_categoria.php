@@ -106,9 +106,9 @@
             </div>
           </div>
           <div class="input-group" style="margin-bottom: 21px">
-            <input type="text" class="form-control form-control-1" placeholder="Buscar libro">
+            <input type="text" class="form-control form-control-1" placeholder="Buscar libro" id="txt-busqueda">
             <span class="input-group-btn">
-              <button class="button_1 btn btn-default" type="button">Buscar</button>
+              <button class="button_1 btn btn-default" id="btn-buscar">Buscar</button>
             </span>
           </div>
           <!--formulario registro categoria-->
@@ -179,7 +179,7 @@
             <p id="mensaje-registro"></p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Iniciar sesión</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
           </div>
         </div>
       </div>

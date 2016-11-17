@@ -194,7 +194,8 @@
 			            ?>
 			            <div style="width: 80%;margin: 0 auto;">
 			              <div class="btn-group-vertical" style="width: 100%; margin-top: 5%;">
-			              <?php
+			            <?php
+			            	if($codigoTipoUsuario > 0){
 		                	$solicitar = "";
 		                	$leer = "";
 		                	if($fila1['codigo_disponibilidad']==1 && $fila1['codigo_tipo_libro']==1){
@@ -214,7 +215,15 @@
 			                ?>
 			                <button onclick="solicitarLibro(<?php echo $fila1['codigo_libro'] ?>)" class="btn btn-default" id="btn-solicitar" <?php echo $solicitar ?> >Solicitar libro</button>
 			                <button class="btn btn-default" id="leer-digital" <?php echo $leer?> >Leer en digital</button>
+			            <?php
+			            	} else{
+			            ?>
+			            	<button class="btn btn-default" id="btn-solicitar" disabled >Solicitar libro</button>
+			                <button class="btn btn-default" id="leer-digital" disabled>Leer en digital</button>
+			            <?php
 
+			            	}
+			            ?>
 			              </div>
 			            </div>
 			        </div>
@@ -837,5 +846,116 @@
 				echo "error";
 			}
 		}
+
+		public static function busquedaLibros($conexion, $query){
+			?>
+			<!-- Resultados-->
+			<div class="x_title">
+                <h3>Resultados</h3>
+                <div class="clearfix"></div>
+            </div>
+			<?php
+			$sql1 = "SELECT titulo_libro,codigo_libro,url_imagen_libro  FROM tbl_libros";
+			$resultado1 = $conexion->ejecutarInstruccion($sql1);
+			while($fila = $conexion->obtenerFila($resultado1)){
+				if(stripos(removeAccents($fila["titulo_libro"]), removeAccents($query)) !== false){
+			?>
+			<!-- Libros que contiene la busqueda -->
+            <div class="x_content">
+                <div class="row top_tiles" >
+					<div class="animated flipInY col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height: 130px;">
+	                    <div class="img-portadas-libro">
+	                    	<?php
+	                    		if(!empty($fila['url_imagen_libro'])){
+	                    	?>
+	                      	<img id="img-portada-libro" src="../upload/<?php echo $fila['url_imagen_libro'] ?>" width="80" height="110">
+	                      	<?php
+	                      		} else{
+	                      	?>
+	                      	<img id="img-portada-libro" src="../upload/portadas/no-disponible.png" width="80" height="110">
+	                      	<?php
+	                      		}
+	                      	?>
+	                    </div>
+	                    <div class="tile-stats" style="top: 15px;">
+	                      <div><a class="count2" id="a-titulo-libro" href="libro.php?c=<?php echo $fila['codigo_libro'] ?>"> <?php echo $fila['titulo_libro'] ?></a></div>
+	                      	<ul class="stats-overview info-libro">
+	                        	<li>
+	                          		<span class="value" id="span-autor-libro">
+			                          	<?php
+											$resultado2 = $conexion->ejecutarInstruccion(
+												sprintf("SELECT d.nombre, d.apellido
+														FROM tbl_autores_x_libros c
+														INNER JOIN tbl_autores d
+														ON c.codigo_autor = d.codigo_autor
+														WHERE c.codigo_libro = '%s' AND d.estado=1",
+														$fila['codigo_libro']
+												)
+											);
+											$strAutores = "";
+											while($fila2 = $conexion->obtenerFila($resultado2)){
+												$strAutores .= $fila2['nombre']." ".$fila2['apellido'].", ";
+											}
+											echo substr($strAutores, 0, -2);
+											$conexion->liberarResultado($resultado2);
+			                          	?>
+	                          		</span>
+	                        	</li>
+	                        	<li>
+	                          		<span class="value" id="span-editorial-libro">
+			                          	<?php
+				                          	$resultado2 = $conexion->ejecutarInstruccion(
+				                          		sprintf("SELECT f.nombre_editorial
+				                          				FROM tbl_libros e
+				                          				INNER JOIN tbl_editoriales f
+				                          				ON e.codigo_editorial = f.codigo_editorial
+				                          				WHERE e.codigo_libro = '%s'",
+				                          				$fila['codigo_libro']
+				                          		)
+				                          	);
+				                          	$fila2 = $conexion->obtenerFila($resultado2);
+				                          	echo $fila2['nombre_editorial'];
+				                        ?>
+	                          		</span>
+	                        	</li>
+	                        	<li>
+	                          		<span class="value" id="span-año-publicacion-libro">
+			                          	<?php
+				                          	$resultado2 = $conexion->ejecutarInstruccion(
+				                          		sprintf("SELECT g.anio_publicacion
+				                          				FROM tbl_libros e
+				                          				INNER JOIN tbl_anios_publicaciones g
+				                          				ON e.codigo_anio_publicacion = g.codigo_anio_publicacion
+				                          				WHERE e.codigo_libro = '%s'",
+				                          				$fila['codigo_libro']
+				                          		)
+				                          	);
+				                          	$fila2 = $conexion->obtenerFila($resultado2);
+				                          	echo $fila2['anio_publicacion'];
+				                        ?>
+	                          		</span>
+	                        	</li>
+	                      	</ul>
+	                    </div>
+		            </div>
+		        </div>
+            </div>
+            <?php
+            	} else{
+            		?>
+            <div class="x_content">
+                <div class="row top_tiles" >
+					<div class="animated flipInY col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height: 130px;">
+					<p>No hay resultados que coincidan con la búsqueda.</p>
+					</div>
+				</div>
+			</div>
+            		<?php
+            	}
+        	}
+		}
 	}
+	function removeAccents($string) {
+		    return strtolower(trim(preg_replace('~[^0-9a-z]+~i', '-', preg_replace('~&([a-z]{1,2})(acute|cedil|circ|grave|lig|orn|ring|slash|th|tilde|uml);~i', '$1', htmlentities($string, ENT_QUOTES, 'UTF-8'))), ' '));
+		}
 ?>

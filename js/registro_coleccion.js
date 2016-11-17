@@ -1,5 +1,19 @@
 $(document).ready(function(){
-	var emailreg = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
+	$("#btn-buscar").click(function(){
+		buscar();
+	});
+	$("#txt-busqueda").on("keypress", function(e){
+		if(e.keyCode == 13){
+			buscar();
+		}
+	});
+
+	function buscar(){
+		if($("#txt-busqueda").val() != ""){
+			$(location).attr('href',"busqueda.php?q="+$("#txt-busqueda").val());
+			$("#txt-busqueda").val("");
+		}
+	}
 
 	$("#btn-registrar-coleccion").click(function(){
 		if(verificar()){
