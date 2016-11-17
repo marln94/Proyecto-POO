@@ -238,6 +238,13 @@
                             <input type="file" name="imagen" id="imagen" class="form-control col-md-7 col-xs-12" accept="image/*">
                           </div>
                         </div>
+                        <div class="item form-group">
+                          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="file-libropdf"> Archivo PDF <span>
+                          </label>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="file" name="pdf" id="pdf" class="form-control col-md-7 col-xs-12" accept="application/pdf">
+                          </div>
+                        </div>
                       </form>
                       <div id="mensaje"></div>
                       <div class="ln_solid"></div>

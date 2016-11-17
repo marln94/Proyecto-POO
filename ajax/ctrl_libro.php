@@ -20,6 +20,13 @@
 			$conexion = new Conexion();
 			Libro::solicitarLibroBibliotecario($conexion,$_POST["codigo-libro"],$_POST["codigo-usuario"],$_POST["fecha-prestamo"]);
 			break;
+
+		case '4':
+			include_once("../class/class_conexion.php");
+			include_once("../class/class_libro.php");
+			$conexion = new Conexion();
+			Libro::obtenerPDF($conexion,$_POST["codigo-libro"]);
+			break;
 		
 		default:
 			# code...

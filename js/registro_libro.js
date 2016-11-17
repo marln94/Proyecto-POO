@@ -56,6 +56,7 @@ $(document).ready(function(){
 				formData.append("rd-tipo-libro",1);
 			} else{
 				var formData = new FormData($("#form-imagen")[0]);
+				formData.append("pdf",$("#form-imagen")[1]);
 				formData.append("txt-titulo",$("#txt-titulo").val());
 				formData.append("slc-autores",$("#slc-autores").val());
 				formData.append("slc-editorial",$("#slc-editorial").val());
@@ -99,7 +100,7 @@ $(document).ready(function(){
 	verificar = function() {
 		var validacion = true;
 		var tipoLibro;
-		if($("#radios input[name=rd-tipo-libro]:checked").val() == 'digital'){
+		if($("#radios input[name=rd-tipo-libro]:checked").val() == '2'){
 			tipoLibro = false;
 		} else{
 			tipoLibro = true;

@@ -44,6 +44,18 @@ obtenerFecha = function() {
    	return xxx;
 }
 
+function mostrarPDF(codigoLibro){
+	$.ajax({
+		method: "post",
+		url: "../ajax/ctrl_libro.php?opcion=4",
+		data: "codigo-libro="+codigoLibro,
+		success: function(respuesta){
+			$("#libro-pdf").html(respuesta);
+		}
+	});
+	$("#pdf").attr('src');
+}
+
 $(document).ready(function(){
 	$("#btn-buscar").click(function(){
 		buscar();

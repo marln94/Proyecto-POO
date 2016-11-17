@@ -202,6 +202,7 @@
 		                		$leer = "disabled";
 		                	}
 		                	if($fila1['codigo_disponibilidad']==1 && $fila1['codigo_tipo_libro']==2){
+		                		$leer = 'onclick="mostrarPDF('.$fila1["codigo_libro"].')"';
 		                		$solicitar = "disabled";
 		                	}
 		                	if($fila1['codigo_disponibilidad']==2 && $fila1['codigo_tipo_libro']==1){
@@ -782,6 +783,16 @@
 			);
 			$resultado = $conexion->ejecutarInstruccion($sql);
 		}
+		public static function guardarPDF($conexion,$urlLibroPDF,$codigoLibro){
+			$sql = sprintf("
+				UPDATE tbl_libros
+				SET libro_pdf='%s'
+				WHERE codigo_libro='%s'",
+				$urlLibroPDF,
+				$codigoLibro
+			);
+			$resultado = $conexion->ejecutarInstruccion($sql);
+		}
 
 		public static function retirarLibro($conexion,$codigoLibro){
 			$sql = sprintf("
@@ -953,6 +964,20 @@
             		<?php
             	}
         	}
+		}
+
+		public static function obtenerPDF($conexion,$codigoLibro){
+			$sql = sprintf("
+				SELECT libro_pdf
+				FROM tbl_libros
+				WHERE codigo_libro='%s'",
+				$codigoLibro
+			);
+			$resultado = $conexion->ejecutarInstruccion($sql);
+			$fila = $conexion->obtenerFila($resultado);
+			?>
+			<iframe src="<?php echo $fila['libro_pdf'] ?>" style="width: 100%;height: 768px;" ></iframe>
+			<?php
 		}
 	}
 	function removeAccents($string) {

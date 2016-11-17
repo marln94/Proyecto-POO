@@ -54,7 +54,23 @@
 			    }
 			}
 			
+			if ( ! isset($_FILES["pdf"]) || $_FILES["pdf"]["error"] > 0){
+				echo "Libro sin archivo PDF";
+			} else{
+				$permitidos = array("application/pdf");
+			    if (in_array($_FILES['pdf']['type'], $permitidos) && $_FILES['pdf']['size'] <= 1024*1024){
+			    	$target_path = "../upload/pdf/";
+					$target_path = $target_path . basename( $_FILES['pdf']['name']); 
+
+			    	if(move_uploaded_file($_FILES['pdf']['tmp_name'], $target_path)) {
+			    		$libro->guardarPDF($conexion,$target_path,$codigoLibro);
+					} else{
+					echo "error";
+					}
+			    }
+			}
 			break;
+
 		default:
 			# code...
 			break;
